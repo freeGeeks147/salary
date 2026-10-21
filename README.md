@@ -75,3 +75,27 @@ npx tailwindcss@3.4.17 -i src/tailwind.css -o assets/css/site.css --minify
 4. Once DNS has propagated (minutes to a few hours), tick **Enforce HTTPS** in
    **Settings → Pages**.
 5. In Google Search Console, submit `https://govtsalarycalc.com/sitemap.xml`.
+
+## Analytics
+
+Set `GA_MEASUREMENT_ID` (Google Analytics 4) and optionally `CLARITY_PROJECT_ID`
+(Microsoft Clarity) at the top of `build.py`, run `python3 build.py`, and commit.
+With them empty, no tracking code is added to the pages.
+
+Besides page views, the site sends these GA4 events:
+
+| Event | When |
+| --- | --- |
+| `calculator_change` | First change to each calculator input on a page (`field`, `page_tab`) |
+| `open_tool` | A micro-tool is opened (`tool_id`) |
+| `menu_click` | A mega-menu, footer or search result item is used (`menu_action`) |
+| `select_pay_cell` | A pay matrix cell is clicked (`pay_level`, `basic_pay`) |
+| `select_language` | Language switched (`language`) |
+| `search` | Site search used (`search_term`) |
+| `view_payslip`, `print_payslip`, `download_csv` | Salary slip opened / printed, CSV downloaded |
+| `share` | Summary copied or shared to WhatsApp (`method`) |
+| `reset_calculator` | Calculator reset |
+
+To see the parameters in GA4 reports, register them under **Admin → Custom definitions →
+Create custom dimension** (event scope): `field`, `page_tab`, `tool_id`, `menu_action`,
+`pay_level`, `language`, `method`.

@@ -1001,6 +1001,75 @@
     saveCalcState();
   }
 
+  // =========================================================================
+  // ANALYTICS
+  // Sends Google Analytics 4 events when GA is configured in build.py
+  // (GA_MEASUREMENT_ID); does nothing otherwise. Listeners run in the capture
+  // phase so handlers that stop propagation (mega-menu) are still counted.
+  // =========================================================================
+  function trackEvent(name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  }
+
+  const CLICK_EVENTS = {
+    "btn-open-payslip": ["view_payslip", {}],
+    "btn-quick-slip": ["view_payslip", {}],
+    "btn-print-slip": ["view_payslip", {}],
+    "btn-print-now": ["print_payslip", {}],
+    "btn-copy-slip-text": ["share", { method: "copy_text" }],
+    "btn-share-whatsapp": ["share", { method: "whatsapp" }],
+    "btn-nav-whatsapp": ["share", { method: "whatsapp" }],
+    "btn-export-csv": ["download_csv", {}],
+    "btn-reset-calc": ["reset_calculator", {}]
+  };
+
+  function bindAnalytics() {
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      const idEl = t.closest("[id]");
+      if (idEl && CLICK_EVENTS[idEl.id]) {
+        const [name, params] = CLICK_EVENTS[idEl.id];
+        trackEvent(name, params);
+      }
+      const langBtn = t.closest(".lang-btn");
+      if (langBtn) trackEvent("select_language", { language: langBtn.getAttribute("data-lang") });
+      const toolCard = t.closest(".mt-tool-card");
+      if (toolCard) trackEvent("open_tool", { tool_id: toolCard.getAttribute("data-mt-id") });
+      const navEl = t.closest("[data-nav-action], [data-footer-nav], [data-cmd-action]");
+      if (navEl) {
+        const action = navEl.getAttribute("data-nav-action") || navEl.getAttribute("data-footer-nav") || navEl.getAttribute("data-cmd-action");
+        trackEvent("menu_click", { menu_action: action });
+        if (action.startsWith("mt:")) trackEvent("open_tool", { tool_id: action.slice(3) });
+      }
+      const cell = t.closest("[data-matrix-basic]");
+      if (cell) trackEvent("select_pay_cell", { pay_level: cell.getAttribute("data-matrix-level"), basic_pay: Number(cell.getAttribute("data-matrix-basic")) });
+    }, true);
+
+    // First change of each calculator input per page view (not every keystroke)
+    const changedFields = new Set();
+    const onFieldChange = (e) => {
+      const id = e.target && e.target.id;
+      if (!id || !/^(sel|inp|rng|num|chk)-/.test(id) || id === "inp-cmd-query" || changedFields.has(id)) return;
+      changedFields.add(id);
+      trackEvent("calculator_change", { field: id, page_tab: getCurrentPageTab() });
+    };
+    document.addEventListener("change", onFieldChange, true);
+    document.addEventListener("input", onFieldChange, true);
+
+    // Site search (⌘K): report the term once typing pauses
+    const searchInp = document.getElementById("inp-cmd-query");
+    let searchTimer = null;
+    if (searchInp) {
+      searchInp.addEventListener("input", () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          const term = searchInp.value.trim();
+          if (term.length >= 2) trackEvent("search", { search_term: term.slice(0, 100) });
+        }, 1500);
+      });
+    }
+  }
+
   // Calculator inputs are kept in localStorage so they carry over between pages.
   const CALC_STATE_KEY = "gsc_calc_state_v1";
   const LANG_KEY = "gsc_lang_v1";
@@ -5820,6 +5889,7 @@
   function init() {
     restoreCalcState();
     bindSharedInputs();
+    bindAnalytics();
     populateLevelAndBasicDropdowns(true);
     renderPostPresets();
     bindEvents();

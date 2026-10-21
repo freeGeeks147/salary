@@ -21,6 +21,12 @@ SITE_URL = "https://govtsalarycalc.com/"
 SITE_NAME = "GovtSalaryCalc"
 OG_IMAGE = SITE_URL + "assets/og-image.jpg"
 
+# Analytics. Leave empty to turn off; fill in and re-run build.py to turn on.
+# Google Analytics 4: Admin → Data streams → your web stream → Measurement ID (G-XXXXXXXXXX)
+GA_MEASUREMENT_ID = ""
+# Microsoft Clarity (free heatmaps & session recordings): Settings → Overview → Project ID
+CLARITY_PROJECT_ID = ""
+
 # path: output folder ("" = site root); section: file name in src/sections/ and src/content/
 # Keep titles under ~60 characters and descriptions under ~155 so Google shows them in full.
 PAGES = [
@@ -109,7 +115,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
-</head>
+{analytics}</head>
 <body class="min-h-screen flex flex-col pb-20 md:pb-8">
 {header}
 {hero}
@@ -136,6 +142,27 @@ FAQ_TEMPLATE = """      <div class="space-y-1">
         <h3>{q}</h3>
         <p>{a}</p>
       </div>"""
+
+
+def analytics_tags():
+    tags = ""
+    if GA_MEASUREMENT_ID:
+        tags += f"""  <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {{ dataLayer.push(arguments); }}
+    gtag("js", new Date());
+    gtag("config", "{GA_MEASUREMENT_ID}");
+  </script>
+"""
+    if CLARITY_PROJECT_ID:
+        tags += f"""  <script>
+    (function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window,document,"clarity","script","{CLARITY_PROJECT_ID}");
+  </script>
+"""
+    return tags
 
 
 def read(path):
@@ -218,6 +245,7 @@ def build_page(page, all_faqs):
         og_image=OG_IMAGE,
         root=root,
         json_ld=json_ld(page, faqs).replace("</", "<\\/"),
+        analytics=analytics_tags(),
         header=read("partials/header.html"),
         hero=read("partials/hero.html") if page.get("hero") else "",
         banners=read("partials/banners.html"),
