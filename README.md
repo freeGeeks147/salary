@@ -27,8 +27,11 @@ these instead:
 - `src/partials/hero.html` – home page banner
 - `src/partials/banners.html` – context banner and breadcrumb bar
 - `src/partials/footer.html` – footer, salary-slip and search pop-ups, mobile bottom bar
-- `src/sections/*.html` – each page's own content
-- `assets/css/style.css`, `assets/js/app.js` – styles and all calculator logic
+- `src/sections/*.html` – each page's calculator
+- `src/content/*.html` – the explanatory text under each calculator
+- `src/content/faqs.json` – each page's FAQs (shown on the page and sent to Google as FAQ data)
+- `src/tailwind.css` – custom styles
+- `assets/js/app.js` – all calculator logic
 - `build.py` – page titles, descriptions and URLs
 
 Then rebuild and commit:
@@ -37,7 +40,17 @@ Then rebuild and commit:
 python3 build.py
 ```
 
-(Only Python 3 is needed. Changes to `assets/` take effect without a rebuild.)
+Only Python 3 is needed. Changes to `assets/js/app.js` take effect without a rebuild.
+
+### Styles
+
+The site uses a pre-built Tailwind CSS file (`assets/css/site.css`) rather than the
+Tailwind CDN script, so pages load much faster. If you use a Tailwind class that
+isn't used anywhere else on the site yet, rebuild the CSS (needs Node.js):
+
+```sh
+npx tailwindcss@3.4.17 -i src/tailwind.css -o assets/css/site.css --minify
+```
 
 ## Publishing on GitHub Pages with the custom domain
 

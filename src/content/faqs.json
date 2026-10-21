@@ -1,0 +1,104 @@
+{
+  "salary": [
+    [
+      "How is 8th Pay Commission salary calculated?",
+      "8th CPC basic pay is your current 7th CPC basic pay multiplied by the fitment factor. DA, HRA and transport allowance are then calculated on the new basic pay, and NPS, CGHS and income tax are deducted to get your in-hand salary."
+    ],
+    [
+      "What is the expected fitment factor for the 8th Pay Commission?",
+      "The fitment factor has not been announced yet. Estimates range from about 1.83× to 2.86×; this calculator uses 1.92× by default, which reflects DA of about 60% merged into basic pay plus a real increase of about 20%."
+    ],
+    [
+      "What will the minimum basic pay be under the 8th CPC?",
+      "At a 1.92× fitment factor, the minimum basic pay of ₹18,000 would rise to about ₹34,560. At 2.57× (the 7th CPC factor) it would be ₹46,260. The final figure depends on the fitment factor the Government approves."
+    ],
+    [
+      "When will the 8th Pay Commission be implemented?",
+      "The 8th CPC is expected to be effective from 1 January 2026. If it is implemented later, arrears are expected to be paid from that date."
+    ],
+    [
+      "Is this salary calculator free?",
+      "Yes. All calculators on GovtSalaryCalc.com are free and run entirely in your browser; your inputs are not sent anywhere."
+    ]
+  ],
+  "matrix": [
+    [
+      "How many pay levels are there in the 7th CPC pay matrix?",
+      "There are 18 pay levels, plus Level 13A, giving 19 levels in total. Level 1 starts at ₹18,000 and Level 18 is fixed at ₹2,50,000."
+    ],
+    [
+      "How much is one annual increment in the pay matrix?",
+      "One increment moves you one cell down in your pay level, an increase of 3% of basic pay rounded off to the next multiple of ₹100."
+    ],
+    [
+      "What was the fitment factor in the 7th Pay Commission?",
+      "The 7th CPC used a fitment factor of 2.57, which raised the minimum pay from ₹7,000 to ₹18,000."
+    ]
+  ],
+  "arrears": [
+    [
+      "How are 8th Pay Commission arrears calculated?",
+      "Arrears are the difference between your revised 8th CPC pay and your 7th CPC pay for each month from the effective date (expected 1 January 2026) until the new pay is actually paid, including any annual increment during that period."
+    ],
+    [
+      "Is HRA exemption available in the new tax regime?",
+      "No. The Section 10(13A) HRA exemption can only be claimed under the old tax regime. It is the lowest of actual HRA, rent paid minus 10% of basic pay plus DA, and 50% (metro) or 40% (non-metro) of basic pay plus DA."
+    ],
+    [
+      "How is Diwali bonus calculated for central government employees?",
+      "Ad-hoc bonus for Group C and non-gazetted Group B employees is calculated on a notional ceiling of ₹7,000 a month for 30 days. Railway employees receive productivity-linked bonus (PLB) for 78 days on the same ceiling."
+    ]
+  ],
+  "pension": [
+    [
+      "What is the Unified Pension Scheme (UPS)?",
+      "UPS is an option for central government employees under NPS, available from 1 April 2025. After 25 years of qualifying service it gives an assured pension of 50% of the average basic pay of the last 12 months, proportionately less for 10 to 25 years, with a minimum of ₹10,000 a month."
+    ],
+    [
+      "Which is better, UPS or NPS?",
+      "UPS gives a guaranteed pension linked to your last pay; NPS pension depends on market returns on your corpus. Use the comparison above with your own service and pay to see the estimated difference."
+    ],
+    [
+      "What is the maximum gratuity for central government employees?",
+      "Retirement gratuity is one-quarter of basic pay plus DA for each completed six-monthly period of service, up to 16.5 times emoluments, subject to the ceiling of ₹25 lakh."
+    ]
+  ],
+  "tax": [
+    [
+      "Is income up to ₹12 lakh tax-free for government employees?",
+      "Under the new tax regime, taxable income up to ₹12 lakh has no tax because of the Section 87A rebate. With the ₹75,000 standard deduction, salary up to ₹12.75 lakh is effectively tax-free."
+    ],
+    [
+      "Which tax regime is better for central government employees?",
+      "It depends on your deductions. The old regime can be better if you claim large HRA exemption, Section 80C and 80D deductions; otherwise the new regime usually gives lower tax. The calculator above compares both for your salary."
+    ],
+    [
+      "Is employer NPS contribution taxable?",
+      "Employer contribution to NPS is deductible under Section 80CCD(2) in both tax regimes, up to 14% of basic pay plus DA for central government employees."
+    ]
+  ],
+  "tools": [
+    [
+      "What is the current DA rate for central government employees?",
+      "The calculators assume a DA rate of 60% from January 2026. You can change the DA rate in the main salary calculator to see other scenarios."
+    ],
+    [
+      "How much transport allowance do central government employees get?",
+      "Under the 7th CPC, basic transport allowance is ₹1,350 / ₹3,600 / ₹7,200 a month in the higher-TA cities for Levels 1–2, 3–8 and 9 and above (₹900 / ₹1,800 / ₹3,600 elsewhere), and DA is paid on top. Divyang employees receive double the normal rate."
+    ]
+  ],
+  "guides": [
+    [
+      "Has the 8th Pay Commission been constituted?",
+      "Yes. The 8th Central Pay Commission was announced on 16 January 2025, and its Terms of Reference were notified in November 2025 with Justice Ranjana Prakash Desai as Chairperson."
+    ],
+    [
+      "When will 8th CPC salaries be paid?",
+      "The 8th CPC is expected to be effective from 1 January 2026. Revised salaries will be paid after the Commission submits its report and the Government accepts it, with arrears from the effective date."
+    ],
+    [
+      "Will state government employees get the 8th Pay Commission?",
+      "State governments set up their own pay commissions or adopt the central pay commission's recommendations with modifications, usually some time after the centre. The comparison table above shows current state pay and DA rates."
+    ]
+  ]
+}

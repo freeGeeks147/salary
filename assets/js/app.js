@@ -4408,7 +4408,7 @@
 
 
   // =========================================================================
-  // 17. INDIANPAYCALCULATOR.IN MEGA-MENU, HERO LIVE PREVIEW, 20 STATES & ⌘K
+  // 17. MEGA-MENU, HERO LIVE PREVIEW, 20 STATES & ⌘K
   // =========================================================================
   const LIVE_PREVIEW_PROFILES = [
     { label: "Delhi · Level 10", level: "10", basic: 56100, hra: "X", ta: "HIGHER" },
