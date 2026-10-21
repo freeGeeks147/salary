@@ -1,0 +1,135 @@
+    <!-- ==========================================
+         TAB 3: 8TH CPC ARREARS & ALLOWANCES SUITE
+         ========================================== -->
+    <section id="tab-arrears" class="tab-panel space-y-6">
+      <!-- 8th CPC Arrears Calculator (From Jan 2026) -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-slate-900" data-i18n="arr_title">8th CPC Salary Arrears Calculator (From Jan 1, 2026)</h2>
+            <p class="text-xs text-slate-500" data-i18n="arr_sub">Month-by-month back-pay calculation with automatic 3% annual increments &amp; DA progression</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300" id="arr-total-badge">Total Net Arrears: ₹3,73,170</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div>
+            <label for="sel-arr-months" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_arr_duration">Implementation Delay (Months from Jan 2026)</label>
+            <select id="sel-arr-months" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs sm:text-sm font-semibold">
+              <option value="12">12 Months (Jan 2026 – Dec 2026)</option>
+              <option value="18" selected>18 Months (Jan 2026 – Jun 2027 Expected)</option>
+              <option value="21">21 Months (Jan 2026 – Sep 2027)</option>
+              <option value="24">24 Months (Jan 2026 – Dec 2027)</option>
+            </select>
+          </div>
+          <div>
+            <label for="sel-arr-inc-month" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_inc_month">Annual Increment Month</label>
+            <select id="sel-arr-inc-month" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs sm:text-sm font-semibold">
+              <option value="7" selected>July (1st July Increment)</option>
+              <option value="1">January (1st January Increment)</option>
+            </select>
+          </div>
+          <div>
+            <label for="sel-arr-hra-arrear" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_hra_arrears">Include HRA in Arrears?</label>
+            <select id="sel-arr-hra-arrear" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs sm:text-sm font-semibold">
+              <option value="YES" selected>Yes (Full Basic + HRA Arrears)</option>
+              <option value="NO">No (Basic + DA Arrears Only, like 7th CPC)</option>
+            </select>
+          </div>
+          <div class="bg-emerald-50 rounded-xl p-3 border border-emerald-200 flex flex-col justify-center">
+            <span class="text-[11px] font-semibold text-emerald-800 uppercase" data-i18n="lbl_est_lump_arrear">Estimated Net Back-Pay (In-Hand)</span>
+            <span class="text-xl font-extrabold text-emerald-700" id="arr-net-display">₹3,73,170</span>
+            <span class="text-[11px] text-slate-600" id="arr-gross-display">Gross Arrears: ₹4,14,633</span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto max-h-72 custom-scrollbar border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+              <tr>
+                <th class="p-2.5 border-b">Month</th>
+                <th class="p-2.5 border-b text-right">7th Basic</th>
+                <th class="p-2.5 border-b text-right">7th DA%</th>
+                <th class="p-2.5 border-b text-right">7th Gross Drawn</th>
+                <th class="p-2.5 border-b text-right text-emerald-800">8th Basic</th>
+                <th class="p-2.5 border-b text-right text-emerald-800">8th Gross Due</th>
+                <th class="p-2.5 border-b text-right font-extrabold text-emerald-700">Net Arrear</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-arrears" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Specialized Allowance Calculators Grid: Section 10(13A) HRA Exemption, Night Duty (NDA), Bonus & Tour TA/DA -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Card A: HRA Tax Exemption Section 10(13A) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 space-y-3">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+            <span>🏠</span> <span data-i18n="hra_ex_title">HRA Tax Exemption u/s 10(13A)</span>
+          </h3>
+          <p class="text-xs text-slate-500" data-i18n="hra_ex_sub">Calculates tax-free HRA (Least of Three rule under Old Tax Regime)</p>
+          <div>
+            <label for="inp-rent-paid" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_monthly_rent">Monthly Rent Paid (₹)</label>
+            <input type="number" id="inp-rent-paid" value="22000" min="0" step="500" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-sm font-semibold" />
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+            <div class="flex justify-between"><span>1. Actual HRA Received:</span><strong id="hra-rule-1">₹16,830/mo</strong></div>
+            <div class="flex justify-between"><span>2. Rent − 10% (Basic+DA):</span><strong id="hra-rule-2">₹13,024/mo</strong></div>
+            <div class="flex justify-between"><span>3. 50% (X) / 40% (Y/Z) Pay:</span><strong id="hra-rule-3">₹44,880/mo</strong></div>
+            <div class="pt-1.5 border-t border-slate-200 flex justify-between font-bold text-emerald-700">
+              <span>Tax-Free HRA/yr:</span><span id="hra-exempt-yr">₹1,56,288/yr</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card B: Night Duty Allowance (NDA) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 space-y-3">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+            <span>🌙</span> <span data-i18n="nda_title">Night Duty Allowance (NDA)</span>
+          </h3>
+          <p class="text-xs text-slate-500" data-i18n="nda_sub">DoPT Formula: (Basic + DA)/200 per weighted hour (Pay ceiling ₹43,600)</p>
+          <div>
+            <label for="inp-nda-hours" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_nda_hours">Night Shift Hours (22:00 to 06:00) / Month</label>
+            <input type="number" id="inp-nda-hours" value="48" min="0" max="240" step="2" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-sm font-semibold" />
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+            <div class="flex justify-between"><span>Effective Basic (Cap ₹43,600):</span><strong id="nda-cap-basic">₹43,600</strong></div>
+            <div class="flex justify-between"><span>Hourly NDA Rate:</span><strong id="nda-hourly-rate">₹348.80/hr</strong></div>
+            <div class="flex justify-between"><span>Weighted Hours (÷6):</span><strong id="nda-weighted-hrs">8.0 hrs</strong></div>
+            <div class="pt-1.5 border-t border-slate-200 flex justify-between font-bold text-blue-700">
+              <span>Monthly NDA Payout:</span><span id="nda-total-pay">₹2,790/mo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card C: Diwali Bonus (PLB / Ad-hoc) & DA Arrears -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 space-y-3">
+          <h3 class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+            <span>🎁</span> <span data-i18n="bonus_title">Bonus (PLB) &amp; DA Hike Arrears</span>
+          </h3>
+          <p class="text-xs text-slate-500" data-i18n="bonus_sub">Calculate Ad-hoc / Railway 78-day PLB &amp; 3-month DA Arrears</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label for="sel-bonus-days" class="block text-[11px] font-medium text-slate-700 mb-1">Bonus Days</label>
+              <select id="sel-bonus-days" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-2 py-1.5 text-xs font-semibold">
+                <option value="30">30 Days (Ad-hoc CG)</option>
+                <option value="78" selected>78 Days (Railway PLB)</option>
+                <option value="60">60 Days (Posts PLB)</option>
+              </select>
+            </div>
+            <div>
+              <label for="inp-da-diff" class="block text-[11px] font-medium text-slate-700 mb-1">DA Hike % (3-mo Arrear)</label>
+              <input type="number" id="inp-da-diff" value="3" min="1" max="10" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-2 py-1.5 text-xs font-semibold" />
+            </div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+            <div class="flex justify-between"><span>Bonus Ceiling Base:</span><strong>₹7,000</strong></div>
+            <div class="flex justify-between font-bold text-amber-800"><span>Festival Bonus Amount:</span><span id="bonus-amt-out">₹17,951</span></div>
+            <div class="pt-1.5 border-t border-slate-200 flex justify-between font-bold text-emerald-700">
+              <span>3-Month DA Arrear:</span><span id="da-arrear-3mo">₹5,049</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

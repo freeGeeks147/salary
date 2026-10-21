@@ -1,0 +1,31 @@
+  <!-- ACTIVE SECTOR / STATE / GUIDE CONTEXT BANNER (Shown when user picks a Defence/CAPF/Railway/State item from Mega-Menu) -->
+  <div id="sector-context-banner" class="hidden max-w-7xl w-full mx-auto px-3 sm:px-6 pt-4 no-print">
+    <div class="bg-gradient-to-r from-sky-100 via-white to-emerald-50 border-2 border-sky-400/70 rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      <div class="space-y-0.5">
+        <div class="flex items-center gap-2">
+          <span id="scb-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-sky-600 text-white">DEFENCE / RAILWAY / CAPF</span>
+          <h3 id="scb-title" class="text-sm sm:text-base font-extrabold text-slate-900">Loaded Rank / Post Profile</h3>
+        </div>
+        <p id="scb-desc" class="text-xs text-slate-600">Pay Level, Basic Pay and Special Allowances have been loaded into the calculator below.</p>
+      </div>
+      <button type="button" id="btn-scb-close" class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold text-slate-700">✕ Dismiss</button>
+    </div>
+  </div>
+
+  <!-- ACTIVE PAGE / TOOL BREADCRUMB BAR (Shown when viewing any inner calculator, matrix, guide, state or news view) -->
+  <div id="inner-view-topbar" class="hidden bg-sky-100/90 border-b border-sky-200 px-3 sm:px-6 py-2.5 no-print">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <button type="button" id="btn-back-home-calc" class="android-ripple px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+          <span>←</span> <span data-i18n="btn_back_home">8th CPC Salary Calculator</span>
+        </button>
+        <span class="text-slate-400 text-xs">/</span>
+        <span id="inner-view-title" class="text-xs sm:text-sm font-extrabold text-sky-950">Selected Tool</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button type="button" id="btn-topbar-all-tools" class="android-ripple px-3 py-1 rounded-xl bg-white hover:bg-sky-50 text-sky-900 border border-sky-300 text-xs font-bold">
+          🧰 <span data-i18n="btn_all_94_tools">All 94+ Micro-Tools</span>
+        </button>
+      </div>
+    </div>
+  </div>
