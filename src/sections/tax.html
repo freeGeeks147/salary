@@ -1,0 +1,58 @@
+    <!-- ==========================================
+         TAB 5: INCOME TAX (FY 2026-27) & POST PRESETS
+         ========================================== -->
+    <section id="tab-tax" class="tab-panel space-y-6">
+      <!-- Income Tax Calculator FY 2026-27 (New vs Old Regime) -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900" data-i18n="tax_title">Income Tax Calculator FY 2026-27 (New vs Old Regime)</h1>
+            <p class="text-xs text-slate-500" data-i18n="tax_sub">Includes ₹75,000 Standard Deduction, Sec 87A Free Tax up to ₹12L &amp; Employer 14% NPS Sec 80CCD(2) Deduction</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900" id="tax-rec-badge">Recommended: New Regime</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label for="inp-80c" class="block text-xs font-medium text-slate-700 mb-1">Old Regime Sec 80C / 123 (Max ₹1.5L)</label>
+            <input type="number" id="inp-80c" value="150000" min="0" max="150000" step="5000" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-sm font-semibold" />
+          </div>
+          <div>
+            <label for="inp-80d" class="block text-xs font-medium text-slate-700 mb-1">Old Regime Sec 80D / HBA Interest (₹)</label>
+            <input type="number" id="inp-80d" value="50000" min="0" max="300000" step="5000" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-sm font-semibold" />
+          </div>
+          <div class="flex items-end">
+            <label class="inline-flex items-center gap-2 cursor-pointer p-2 rounded-xl bg-blue-50 border border-blue-200 w-full text-xs font-semibold text-blue-900">
+              <input type="checkbox" id="chk-80ccd2" checked class="rounded text-blue-600" />
+              <span>Claim 14% Govt NPS u/s 80CCD(2) in New Regime</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-200 rounded-xl">
+            <thead class="bg-slate-100 text-slate-700 font-bold">
+              <tr>
+                <th class="p-2.5 border-b">Tax Parameter (Annual)</th>
+                <th class="p-2.5 border-b text-right">7th CPC (New Regime)</th>
+                <th class="p-2.5 border-b text-right">7th CPC (Old Regime)</th>
+                <th class="p-2.5 border-b text-right text-emerald-800 bg-emerald-50/50">8th CPC (New Regime)</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-tax-comparison" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Department & Post Salary Quick Presets (Railway, Defence, CAPF, SSC, Medical, Banking) -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-4">
+        <div>
+          <h3 class="text-base font-bold text-slate-900" data-i18n="presets_title">One-Tap Government Post Presets (Railway, Defence, CAPF, SSC, Medical)</h3>
+          <p class="text-xs text-slate-500" data-i18n="presets_sub">Tap any post to load its exact Pay Level, Entry Basic Pay, and special allowances into the calculator</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="post-presets-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>

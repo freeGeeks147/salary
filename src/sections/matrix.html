@@ -1,0 +1,61 @@
+    <!-- ==========================================
+         TAB 2: 7TH & 8TH CPC PAY MATRIX EXPLORER
+         ========================================== -->
+    <section id="tab-matrix" class="tab-panel space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900" data-i18n="matrix_title">7th &amp; Projected 8th CPC Pay Matrix Table (All 19 Levels)</h1>
+            <p class="text-xs text-slate-500" data-i18n="matrix_sub">Click any cell to load that Basic Pay directly into the Salary Calculator.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="sel-matrix-mode" aria-label="Pay Matrix Display Mode" class="rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900">
+              <option value="BOTH">Show 7th → 8th CPC Side-by-Side</option>
+              <option value="8TH">Show 8th CPC Projected Only</option>
+              <option value="7TH">Show Official 7th CPC Only</option>
+            </select>
+            <select id="sel-matrix-group" aria-label="Filter Pay Levels" class="rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900">
+              <option value="ALL">All Levels (Level 1 to 18)</option>
+              <option value="G_C">Group C / Entry (Level 1 to 5)</option>
+              <option value="G_B">Group B / Inspector / SO (Level 6 to 9)</option>
+              <option value="G_A">Group A / Officers (Level 10 to 13A)</option>
+              <option value="HAG">Higher Admin Grade / Apex (Level 14 to 18)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar max-h-[500px] border border-slate-200 rounded-xl">
+          <table class="w-full text-xs border-collapse">
+            <thead id="matrix-thead" class="bg-slate-900 text-white sticky top-0 z-10"></thead>
+            <tbody id="matrix-tbody" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+
+        <!-- Historical Fitment Factor Comparison Table (3rd to 8th CPC) -->
+        <div class="pt-4 border-t border-slate-200">
+          <h3 class="text-sm font-bold text-slate-900 mb-2" data-i18n="hist_cpc_title">History of Pay Commissions &amp; Fitment Factors (3rd CPC to 8th CPC)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse border border-slate-200 rounded-xl">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-2.5 border-b">Pay Commission</th>
+                  <th class="p-2.5 border-b">Effective Date</th>
+                  <th class="p-2.5 border-b">Chairperson</th>
+                  <th class="p-2.5 border-b text-right">Min Basic Pay</th>
+                  <th class="p-2.5 border-b text-right">Max Basic Pay</th>
+                  <th class="p-2.5 border-b text-right">Fitment / Real Hike</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="p-2.5 font-semibold">3rd CPC</td><td class="p-2.5">Jan 1, 1973</td><td class="p-2.5">Justice Raghubar Dayal</td><td class="p-2.5 text-right">₹185</td><td class="p-2.5 text-right">₹3,500</td><td class="p-2.5 text-right">~20% hike</td></tr>
+                <tr><td class="p-2.5 font-semibold">4th CPC</td><td class="p-2.5">Jan 1, 1986</td><td class="p-2.5">Justice P.N. Singhal</td><td class="p-2.5 text-right">₹750</td><td class="p-2.5 text-right">₹9,000</td><td class="p-2.5 text-right">~27.6% hike</td></tr>
+                <tr><td class="p-2.5 font-semibold">5th CPC</td><td class="p-2.5">Jan 1, 1996</td><td class="p-2.5">Justice S. Ratnavel Pandian</td><td class="p-2.5 text-right">₹2,550</td><td class="p-2.5 text-right">₹30,000</td><td class="p-2.5 text-right">~31% hike</td></tr>
+                <tr><td class="p-2.5 font-semibold">6th CPC</td><td class="p-2.5">Jan 1, 2006</td><td class="p-2.5">Justice B.N. Srikrishna</td><td class="p-2.5 text-right">₹7,000</td><td class="p-2.5 text-right">₹80,000</td><td class="p-2.5 text-right">1.86× (~54% hike)</td></tr>
+                <tr><td class="p-2.5 font-semibold">7th CPC</td><td class="p-2.5">Jan 1, 2016</td><td class="p-2.5">Justice A.K. Mathur</td><td class="p-2.5 text-right">₹18,000</td><td class="p-2.5 text-right">₹2,50,000</td><td class="p-2.5 text-right">2.57× (~14.3% hike)</td></tr>
+                <tr class="bg-emerald-50 font-semibold text-emerald-950"><td class="p-2.5">8th CPC (Projected)</td><td class="p-2.5">Jan 1, 2026</td><td class="p-2.5">Justice Ranjana Prakash Desai</td><td class="p-2.5 text-right" id="hist-8th-min">₹34,560</td><td class="p-2.5 text-right" id="hist-8th-max">₹4,80,000</td><td class="p-2.5 text-right" id="hist-8th-fit">1.92× (~20–30% hike)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>

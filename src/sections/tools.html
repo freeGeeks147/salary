@@ -1,0 +1,117 @@
+    <!-- ==========================================
+         TAB 5B: ALL 94+ MICRO-TOOLS & CALCULATORS HUB
+         ========================================== -->
+    <section id="tab-microtools" class="tab-panel space-y-5">
+      <!-- Sticky 8th CPC Context Bar inside Micro-Tools Hub -->
+      <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-blue-950 text-white rounded-2xl p-4 shadow-md border border-emerald-500/30 flex flex-wrap items-center justify-between gap-3">
+        <div class="space-y-0.5">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-emerald-500 text-slate-950">8th CPC Live Context</span>
+            <span class="text-xs font-mono text-emerald-300" id="mt-context-summary">Level 10 · 7th Basic: ₹56,100 → 8th Basic: ₹1,07,712 (1.92×)</span>
+          </div>
+          <h1 class="text-base sm:text-lg font-extrabold" data-i18n="mt_hub_title">All 94+ Government Salary, Allowance, Leave, Pension &amp; Tax Micro-Tools</h1>
+          <p class="text-xs text-slate-300" data-i18n="mt_hub_sub">Modular Android MVVM-ready engine — tap any tool below to open its interactive calculator synced with your 7th or 8th CPC pay.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/15">
+          <span class="text-xs font-semibold px-2 text-slate-200" data-i18n="mt_pay_basis_lbl">Pay Basis for Tools:</span>
+          <button type="button" id="btn-mt-basis-8th" data-mt-basis="8TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm">
+            ⚡ 8th CPC Projected Pay
+          </button>
+          <button type="button" id="btn-mt-basis-7th" data-mt-basis="7TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white">
+            7th CPC Current Pay
+          </button>
+        </div>
+      </div>
+
+      <!-- Search & Category Filter Chips -->
+      <div id="mt-search-filter-bar" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1">
+            <input type="text" id="inp-mt-search" placeholder="Search all 94+ calculators (e.g. GPF, LTC, Tour TA, HBA, Form 10E, Deputation, CCL, Bank, PSU, State, EWS)..." class="w-full rounded-xl border border-slate-300 bg-slate-50 pl-9 pr-4 py-2 text-xs sm:text-sm text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none" />
+            <span class="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
+          </div>
+          <div class="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
+            <span id="mt-count-badge" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold">39 Interactive Suites (94 Tools)</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-1" id="mt-category-chips">
+          <button type="button" data-mt-cat="ALL" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm">
+            🌟 All Tools (94)
+          </button>
+          <button type="button" data-mt-cat="PAY_CAREER" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🪜 Pay, Fixation &amp; Career
+          </button>
+          <button type="button" data-mt-cat="ALLOWANCES_TOUR" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🧳 Tour, LTC, Posting &amp; Quarters
+          </button>
+          <button type="button" data-mt-cat="PENSION_LEAVE" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🏛️ GPF, Pension, Leave &amp; Rules
+          </button>
+          <button type="button" data-mt-cat="TAX_SAVINGS" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            📮 Tax 10E, HBA Loan &amp; Post Office
+          </button>
+          <button type="button" data-mt-cat="SECTORS_ELIGIBILITY" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🏦 Bank, PSU, 20 States &amp; Eligibility
+          </button>
+        </div>
+      </div>
+
+      <!-- Master-Detail / Focused Tool Layout -->
+      <div id="mt-layout-wrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <!-- Active Micro-Tool Interactive Workbench (Placed FIRST so it is always top & center!) -->
+        <div class="lg:col-span-5 bg-white rounded-2xl shadow-lg border-2 border-sky-500/30 overflow-hidden" id="mt-workbench-card">
+          <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-4 flex items-start justify-between gap-2">
+            <div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30" id="mt-wb-category">PAY &amp; CAREER</span>
+              <h3 class="text-base font-extrabold mt-1" id="mt-wb-title">Select a Micro-Tool</h3>
+              <p class="text-xs text-slate-300 mt-0.5" id="mt-wb-subtitle">Adjust parameters below for instant 7th &amp; 8th CPC results</p>
+            </div>
+            <button type="button" id="btn-mt-copy-result" class="android-ripple px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-semibold text-white shrink-0">
+              📋 Copy
+            </button>
+          </div>
+
+          <div class="p-4 space-y-4">
+            <!-- Dynamic Inputs Container -->
+            <div id="mt-wb-inputs" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+
+            <!-- Dynamic Result Hero Box -->
+            <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase text-emerald-900">
+                <span id="mt-wb-primary-label">Calculated Output</span>
+                <span id="mt-wb-basis-pill" class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px]">8th CPC Basis</span>
+              </div>
+              <div class="text-2xl font-extrabold text-emerald-800 tracking-tight" id="mt-wb-primary-val">₹0</div>
+              <div class="text-xs text-slate-600" id="mt-wb-secondary-val"></div>
+            </div>
+
+            <!-- Dynamic Breakdown Rows -->
+            <div class="border border-slate-200 rounded-xl overflow-hidden">
+              <table class="w-full text-xs border-collapse">
+                <tbody id="mt-wb-table-body" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
+
+            <!-- Official Rule / DoPT Reference Footnote -->
+            <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200 text-[11px] text-slate-700 leading-relaxed" id="mt-wb-rule-note"></div>
+
+            <!-- Toggle Directory Button when in Single-Tool Focus Mode -->
+            <div id="mt-focus-footer" class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <button type="button" id="btn-mt-toggle-directory" class="android-ripple px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm">
+                🧰 <span data-i18n="btn_browse_all_tools">Browse All 94+ Calculators Directory</span>
+              </button>
+              <button type="button" id="btn-mt-back-salary" class="android-ripple px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold">
+                ← <span data-i18n="btn_back_home">8th CPC Salary Calculator</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory Grid (7 cols) -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[760px] overflow-y-auto custom-scrollbar pr-1" id="mt-cards-grid">
+          <!-- Populated dynamically by MicroToolsEngine -->
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,145 @@
+    <!-- ==========================================
+         TAB 6: 8TH CPC STATUS, GUIDES & ANDROID APK
+         ========================================== -->
+    <section id="tab-guides" class="tab-panel space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 8th Pay Commission Timeline & Key Facts -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-4">
+          <h1 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span>🏛️</span> <span data-i18n="info_8th_title">8th Pay Commission Official Status &amp; Timeline</span>
+          </h1>
+          <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">1. Constitution &amp; Chairperson:</strong>
+              <span>Announced on 16 January 2025; Terms of Reference notified in November 2025 under Chairperson <strong>Justice Ranjana Prakash Desai</strong>.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">2. Effective Date &amp; Arrears:</strong>
+              <span>Expected effective date is <strong>1 January 2026</strong> (10 years after 7th CPC). Any implementation delay in 2027 accrues full arrears from Jan 1, 2026.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">3. Expected Fitment Factor (1.92× Consensus):</strong>
+              <span>With DA reaching 60% in Jan 2026, merging DA into Basic Pay (1.60×) plus a 20% real pay hike yields the consensus <strong>1.92× fitment factor</strong> (Minimum Basic Pay ₹18,000 → ₹34,560).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Android App & Offline Mode Features -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-4">
+          <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span>🤖</span> <span data-i18n="apk_guide_title">Android App Features &amp; Offline Usage</span>
+          </h2>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700 list-disc pl-5">
+            <li><strong>Trilingual UI (English, हिंदी, বাংলা):</strong> Instant one-tap switching across all calculators, tables, and salary slips.</li>
+            <li><strong>100% Offline Pay Matrix Engine:</strong> All 19 Pay Levels (Level 1 to 18 including 13A) and 40 stages are embedded locally—zero internet needed.</li>
+            <li><strong>Android Studio Kotlin Project Included:</strong> Comes with native Kotlin <code>PayCalculatorEngine.kt</code>, JUnit test suite, trilingual Android <code>strings.xml</code> resources, and offline WebView bridge.</li>
+            <li><strong>Add to Home Screen / Install PWA:</strong> In Chrome on Android, tap <strong>⋮ Menu → Add to Home screen / Install app</strong> for an instant fullscreen native experience.</li>
+          </ul>
+          <div class="pt-2 flex flex-wrap gap-2">
+            <button type="button" id="btn-run-self-test" class="android-ripple px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-sm">
+              ✅ Run Built-in 12-Point Automated Verification Test
+            </button>
+          </div>
+          <div id="self-test-output" class="hidden p-3 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs space-y-1 max-h-48 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <!-- ALL 20 STATES SALARY & DA COMPARISON TABLE (Synced to Mega-Menu "States ▾") -->
+      <div id="sec-all-states-comparison" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+          <div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 uppercase">All 20 States + Central Govt</span>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mt-1">State Government Salary, DA &amp; Pay Commission Comparison (2026)</h3>
+            <p class="text-xs text-slate-500">Compare your selected Pay Level &amp; Basic Pay across all 20 Indian States vs Central 7th &amp; 8th CPC.</p>
+          </div>
+          <select id="sel-state-highlight" aria-label="Highlight State" class="rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-900">
+            <option value="ALL">Show All 20 States</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Assam">Assam</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+          </select>
+        </div>
+        <div class="overflow-x-auto max-h-96 custom-scrollbar border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-slate-900 text-white sticky top-0">
+              <tr>
+                <th class="p-2.5">State / Govt</th>
+                <th class="p-2.5">Pay Commission</th>
+                <th class="p-2.5 text-right">Active DA %</th>
+                <th class="p-2.5 text-right">Max HRA %</th>
+                <th class="p-2.5 text-right">Comparable Gross/mo</th>
+                <th class="p-2.5 text-right text-emerald-300">vs Central 8th CPC</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-all-20-states" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEWS ADDA (ENGLISH & HINDI), CAPF/RAILWAY HANDBOOK, ARTICLES & GLOSSARY -->
+      <div id="sec-news-learn-hub" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- News Adda (English & हिंदी) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <span>📰</span> <span id="news-box-heading">Government Employee News Adda (8th CPC &amp; DA Updates)</span>
+            </h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Oct 2026 Live</span>
+          </div>
+          <div class="space-y-2.5 text-xs text-slate-700" id="news-adda-list">
+            <div class="p-3 rounded-xl bg-sky-50/80 border border-sky-200">
+              <div class="font-bold text-slate-900" id="news-item-1-title">1. 8th Pay Commission Fitment Factor &amp; ToR Update (Oct 2026)</div>
+              <p class="mt-0.5 text-slate-600" id="news-item-1-body">With AICPI-IW pushing Dearness Allowance to 60% from Jan 2026, staff federations (NC-JCM) have submitted memoranda proposing a 1.92× to 2.57× fitment factor effective 01.01.2026, raising minimum Basic Pay from ₹18,000 to ₹34,560.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900" id="news-item-2-title">2. Unified Pension Scheme (UPS) vs NPS Choice Window</div>
+              <p class="mt-0.5 text-slate-600" id="news-item-2-body">Central Government employees with 25+ years qualifying service are guaranteed 50% of 12-month average Basic Pay as assured pension plus Dearness Relief (DR) and a lump-sum payout (1/10th per 6 months).</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900" id="news-item-3-title">3. New Income Tax Act Forms (Effective FY 2026-27)</div>
+              <p class="mt-0.5 text-slate-600" id="news-item-3-body">Zero tax up to ₹12,00,000 taxable income (₹12.75 Lakh gross for salaried with ₹75,000 Standard Deduction). Old Form 16 is now Form 130; Form 12BB is Form 124; Form 26AS is Form 168.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAPF Handbook, Railway Hub & CPC Glossary -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <span>📚</span> <span id="learn-box-title">CAPF Handbook, Railway Hub &amp; CPC Glossary</span>
+            </h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Reference Guide</span>
+          </div>
+          <div class="space-y-2.5 text-xs text-slate-700" id="learn-box-content">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">🎖️ CAPF / Paramilitary (BSF, CRPF, CISF, ITBP, SSB, Assam Rifles):</strong>
+              <span>Constable (GD) starts at Level 3 (₹21,700), Head Constable at Level 4 (₹25,500), SI (GD) at Level 6 (₹35,400), and Assistant Commandant (UPSC CAPF) at Level 10 (₹56,100) + Risk &amp; Hardship Allowance (₹6,000–₹25,000/mo), Ration Money Allowance (₹3,965/mo), and Dress Allowance.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">🚆 Indian Railways Salary &amp; Allowances Hub:</strong>
+              <span>Track Maintainer (Group D) starts at Level 1 (₹18,000 + ₹2,700 Risk Allow.), Assistant Loco Pilot (ALP) at Level 2 (₹19,900 + 30% Pay Element Running Allowance), Station Master / JE at Level 6 (₹35,400), plus 78-Day Productivity Linked Bonus (PLB ₹17,951) and Night Duty Allowance.</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-900 block">📖 Key CPC Glossary (Fitment, DNI, MACP, NPA, CTG):</strong>
+              <span><strong>Fitment Factor:</strong> Multiplier applied to 7th CPC Basic Pay to arrive at 8th CPC Basic Pay. <strong>DNI:</strong> Date of Next Increment (1st Jan or 1st Jul). <strong>MACP:</strong> Assured financial upgradation at 10, 20 &amp; 30 years of service. <strong>CTG:</strong> Composite Transfer Grant (80% of Basic Pay).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

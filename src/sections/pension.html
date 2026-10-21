@@ -1,0 +1,105 @@
+    <!-- ==========================================
+         TAB 4: PENSION, UPS vs NPS vs OPS & GRATUITY
+         ========================================== -->
+    <section id="tab-pension" class="tab-panel space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-5">
+        <div class="border-b border-slate-100 pb-3">
+          <h1 class="text-base sm:text-lg font-bold text-slate-900" data-i18n="pen_title">UPS vs NPS vs OPS Retirement, Gratuity &amp; Leave Encashment Suite</h1>
+          <p class="text-xs text-slate-500" data-i18n="pen_sub">Compare Unified Pension Scheme (50% assured pension), NPS market corpus, Gratuity (₹25L limit) &amp; 300-day EL Encashment</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <div>
+            <label for="inp-service-years" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_service_yrs">Qualifying Service (Years)</label>
+            <input type="number" id="inp-service-years" value="28" min="1" max="40" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-semibold" />
+          </div>
+          <div>
+            <label for="inp-retire-age" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_retire_age">Retirement Age (Years)</label>
+            <select id="inp-retire-age" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-semibold">
+              <option value="60" selected>60 Years (Standard CG)</option>
+              <option value="62">62 Years (Doctors / Faculty)</option>
+              <option value="65">65 Years (Central Univ / Specialists)</option>
+              <option value="58">58 Years (State / VRS)</option>
+            </select>
+          </div>
+          <div>
+            <label for="inp-el-days" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_el_days">Earned Leave (EL) Balance (Max 300)</label>
+            <input type="number" id="inp-el-days" value="300" min="0" max="300" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-semibold" />
+          </div>
+          <div>
+            <label for="sel-pen-basis" class="block text-xs font-medium text-slate-700 mb-1" data-i18n="lbl_pen_basis">Calculate Retirement On</label>
+            <select id="sel-pen-basis" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-semibold">
+              <option value="8TH" selected>8th CPC Projected Basic Pay</option>
+              <option value="7TH">7th CPC Current Basic Pay</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3-Column Comparison: UPS vs NPS vs Gratuity/Commutation -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- UPS Card -->
+          <div class="rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/40 p-4 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase text-emerald-900">1. Unified Pension Scheme (UPS)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-600 text-white">Assured 50%</span>
+            </div>
+            <div class="text-2xl font-extrabold text-emerald-800" id="ups-monthly-pension">₹53,856/mo</div>
+            <p class="text-[11px] text-slate-600">+ Dearness Relief (DR) twice a year</p>
+            <div class="pt-2 border-t border-emerald-200 space-y-1 text-xs">
+              <div class="flex justify-between"><span>UPS Lump Sum (1/10th per 6m):</span><strong id="ups-lumpsum">₹6,03,187</strong></div>
+              <div class="flex justify-between"><span>Family Pension (60% of UPS):</span><strong id="ups-family-pen">₹32,314/mo</strong></div>
+              <div class="flex justify-between"><span>Minimum Guaranteed:</span><strong>₹10,000/mo</strong></div>
+            </div>
+          </div>
+
+          <!-- NPS Card -->
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase text-blue-900">2. National Pension System (NPS)</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">10% + 14% Govt</span>
+            </div>
+            <div class="text-2xl font-extrabold text-blue-900" id="nps-monthly-pension">₹46,420/mo</div>
+            <p class="text-[11px] text-slate-600">Est. @ 6.5% annuity on 40% corpus (9.5% CAGR)</p>
+            <div class="pt-2 border-t border-slate-200 space-y-1 text-xs">
+              <div class="flex justify-between"><span>Projected Total Corpus:</span><strong id="nps-total-corpus">₹2.14 Cr</strong></div>
+              <div class="flex justify-between"><span>60% Tax-Free Lump Sum:</span><strong id="nps-lumpsum">₹1.28 Cr</strong></div>
+              <div class="flex justify-between"><span>40% Annuity Invested:</span><strong id="nps-annuity-amt">₹85.7 L</strong></div>
+            </div>
+          </div>
+
+          <!-- Gratuity, EL Encashment & OPS Commutation -->
+          <div class="rounded-2xl border border-slate-200 bg-amber-50/40 p-4 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase text-amber-900">3. Gratuity, EL &amp; Commutation</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200 text-amber-900">Tax-Free Benefits</span>
+            </div>
+            <div class="text-2xl font-extrabold text-amber-900" id="retire-total-benefits">₹35,77,120</div>
+            <p class="text-[11px] text-slate-600">Gratuity + 300-Day EL Encashment Total</p>
+            <div class="pt-2 border-t border-amber-200 space-y-1 text-xs">
+              <div class="flex justify-between"><span>DCRG Gratuity (Cap ₹25L):</span><strong id="gratuity-amt">₹25,00,000</strong></div>
+              <div class="flex justify-between"><span>EL Encashment (Up to 300d):</span><strong id="el-encash-amt">₹10,77,120</strong></div>
+              <div class="flex justify-between"><span>OPS 40% Commutation Value:</span><strong id="ops-commute-amt">₹21,18,016</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MACP / Promotion Pay Fixation Calculator (FR 22) -->
+        <div class="pt-4 border-t border-slate-200">
+          <h3 class="text-sm font-bold text-slate-900 mb-2" data-i18n="macp_title">MACP / Promotion Pay Fixation Calculator (FR 22(I)(a)(1))</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs">
+            <div>
+              <span class="text-slate-500 block">Current Level &amp; Basic Pay:</span>
+              <strong class="text-sm text-slate-900" id="macp-cur-pay">Level 10 · ₹56,100</strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Step 1: Add 1 Increment (3%) in Current Level:</span>
+              <strong class="text-sm text-blue-700" id="macp-inc-pay">₹57,800</strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Step 2: Placed in Next Level (Promoted Basic):</span>
+              <strong class="text-sm text-emerald-700" id="macp-next-pay">Level 11 · ₹67,700 (8th CPC: ₹1,29,984)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
