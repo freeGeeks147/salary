@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>CTC to In-Hand Salary Calculator – Private vs Govt Job</title>
+  <meta name="description" content="Convert a private sector CTC into monthly in-hand salary and compare it with a central government job&#x27;s take-home pay, allowances and benefits." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/" />
+  <link rel="alternate" hreflang="en" href="https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/" />
+  <link rel="alternate" hreflang="hi" href="https://govtsalarycalc.com/hi/tools/ctc-to-in-hand-salary-calculator/" />
+  <link rel="alternate" hreflang="x-default" href="https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GovtSalaryCalc" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:title" content="CTC to In-Hand Salary Calculator – Private vs Govt Job" />
+  <meta property="og:description" content="Convert a private sector CTC into monthly in-hand salary and compare it with a central government job&#x27;s take-home pay, allowances and benefits." />
+  <meta property="og:url" content="https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/" />
+  <meta property="og:image" content="https://govtsalarycalc.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CTC to In-Hand Salary Calculator – Private vs Govt Job" />
+  <meta name="twitter:description" content="Convert a private sector CTC into monthly in-hand salary and compare it with a central government job&#x27;s take-home pay, allowances and benefits." />
+  <meta name="twitter:image" content="https://govtsalarycalc.com/assets/og-image.jpg" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <script>window.GSC_TOOL_SLUGS = {"ta_calculator_guide": "transport-allowance-calculator", "city_class_guide": "hra-city-classification-x-y-z", "leave_rules_guide": "leave-encashment-calculator", "da_calculator_tool": "dearness-allowance-calculator", "hra_calculator_tool": "hra-calculator", "capf_handbook_suite": "capf-salary-calculator", "railway_hub_suite": "railway-salary-calculator", "first_pay": "first-salary-calculator", "pay_fixation_fr22": "promotion-pay-fixation-calculator", "pay_protection": "pay-protection-calculator", "deputation_allowance": "deputation-allowance-calculator", "increment_hike": "annual-increment-calculator", "subsistence_allowance": "subsistence-allowance-calculator", "ctc_to_inhand": "ctc-to-in-hand-salary-calculator", "salary_exp_cert": "salary-certificate-format", "tour_tada_ctg": "ta-da-on-tour-transfer-calculator", "posting_allowances": "special-duty-allowance-calculator", "ltc_calculator": "ltc-calculator", "cea_hostel": "children-education-allowance-calculator", "govt_quarters": "govt-quarters-vs-hra-calculator", "rent_receipt_gen": "rent-receipt-generator", "cghs_ward_card": "cghs-contribution-ward-entitlement", "cgegis_insurance": "cgegis-calculator", "gpf_calculator": "gpf-calculator", "vpf_epf_calculator": "epf-vpf-calculator", "commuted_pension": "commutation-of-pension-calculator", "family_pension_80plus": "family-pension-calculator", "death_benefits_nps_opt": "death-benefits-calculator", "disability_pension_eop": "disability-pension-calculator", "apy_eps95": "atal-pension-yojana-eps-95-calculator", "gulf_gratuity": "gulf-gratuity-calculator", "ccl_maternity_leave": "child-care-leave-maternity-leave-calculator", "retire_date_dlc": "retirement-date-calculator", "retirement_planning_gap": "retirement-planning-calculator", "form_10e_sec89": "form-10e-arrears-tax-relief-calculator", "hba_loan_calc": "house-building-advance-calculator", "post_office_savings": "post-office-savings-calculator", "sukanya_samriddhi": "sukanya-samriddhi-yojana-calculator", "nri_tax_forms": "nri-status-checker", "bank_iba_12bps": "bank-salary-calculator-12th-bipartite", "psu_cpse_3prc": "psu-salary-calculator-ida", "agniveer_defence": "agniveer-salary-calculator", "state_govt_compare": "state-government-salary-da-comparison", "faculty_doctor_npa": "professor-doctor-salary-npa-calculator", "age_ews_obc_checker": "age-relaxation-ews-obc-creamy-layer-checker", "conduct_rules_checker": "ccs-conduct-rules-checker"};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="../../assets/js/app.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/#app",
+      "name": "CTC to In-Hand Salary Converter",
+      "url": "https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/",
+      "description": "Convert a private sector CTC into monthly in-hand salary and compare it with a central government job's take-home pay, allowances and benefits.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "publisher": {
+        "@id": "https://govtsalarycalc.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://govtsalarycalc.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Government Employee Calculators",
+          "item": "https://govtsalarycalc.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CTC to In-Hand Salary Converter",
+          "item": "https://govtsalarycalc.com/tools/ctc-to-in-hand-salary-calculator/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="min-h-screen flex flex-col pb-20 md:pb-8" data-page-name="CTC to In-Hand Salary Converter" data-mt-tool="ctc_to_inhand">
+  
+  <header class="sticky top-0 z-40 bg-[#0f172a] text-white shadow-xl no-print border-b border-slate-800">
+    
+    <div class="hidden">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="status-bar-tag">🇮🇳 GovtSalaryCalc.com (Oct 2026 Edition)</span>
+      </div>
+      <div class="flex items-center gap-3 font-mono text-[11px]">
+        <span class="text-sky-300 font-semibold">1.92× Fitment</span>
+        <span>60% DA Active</span>
+        <span class="hidden sm:inline">FY 2026-27</span>
+        <span class="hidden md:inline text-emerald-300">Free · No sign-up</span>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2 relative" id="top-mega-navbar">
+      
+      <div class="flex items-center gap-2.5 shrink-0">
+        <button type="button" id="btn-brand-home" class="flex items-center gap-2.5 text-left group focus:outline-none">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md group-hover:scale-105 transition">
+            ₹
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <div id="app-title" class="text-sm sm:text-base font-extrabold tracking-tight text-white leading-none">CPC Calculator</div>
+              <span class="hidden xl:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-sky-500/20 text-sky-300 border border-sky-400/30">8th CPC</span>
+            </div>
+            <p id="app-subtitle" class="hidden sm:block text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">7TH &amp; 8TH PAY COMMISSION</p>
+          </div>
+        </button>
+      </div>
+
+      <div class="hidden xl:flex items-center gap-0.5 text-xs font-medium text-slate-200" id="desktop-dropdown-bar">
+        <button type="button" data-dd-trigger="dd-calculators" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_calculators">Calculators</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-paylevels" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_paylevels">Pay Levels</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-defence" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_defence">Defence</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-capf" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_capf">CAPF</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-railway" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_railway">Railway</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-guides" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_guides">Guides</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-states" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_states">States</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-learn" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_learn">Learn</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+        <button type="button" data-dd-trigger="dd-news" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
+          <span data-i18n="menu_news">News</span> <span class="text-[10px] text-slate-400">▾</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button type="button" id="btn-nav-whatsapp" title="Share on WhatsApp" aria-label="Share on WhatsApp" class="android-ripple hidden sm:flex w-8 h-8 rounded-full bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm">
+          💬
+        </button>
+
+        <div class="inline-flex rounded-xl bg-slate-800/90 p-0.5 border border-slate-700" role="group" aria-label="Language Selector">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition bg-emerald-500 text-white shadow-sm">
+            English
+          </button>
+          <button type="button" id="lang-hi" data-lang="hi" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
+            हिंदी
+          </button>
+          <button type="button" id="lang-bn" data-lang="bn" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
+            বাংলা
+          </button>
+        </div>
+
+        <button type="button" id="btn-cmd-search" aria-label="Search" class="android-ripple hidden sm:flex px-2.5 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-xs font-medium text-slate-300 border border-slate-700 flex items-center gap-2">
+          <span>🔍</span>
+          <span class="hidden sm:inline" data-i18n="menu_search">Search</span>
+          <kbd class="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-slate-900 text-slate-400 rounded border border-slate-700">⌘K</kbd>
+        </button>
+
+        <button type="button" id="btn-open-payslip" class="android-ripple hidden 2xl:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15">
+          <span>📄</span>
+          <span id="lbl-payslip-btn">Salary Slip</span>
+        </button>
+
+        <button type="button" id="btn-mobile-megamenu" aria-label="Menu" class="xl:hidden android-ripple px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-sky-300 border border-slate-700 flex items-center gap-1">
+          <span>☰</span> <span class="hidden sm:inline">Menu</span>
+        </button>
+      </div>
+
+      <div id="dd-calculators" class="dd-panel hidden absolute left-2 right-2 top-full mt-1 bg-[#131c31] border border-slate-700/90 rounded-2xl p-5 text-slate-200 z-50 mega-dropdown-panel max-h-[82vh] overflow-y-auto custom-scrollbar">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
+          
+          <div class="space-y-2">
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-sky-400 pb-1 border-b border-slate-700/80">PAY &amp; SALARY</div>
+            <a href="../../" data-nav-action="tab:tab-salary" class="mega-item-btn w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">CPC Calculator</div>
+              <div class="text-[11px] text-slate-400">7th &amp; 8th CPC in-hand pay</div>
+            </a>
+            <a href="../../8th-pay-commission/" data-nav-action="tab:tab-guides" class="mega-item-btn w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">8th Pay Commission</div>
+              <div class="text-[11px] text-slate-400">Status, fitment &amp; projected matrix</div>
+            </a>
+            <a href="../../pay-matrix/" data-nav-action="tab:tab-matrix" class="mega-item-btn w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Pay Matrix</div>
+              <div class="text-[11px] text-slate-400">All 18 pay levels (L1–L18)</div>
+            </a>
+            <button type="button" data-nav-action="focus:rng-fitment" class="mega-item-btn w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Fitment Factor</div>
+              <div class="text-[11px] text-slate-400">1.92× slider &amp; CPC history</div>
+            </button>
+            <button type="button" data-nav-action="modal:payslip" class="mega-item-btn w-full text-left p-2 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Salary Slip</div>
+              <div class="text-[11px] text-slate-400">Government format PDF/Print</div>
+            </button>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-sky-400 pb-1 border-b border-slate-700/80">ALLOWANCES</div>
+            <a href="../../tools/dearness-allowance-calculator/" data-nav-action="mt:da_calculator_tool" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">DA Calculator</div>
+              <div class="text-[11px] text-slate-400">Current 60% rate &amp; merger</div>
+            </a>
+            <button type="button" data-nav-action="scroll:inp-da-diff" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">DA Arrears</div>
+              <div class="text-[11px] text-slate-400">Pay revision 3-month arrears</div>
+            </button>
+            <button type="button" data-nav-action="scroll:sel-bonus-days" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Bonus Calculator</div>
+              <div class="text-[11px] text-slate-400">Diwali bonus · PLB (30/78 days)</div>
+            </button>
+            <a href="../../arrears-allowances/" data-nav-action="tab:tab-arrears" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">8th CPC Arrears</div>
+              <div class="text-[11px] text-slate-400">From Jan 2026 month-by-month</div>
+            </a>
+            <a href="../../tools/hra-calculator/" data-nav-action="mt:hra_calculator_tool" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">HRA Calculator</div>
+              <div class="text-[11px] text-slate-400">X / Y / Z city rates (30/20/10%)</div>
+            </a>
+            <button type="button" data-nav-action="scroll:inp-rent-paid" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">HRA Tax Exemption</div>
+              <div class="text-[11px] text-slate-400">Section 10(13A) tax-free HRA</div>
+            </button>
+            <a href="../../tools/transport-allowance-calculator/" data-nav-action="mt:ta_calculator_guide" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Transport (TA)</div>
+              <div class="text-[11px] text-slate-400">₹1,350 to ₹15,750 + DA on TA</div>
+            </a>
+            <a href="../../tools/ta-da-on-tour-transfer-calculator/" data-nav-action="mt:tour_tada_ctg" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">TA/DA on Tour &amp; Transfer</div>
+              <div class="text-[11px] text-slate-400">Tour DA · hotel · 80% CTG</div>
+            </a>
+            <a href="../../tools/special-duty-allowance-calculator/" data-nav-action="mt:posting_allowances" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Posting Allowances</div>
+              <div class="text-[11px] text-slate-400">NE · Ladakh · islands</div>
+            </a>
+            <button type="button" data-nav-action="scroll:inp-nda-hours" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Night Duty Allowance</div>
+              <div class="text-[11px] text-slate-400">NDA · ₹43,600 ceiling</div>
+            </button>
+          </div>
+
+          <div class="space-y-1">
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-sky-400 pb-1 border-b border-slate-700/80">PENSION &amp; RETIREMENT</div>
+            <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">NPS Calculator</div>
+              <div class="text-[11px] text-slate-400">Corpus &amp; 40% annuity</div>
+            </a>
+            <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">UPS Pension</div>
+              <div class="text-[11px] text-slate-400">Assured 50% pension + lump sum</div>
+            </a>
+            <a href="../../tools/gpf-calculator/" data-nav-action="mt:gpf_calculator" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">GPF Calculator</div>
+              <div class="text-[11px] text-slate-400">7.1% interest, advance, withdrawal</div>
+            </a>
+            <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Gratuity</div>
+              <div class="text-[11px] text-slate-400">Govt (₹25L cap) + private</div>
+            </a>
+            <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Pension Calculator</div>
+              <div class="text-[11px] text-slate-400">OPS pension + gratuity</div>
+            </a>
+            <a href="../../tools/commutation-of-pension-calculator/" data-nav-action="mt:commuted_pension" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Commuted Pension</div>
+              <div class="text-[11px] text-slate-400">Up to 40% lump sum &amp; restoration</div>
+            </a>
+            <a href="../../tools/family-pension-calculator/" data-nav-action="mt:family_pension_80plus" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Family Pension</div>
+              <div class="text-[11px] text-slate-400">50% &amp; 30% rates + 80+ quantum</div>
+            </a>
+            <a href="../../tools/death-benefits-calculator/" data-nav-action="mt:death_benefits_nps_opt" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Death Benefits</div>
+              <div class="text-[11px] text-slate-400">What the family gets</div>
+            </a>
+            <div class="grid grid-cols-2 gap-1 pt-1">
+              <a href="../../tools/disability-pension-calculator/" data-nav-action="mt:disability_pension_eop" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Disability Pension</a>
+              <a href="../../tools/death-benefits-calculator/" data-nav-action="mt:death_benefits_nps_opt" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">NPS Family Pension</a>
+              <a href="../../tools/retirement-date-calculator/" data-nav-action="mt:retire_date_dlc" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Retirement Date</a>
+              <a href="../../tools/retirement-planning-calculator/" data-nav-action="mt:retirement_planning_gap" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Retirement Planning</a>
+              <a href="../../tools/post-office-savings-calculator/" data-nav-action="mt:post_office_savings" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Post Office Savings</a>
+              <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">EL Encashment</a>
+              <a href="../../tools/child-care-leave-maternity-leave-calculator/" data-nav-action="mt:ccl_maternity_leave" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">CCL Calculator</a>
+              <a href="../../tools/ltc-calculator/" data-nav-action="mt:ltc_calculator" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">LTC Calculator</a>
+              <a href="../../tools/children-education-allowance-calculator/" data-nav-action="mt:cea_hostel" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">CEA + Hostel</a>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-sky-400 pb-1 border-b border-slate-700/80">CAREER &amp; SPECIALIZED</div>
+            <a href="../../tools/first-salary-calculator/" data-nav-action="mt:first_pay" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">First Pay</div>
+              <div class="text-[11px] text-slate-400">New joiners (SSC/UPSC)</div>
+            </a>
+            <a href="../../tools/promotion-pay-fixation-calculator/" data-nav-action="mt:pay_fixation_fr22" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">MACP Calculator</div>
+              <div class="text-[11px] text-slate-400">10/20/30 yr pay fixation</div>
+            </a>
+            <a href="../../tools/promotion-pay-fixation-calculator/" data-nav-action="mt:pay_fixation_fr22" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Pay Fixation</div>
+              <div class="text-[11px] text-slate-400">Promotion · FR 22 option</div>
+            </a>
+            <a href="../../tools/pay-protection-calculator/" data-nav-action="mt:pay_protection" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Pay Protection</div>
+              <div class="text-[11px] text-slate-400">New post by direct recruitment</div>
+            </a>
+            <a href="../../tools/deputation-allowance-calculator/" data-nav-action="mt:deputation_allowance" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Deputation Allowance</div>
+              <div class="text-[11px] text-slate-400">Option A or B on deputation</div>
+            </a>
+            <a href="../../tools/annual-increment-calculator/" data-nav-action="mt:increment_hike" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Increment</div>
+              <div class="text-[11px] text-slate-400">Next 3% increment · chart</div>
+            </a>
+            <a href="../../tools/house-building-advance-calculator/" data-nav-action="mt:hba_loan_calc" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">HBA Calculator</div>
+              <div class="text-[11px] text-slate-400">House loan @ 7.10% SI (2026-27)</div>
+            </a>
+            <a href="../../income-tax/" data-nav-action="tab:tab-tax" class="mega-item-btn w-full text-left p-1.5 rounded-xl hover:bg-slate-800/80 transition block">
+              <div class="font-bold text-white">Income Tax</div>
+              <div class="text-[11px] text-slate-400">FY 2026-27 New vs Old</div>
+            </a>
+            <div class="grid grid-cols-2 gap-1 pt-1">
+              <a href="../../tools/form-10e-arrears-tax-relief-calculator/" data-nav-action="mt:form_10e_sec89" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Form 10E (Arrears)</a>
+              <a href="../../tools/ctc-to-in-hand-salary-calculator/" data-nav-action="mt:ctc_to_inhand" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">CTC Calculator</a>
+              <a href="../../tools/professor-doctor-salary-npa-calculator/" data-nav-action="mt:faculty_doctor_npa" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Faculty Salary</a>
+              <a href="../../tools/professor-doctor-salary-npa-calculator/" data-nav-action="mt:faculty_doctor_npa" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Doctor Salary (NPA)</a>
+              <a href="../../tools/age-relaxation-ews-obc-creamy-layer-checker/" data-nav-action="mt:age_ews_obc_checker" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Age Relaxation</a>
+              <a href="../../tools/age-relaxation-ews-obc-creamy-layer-checker/" data-nav-action="mt:age_ews_obc_checker" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">EWS Eligibility</a>
+              <a href="../../tools/age-relaxation-ews-obc-creamy-layer-checker/" data-nav-action="mt:age_ews_obc_checker" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">OBC Creamy Layer</a>
+              <a href="../../tools/bank-salary-calculator-12th-bipartite/" data-nav-action="mt:bank_iba_12bps" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Bank (IBA) Salary</a>
+              <a href="../../tools/psu-salary-calculator-ida/" data-nav-action="mt:psu_cpse_3prc" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">PSU (CPSE) Salary</a>
+              <a href="../../tools/agniveer-salary-calculator/" data-nav-action="mt:agniveer_defence" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">Defence Pay</a>
+              <button type="button" data-nav-action="preset:capf_gd" class="mega-item-btn text-left p-1 rounded hover:bg-slate-800/80 font-semibold text-slate-200">CAPF (Paramilitary)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="dd-paylevels" class="dd-panel hidden absolute left-48 top-full mt-1 w-64 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">PAY LEVELS</div>
+        <button type="button" data-nav-action="level:1" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 1 — MTS (₹18,000)</button>
+        <button type="button" data-nav-action="level:6" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 6 — JE / Sub-Inspector</button>
+        <button type="button" data-nav-action="level:7" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 7 — ASO / Inspector</button>
+        <button type="button" data-nav-action="level:8" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 8 — Section Officer</button>
+        <button type="button" data-nav-action="level:10" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 10 — JTS / Asst Director</button>
+        <button type="button" data-nav-action="level:11" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 11 — Under Secretary</button>
+        <button type="button" data-nav-action="level:12" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 12 — Deputy Secretary</button>
+        <button type="button" data-nav-action="level:13" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Level 13 — Director</button>
+        <div class="pt-1 border-t border-slate-700/80">
+          <a href="../../pay-matrix/" data-nav-action="tab:tab-matrix" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-bold text-sky-400">View All Levels →</a>
+        </div>
+      </div>
+
+      <div id="dd-defence" class="dd-panel hidden absolute left-64 top-full mt-1 w-60 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">DEFENCE</div>
+        <a href="../../pay-matrix/" data-nav-action="tab:tab-matrix" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Defence Pay Matrix</a>
+        <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Defence Pension (OROP / UPS)</a>
+        <button type="button" data-nav-action="rank:sepoy" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Sepoy Salary (Level 3 + MSP)</button>
+        <button type="button" data-nav-action="rank:havildar" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Havildar Salary (Level 4 + MSP)</button>
+        <button type="button" data-nav-action="rank:captain" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Captain Salary (Level 10B + MSP)</button>
+        <button type="button" data-nav-action="rank:major" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Major Salary (Level 11 + MSP)</button>
+        <button type="button" data-nav-action="rank:colonel" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Colonel Salary (Level 13 + MSP)</button>
+      </div>
+
+      <div id="dd-capf" class="dd-panel hidden absolute left-80 top-full mt-1 w-64 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">CAPF / PARAMILITARY</div>
+        <a href="../../tools/capf-salary-calculator/" data-nav-action="mt:capf_handbook_suite" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">CAPF Handbook (BSF/CRPF/CISF)</a>
+        <button type="button" data-nav-action="preset:capf_gd" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Salary Calculator</button>
+        <a href="../../pension/" data-nav-action="tab:tab-pension" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Pension (NPS/OPS/UPS)</a>
+        <a href="../../pay-matrix/" data-nav-action="tab:tab-matrix" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Pay Matrix &amp; Ranks</a>
+        <a href="../../tools/special-duty-allowance-calculator/" data-nav-action="mt:posting_allowances" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Allowances &amp; Facilities</a>
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 pt-2 pb-1 border-t border-slate-700/80">GUIDES</div>
+        <a href="../../tools/capf-salary-calculator/" data-nav-action="mt:capf_handbook_suite" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Joining CAPF (SSC/UPSC)</a>
+        <a href="../../tools/capf-salary-calculator/" data-nav-action="mt:capf_handbook_suite" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Ranks &amp; Promotions</a>
+        <a href="../../tools/ta-da-on-tour-transfer-calculator/" data-nav-action="mt:tour_tada_ctg" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Postings &amp; Transfers</a>
+        <a href="../../tools/child-care-leave-maternity-leave-calculator/" data-nav-action="mt:ccl_maternity_leave" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Service Rules &amp; Leave</a>
+        <a href="../../tools/death-benefits-calculator/" data-nav-action="mt:death_benefits_nps_opt" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Welfare &amp; Martyr Benefits</a>
+      </div>
+
+      <div id="dd-railway" class="dd-panel hidden absolute left-96 top-full mt-1 w-60 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">RAILWAY SALARY</div>
+        <a href="../../tools/railway-salary-calculator/" data-nav-action="mt:railway_hub_suite" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Railway Hub (All Zones)</a>
+        <button type="button" data-nav-action="preset:rly_alp" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Loco Pilot (ALP / Mail Driver)</button>
+        <button type="button" data-nav-action="preset:rly_je" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Station Master (Level 6)</button>
+        <button type="button" data-nav-action="preset:rly_je" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Group C (JE/SSE)</button>
+        <button type="button" data-nav-action="rank:rly_trackman" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Group D (Trackman)</button>
+        <button type="button" data-nav-action="rank:rly_tte" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">TTE (Travelling Ticket Examiner)</button>
+        <button type="button" data-nav-action="rank:rly_clerk" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Clerk (Jr. &amp; Sr. Clerk)</button>
+      </div>
+
+      <div id="dd-guides" class="dd-panel hidden absolute right-64 top-full mt-1 w-64 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">REFERENCE GUIDES</div>
+        <a href="../../tools/transport-allowance-calculator/" data-nav-action="mt:ta_calculator_guide" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Transport Allowance</a>
+        <a href="../../tools/ltc-calculator/" data-nav-action="mt:ltc_calculator" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">LTC Guide (Block 2026–29)</a>
+        <a href="../../tools/cghs-contribution-ward-entitlement/" data-nav-action="mt:cghs_ward_card" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">CGHS Rates &amp; Card</a>
+        <a href="../../tools/hra-city-classification-x-y-z/" data-nav-action="mt:city_class_guide" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">City Classification (X / Y / Z)</a>
+        <a href="../../tools/leave-encashment-calculator/" data-nav-action="mt:leave_rules_guide" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Leave Rules (EL, HPL, CCL)</a>
+        <a href="../../tools/ccs-conduct-rules-checker/" data-nav-action="mt:conduct_rules_checker" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Conduct Rules Checker</a>
+        <a href="../../tools/govt-quarters-vs-hra-calculator/" data-nav-action="mt:govt_quarters" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Government Quarters</a>
+        <a href="../../tools/child-care-leave-maternity-leave-calculator/" data-nav-action="mt:ccl_maternity_leave" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Maternity &amp; Paternity Leave</a>
+        <a href="../../tools/subsistence-allowance-calculator/" data-nav-action="mt:subsistence_allowance" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-medium">Subsistence Allowance</a>
+      </div>
+
+      <div id="dd-states" class="dd-panel hidden absolute right-44 top-full mt-1 w-64 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel max-h-[75vh] overflow-y-auto custom-scrollbar space-y-0.5">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">STATE GOVERNMENT SALARY</div>
+        <button type="button" data-nav-action="state:ALL" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-bold text-white">Compare All States</button>
+        <button type="button" data-nav-action="state:Rajasthan" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Rajasthan</button>
+        <button type="button" data-nav-action="state:West Bengal" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">West Bengal</button>
+        <button type="button" data-nav-action="state:Karnataka" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Karnataka</button>
+        <button type="button" data-nav-action="state:Uttar Pradesh" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Uttar Pradesh</button>
+        <button type="button" data-nav-action="state:Gujarat" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Gujarat</button>
+        <button type="button" data-nav-action="state:Maharashtra" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Maharashtra</button>
+        <button type="button" data-nav-action="state:Tamil Nadu" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Tamil Nadu</button>
+        <button type="button" data-nav-action="state:Bihar" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Bihar</button>
+        <button type="button" data-nav-action="state:Madhya Pradesh" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Madhya Pradesh</button>
+        <button type="button" data-nav-action="state:Kerala" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Kerala</button>
+        <button type="button" data-nav-action="state:Punjab" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Punjab</button>
+        <button type="button" data-nav-action="state:Andhra Pradesh" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Andhra Pradesh</button>
+        <button type="button" data-nav-action="state:Telangana" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Telangana</button>
+        <button type="button" data-nav-action="state:Haryana" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Haryana</button>
+        <button type="button" data-nav-action="state:Odisha" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Odisha</button>
+        <button type="button" data-nav-action="state:Jharkhand" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Jharkhand</button>
+        <button type="button" data-nav-action="state:Assam" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Assam</button>
+        <button type="button" data-nav-action="state:Chhattisgarh" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Chhattisgarh</button>
+        <button type="button" data-nav-action="state:Uttarakhand" class="mega-item-btn w-full text-left px-2.5 py-1 rounded-lg hover:bg-slate-800">Uttarakhand</button>
+        <div class="pt-1 border-t border-slate-700/80">
+          <a href="../../" data-nav-action="tab:tab-salary" class="mega-item-btn w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 font-bold text-sky-400">Central Govt →</a>
+        </div>
+      </div>
+
+      <div id="dd-learn" class="dd-panel hidden absolute right-28 top-full mt-1 w-56 bg-[#131c31] border border-slate-700/90 rounded-2xl p-2.5 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <button type="button" data-nav-action="scroll:app-footer" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-semibold text-sky-300">📌 Official Footer Notes (1–8)</button>
+        <button type="button" data-nav-action="guide:articles" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">Articles &amp; Deep Dives</button>
+        <button type="button" data-nav-action="guide:glossary" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">Glossary (CPC Terms)</button>
+        <button type="button" data-nav-action="guide:about" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">About &amp; Methodology</button>
+        <button type="button" data-nav-action="guide:contact" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">Contact &amp; Feedback</button>
+      </div>
+
+      <div id="dd-news" class="dd-panel hidden absolute right-12 top-full mt-1 w-56 bg-[#131c31] border border-slate-700/90 rounded-2xl p-3 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-400 px-2.5 py-1">GOVT EMPLOYEE NEWS</div>
+        <button type="button" id="btn-dd-news-1" data-nav-action="guide:news_en" class="mega-item-btn w-full text-left px-2.5 py-2 rounded-lg hover:bg-slate-800 font-medium"><span data-i18n="dd_news_item1">News Adda (Latest Updates)</span></button><button type="button" class="hidden">News Adda (English)</button>
+        <button type="button" id="btn-dd-news-2" data-nav-action="guide:articles" class="mega-item-btn w-full text-left px-2.5 py-2 rounded-lg hover:bg-slate-800 font-medium"><span data-i18n="dd_news_item2">8th CPC &amp; DA Notifications</span></button><button type="button" class="hidden">न्यूज़ अड्डा (हिंदी)</button>
+      </div>
+    </div>
+
+    <nav id="secondary-mode-nav" class="hidden max-w-7xl mx-auto px-2 sm:px-6 overflow-x-auto custom-scrollbar border-t border-slate-800/80 bg-slate-950/60">
+      <div class="flex items-center gap-1 py-1.5 min-w-max">
+        <a href="../../" data-tab="tab-salary" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 bg-white text-slate-900 shadow-sm">
+          <span>🧮</span> <span data-i18n="nav_salary">7th &amp; 8th CPC Salary</span>
+        </a>
+        <a href="../../pay-matrix/" data-tab="tab-matrix" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
+          <span>📊</span> <span data-i18n="nav_matrix">Pay Matrix (L1–18)</span>
+        </a>
+        <a href="../../arrears-allowances/" data-tab="tab-arrears" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
+          <span>⏳</span> <span data-i18n="nav_arrears">Arrears &amp; Allowances</span>
+        </a>
+        <a href="../../pension/" data-tab="tab-pension" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
+          <span>🏛️</span> <span data-i18n="nav_pension">UPS / NPS / Gratuity</span>
+        </a>
+        <a href="../../income-tax/" data-tab="tab-tax" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
+          <span>🧾</span> <span data-i18n="nav_tax">Tax &amp; Post Presets</span>
+        </a>
+        <a href="../../tools/" data-tab="tab-microtools" id="nav-btn-microtools" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-emerald-300 bg-emerald-500/15 border border-emerald-400/30 hover:bg-white/10">
+          <span>🧰</span> <span data-i18n="nav_microtools">All 46 Calculators</span>
+        </a>
+        <a href="../../8th-pay-commission/" data-tab="tab-guides" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
+          <span>📱</span> <span data-i18n="nav_guides">8th CPC Info &amp; APK</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="toast-container" class="fixed bottom-20 right-4 z-50 hidden max-w-sm bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-emerald-500/40 flex items-center gap-2.5 text-xs sm:text-sm no-print">
+    <span class="text-emerald-400 text-base">✓</span>
+    <span id="toast-message">Action completed</span>
+  </div>
+
+  <div id="sector-context-banner" class="hidden max-w-7xl w-full mx-auto px-3 sm:px-6 pt-4 no-print">
+    <div class="bg-gradient-to-r from-sky-100 via-white to-emerald-50 border-2 border-sky-400/70 rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      <div class="space-y-0.5">
+        <div class="flex items-center gap-2">
+          <span id="scb-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-sky-600 text-white">DEFENCE / RAILWAY / CAPF</span>
+          <h3 id="scb-title" class="text-sm sm:text-base font-extrabold text-slate-900">Loaded Rank / Post Profile</h3>
+        </div>
+        <p id="scb-desc" class="text-xs text-slate-600">Pay Level, Basic Pay and Special Allowances have been loaded into the calculator below.</p>
+      </div>
+      <button type="button" id="btn-scb-close" class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold text-slate-700">✕ Dismiss</button>
+    </div>
+  </div>
+
+  <div id="inner-view-topbar" class="hidden bg-sky-100/90 border-b border-sky-200 px-3 sm:px-6 py-2.5 no-print">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <button type="button" id="btn-back-home-calc" class="android-ripple px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+          <span>←</span> <span data-i18n="btn_back_home">8th CPC Salary Calculator</span>
+        </button>
+        <span class="text-slate-400 text-xs">/</span>
+        <span id="inner-view-title" class="text-xs sm:text-sm font-extrabold text-sky-950">Selected Tool</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button type="button" id="btn-topbar-all-tools" class="android-ripple px-3 py-1 rounded-xl bg-white hover:bg-sky-50 text-sky-900 border border-sky-300 text-xs font-bold">
+          🧰 <span data-i18n="btn_all_94_tools">All 46 Calculators</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-6 no-print">
+    
+    <section id="tab-microtools" class="tab-panel space-y-5">
+      
+      <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-blue-950 text-white rounded-2xl p-4 shadow-md border border-emerald-500/30 flex flex-wrap items-center justify-between gap-3">
+        <div class="space-y-0.5">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-emerald-500 text-slate-950">8th CPC Live Context</span>
+            <span class="text-xs font-mono text-emerald-300" id="mt-context-summary">Level 10 · 7th Basic: ₹56,100 → 8th Basic: ₹1,07,712 (1.92×)</span>
+          </div>
+          <h1 class="text-base sm:text-lg font-extrabold">💼 CTC to In-Hand Salary Converter</h1>
+          <p class="text-xs text-slate-300">Convert Private/PSU Annual CTC package into monthly take-home pay vs your 8th CPC salary</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/15">
+          <span class="text-xs font-semibold px-2 text-slate-200" data-i18n="mt_pay_basis_lbl">Pay Basis for Tools:</span>
+          <button type="button" id="btn-mt-basis-8th" data-mt-basis="8TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm">
+            ⚡ 8th CPC Projected Pay
+          </button>
+          <button type="button" id="btn-mt-basis-7th" data-mt-basis="7TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white">
+            7th CPC Current Pay
+          </button>
+        </div>
+      </div>
+
+      <div id="mt-search-filter-bar" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1">
+            <input type="text" id="inp-mt-search" placeholder="Search 46 calculators (e.g. GPF, LTC, Tour TA, HBA, Form 10E, Deputation, CCL, Bank, PSU, State, EWS)..." class="w-full rounded-xl border border-slate-300 bg-slate-50 pl-9 pr-4 py-2 text-xs sm:text-sm text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none" />
+            <span class="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
+          </div>
+          <div class="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
+            <span id="mt-count-badge" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold">46 calculators</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-1" id="mt-category-chips">
+          <button type="button" data-mt-cat="ALL" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm">
+            🌟 All Tools (46)
+          </button>
+          <button type="button" data-mt-cat="PAY_CAREER" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🪜 Pay, Fixation &amp; Career
+          </button>
+          <button type="button" data-mt-cat="ALLOWANCES_TOUR" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🧳 Tour, LTC, Posting &amp; Quarters
+          </button>
+          <button type="button" data-mt-cat="PENSION_LEAVE" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🏛️ GPF, Pension, Leave &amp; Rules
+          </button>
+          <button type="button" data-mt-cat="TAX_SAVINGS" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            📮 Tax 10E, HBA Loan &amp; Post Office
+          </button>
+          <button type="button" data-mt-cat="SECTORS_ELIGIBILITY" class="mt-cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">
+            🏦 Bank, PSU, 20 States &amp; Eligibility
+          </button>
+        </div>
+      </div>
+
+      <div id="mt-layout-wrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        
+        <div class="lg:col-span-5 bg-white rounded-2xl shadow-lg border-2 border-sky-500/30 overflow-hidden" id="mt-workbench-card">
+          <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-4 flex items-start justify-between gap-2">
+            <div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30" id="mt-wb-category">PAY &amp; CAREER</span>
+              <h3 class="text-base font-extrabold mt-1" id="mt-wb-title">Select a Micro-Tool</h3>
+              <p class="text-xs text-slate-300 mt-0.5" id="mt-wb-subtitle">Adjust parameters below for instant 7th &amp; 8th CPC results</p>
+            </div>
+            <button type="button" id="btn-mt-copy-result" class="android-ripple px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-semibold text-white shrink-0">
+              📋 Copy
+            </button>
+          </div>
+
+          <div class="p-4 space-y-4">
+            
+            <div id="mt-wb-inputs" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+
+            <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase text-emerald-900">
+                <span id="mt-wb-primary-label">Calculated Output</span>
+                <span id="mt-wb-basis-pill" class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px]">8th CPC Basis</span>
+              </div>
+              <div class="text-2xl font-extrabold text-emerald-800 tracking-tight" id="mt-wb-primary-val">₹0</div>
+              <div class="text-xs text-slate-600" id="mt-wb-secondary-val"></div>
+            </div>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden">
+              <table class="w-full text-xs border-collapse">
+                <tbody id="mt-wb-table-body" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
+
+            <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200 text-[11px] text-slate-700 leading-relaxed" id="mt-wb-rule-note"></div>
+
+            <div id="mt-focus-footer" class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <button type="button" id="btn-mt-toggle-directory" class="android-ripple px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm">
+                🧰 <span data-i18n="btn_browse_all_tools">Browse all 46 calculators</span>
+              </button>
+              <button type="button" id="btn-mt-back-salary" class="android-ripple px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold">
+                ← <span data-i18n="btn_back_home">8th CPC Salary Calculator</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[760px] overflow-y-auto custom-scrollbar pr-1" id="mt-cards-grid">
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-content bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 space-y-3">
+<h2>About this calculator</h2>
+<p>Convert Private/PSU Annual CTC package into monthly take-home pay vs your 8th CPC salary</p>
+<h2>How to use it</h2>
+<ol>
+<li>Set your pay level and basic pay in the <a href="../../">main salary calculator</a> (it starts at Level 10, ₹56,100). This calculator uses them automatically.</li>
+<li>Choose whether to use your current 7th CPC pay or projected 8th CPC pay with the switch at the top.</li>
+<li>Fill in the boxes below the title. The result and the full breakdown update as you type.</li>
+</ol>
+<h2>What you enter</h2>
+<ul><li>Annual CTC Package (₹)</li><li>Variable Bonus / Gratuity in CTC (%)</li></ul>
+<h2>The rule it uses</h2>
+<p>Comparison Tip: Central Government salaries do not include 14% employer NPS, CGHS medical cover, or gratuity inside the stated Gross Pay—so a ₹1.14L Govt In-Hand equals a ~₹21L Private CTC.</p>
+<h2>Related calculators</h2>
+<ul><li><a href="../../tools/dearness-allowance-calculator/">Dearness Allowance (DA) &amp; AICPI Merger Calculator</a></li><li><a href="../../tools/first-salary-calculator/">First Pay Calculator (New Joiners)</a></li><li><a href="../../tools/promotion-pay-fixation-calculator/">Promotion &amp; MACP Pay Fixation (FR 22)</a></li><li><a href="../../tools/pay-protection-calculator/">Pay Protection Calculator</a></li><li><a href="../../tools/deputation-allowance-calculator/">Deputation Allowance Calculator</a></li><li><a href="../../tools/annual-increment-calculator/">Annual Increment &amp; Salary Hike Calculator</a></li><li><a href="../../tools/subsistence-allowance-calculator/">Subsistence Allowance (During Suspension)</a></li><li><a href="../../tools/salary-certificate-format/">Salary &amp; Experience Certificate Format</a></li></ul>
+<p><a href="../../tools/">See all 46 calculators →</a></p>
+<p class="text-xs text-slate-500">Results are estimates for information only, based on published government rules. Confirm with your DDO, PAO or controlling office.</p>
+    </section>
+
+  </main>
+  
+  <footer id="app-footer" class="bg-slate-950 text-slate-300 border-t border-slate-800 mt-auto pt-8 pb-24 md:pb-10 px-3 sm:px-6 no-print">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-sky-400">
+            <span>📌</span> <span data-i18n="fn_badge">Official Calculation Methodology &amp; Statutory Footnotes</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-extrabold text-white mt-0.5" data-i18n="fn_heading">Footer Notes: 7th &amp; 8th CPC Rules, DoPT / DoE OMs, Pension &amp; Tax Formulas</h3>
+        </div>
+        <button type="button" id="btn-footer-back-top" class="android-ripple px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-sky-300 border border-slate-700">
+          ↑ <span data-i18n="fn_back_top">Back to Top</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs leading-relaxed">
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-sky-400 flex items-center justify-between">
+            <span>[Note 1] 8th CPC Fitment Factor</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300">Rule 7 CCS(RP)</span>
+          </div>
+          <p class="text-slate-400">
+            Projected 8th CPC Basic Pay is computed as <code class="text-slate-200">Round(7th CPC Basic × Fitment Factor)</code>. With Dearness Allowance reaching <strong>60%</strong> on 01.01.2026, merging DA into Basic Pay yields a base factor of <code class="text-slate-200">1.60×</code>; adding a 20% real pay hike produces the consensus <strong>1.92× fitment factor</strong> (raising Level 1 minimum basic pay from ₹18,000 to ₹34,560).
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-sky-400 flex items-center justify-between">
+            <span>[Note 2] DA Merger &amp; AICPI-IW</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300">Jan &amp; Jul Cycle</span>
+          </div>
+          <p class="text-slate-400">
+            Dearness Allowance (DA) is revised every 1st January and 1st July based on the 12-month average of the All-India Consumer Price Index for Industrial Workers (AICPI-IW, Base 2016=100) and applies to <code class="text-slate-200">(Basic Pay + NPA)</code>. Upon 8th CPC implementation from 01.01.2026, existing DA merges into the new Basic Pay and resets to <strong>0%</strong>.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-sky-400 flex items-center justify-between">
+            <span>[Note 3] HRA Slabs &amp; Min Floor</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300">DoE OM 2/5/2017</span>
+          </div>
+          <p class="text-slate-400">
+            Per DoE OM dated 07.07.2017, HRA is <strong>30% (X)</strong>, <strong>20% (Y)</strong>, and <strong>10% (Z)</strong> when DA ≥ 50%, subject to a minimum floor of <strong>₹5,400 (X)</strong>, <strong>₹3,600 (Y)</strong>, and <strong>₹1,800 (Z)</strong> in 7th CPC. When DA resets to 0% in 8th CPC, HRA percentage resets to <strong>24% / 16% / 8%</strong> (revising to 27/18/9% at 25% DA and 30/20/10% at 50% DA), with minimum floors scaled proportionally.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-sky-400 flex items-center justify-between">
+            <span>[Note 4] Transport Allowance (TA)</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300">DoE OM 21/5/2017</span>
+          </div>
+          <p class="text-slate-400">
+            Monthly TA is <strong>₹1,350 / ₹900</strong> for Level 1–2 (or ₹3,600 / ₹1,800 if 7th CPC Basic ≥ ₹24,200), <strong>₹3,600 / ₹1,800</strong> for Level 3–8, <strong>₹7,200 / ₹3,600</strong> for Level 9–13A, and <strong>₹15,750</strong> for Level 14+ (Higher TPTA 19 cities vs Other cities), plus <strong>DA on TA</strong> at the active DA rate. Divyangjan employees receive <strong>2×</strong> normal TA.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-emerald-400 flex items-center justify-between">
+            <span>[Note 5] NPA Ceiling, CGHS &amp; CGEGIS</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">MoHFW / DoE</span>
+          </div>
+          <p class="text-slate-400">
+            Non-Practicing Allowance (NPA) for Central Health Service / Govt Doctors is <strong>20% of Basic Pay</strong> subject to the statutory ceiling that <code class="text-slate-200">Basic + NPA ≤ ₹2,37,500</code> in 7th CPC (scaled in 8th CPC). Mandatory monthly subscriptions: <strong>CGHS</strong> is ₹250 (L1–5), ₹450 (L6), ₹650 (L7–11), ₹1,000 (L12+); <strong>CGEGIS</strong> is ₹30 (Group C), ₹60 (Group B), ₹120 (Group A).
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-emerald-400 flex items-center justify-between">
+            <span>[Note 6] UPS, NPS &amp; ₹25L Gratuity</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">DoPPW 2025 Rules</span>
+          </div>
+          <p class="text-slate-400">
+            Employee NPS/UPS Tier-I deduction is <strong>10% of (Basic + NPA + DA)</strong>. Under CCS (Pension) Rules 2021 (Rule 45) &amp; DoPPW OM dated 18.06.2025, Central Govt employees under OPS and UPS qualify for Retirement/Death Gratuity at <strong>1/4th of Emoluments per completed 6-month block</strong> (max 16.5×, capped at <strong>₹25,00,000</strong>), plus UPS assured <strong>50% pension</strong> (at 25+ yrs) and <strong>1/10th lump-sum</strong> per 6-month block.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-emerald-400 flex items-center justify-between">
+            <span>[Note 7] Income Tax FY 2026-27</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">IT Act 2025</span>
+          </div>
+          <p class="text-slate-400">
+            New Tax Regime (Tax Year 2026-27) provides a <strong>₹75,000 Standard Deduction</strong>, Employer 14% NPS deduction u/s <strong>80CCD(2)</strong>, and Section 87A tax rebate up to ₹60,000 (making net taxable income up to <strong>₹12,00,000</strong> / gross salary up to ₹12.75L+ completely tax-free, with marginal relief above ₹12L) plus 4% Health &amp; Education Cess.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+          <div class="font-bold text-emerald-400 flex items-center justify-between">
+            <span>[Note 8] Arrears &amp; Form 10E Relief</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">Sec 89(1) Relief</span>
+          </div>
+          <p class="text-slate-400">
+            Based on the 10-year Pay Commission cycle, the 8th CPC effective date is <strong>01.01.2026</strong>. In 6th &amp; 7th CPC precedents, arrears were paid on revised Basic + DA (less 10% NPS), whereas revised HRA/TA took effect from the date of notification. Lump-sum arrears qualify for retrospective slab relief under <strong>Section 89(1) (Form 10E)</strong>.
+          </p>
+        </div>
+      </div>
+
+      <nav aria-label="Site links" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-5 border-t border-slate-800/90 text-xs text-slate-400"><div><div class="font-bold text-slate-200 mb-2">Calculators</div><ul class="space-y-1"><li><a class="hover:text-white" href="../../">8th CPC salary calculator</a></li><li><a class="hover:text-white" href="../../pay-matrix/">Pay matrix</a></li><li><a class="hover:text-white" href="../../arrears-allowances/">Arrears &amp; DA arrears</a></li><li><a class="hover:text-white" href="../../pension/">UPS / NPS pension</a></li><li><a class="hover:text-white" href="../../income-tax/">Income tax 2026-27</a></li><li><a class="hover:text-white" href="../../tools/">All 46 calculators</a></li></ul></div><div><div class="font-bold text-slate-200 mb-2">Pay commission</div><ul class="space-y-1"><li><a class="hover:text-white" href="../../8th-pay-commission/">8th Pay Commission news</a></li><li><a class="hover:text-white" href="../../8th-pay-commission/fitment-factor/">8th CPC fitment factor</a></li><li><a class="hover:text-white" href="../../7th-pay-commission/">7th Pay Commission</a></li></ul></div><div><div class="font-bold text-slate-200 mb-2">Popular calculators</div><ul class="space-y-1"><li><a class="hover:text-white" href="../../tools/dearness-allowance-calculator/">Dearness Allowance (DA) &amp; AICPI Merger Calculator</a></li><li><a class="hover:text-white" href="../../tools/hra-calculator/">HRA Calculator (X, Y &amp; Z Cities — 7th vs 8th CPC)</a></li><li><a class="hover:text-white" href="../../tools/gpf-calculator/">GPF Calculator (7.1% Interest, Advance &amp; Withdrawal)</a></li><li><a class="hover:text-white" href="../../tools/commutation-of-pension-calculator/">Commuted Pension &amp; 15-Year Restoration Calculator</a></li><li><a class="hover:text-white" href="../../tools/ltc-calculator/">LTC Calculator (Fare + 10-Day EL Encashment)</a></li><li><a class="hover:text-white" href="../../tools/leave-encashment-calculator/">CCS Leave Rules Calculator &amp; Guide (EL, HPL, CL, Commuted)</a></li></ul></div><div><div class="font-bold text-slate-200 mb-2">&nbsp;</div><ul class="space-y-1"><li><a class="hover:text-white" href="../../tools/transport-allowance-calculator/">Transport Allowance (TA / TPTA) Calculator &amp; Guide</a></li><li><a class="hover:text-white" href="../../tools/family-pension-calculator/">Family Pension &amp; 80+ Senior Pension Calculator</a></li><li><a class="hover:text-white" href="../../tools/retirement-date-calculator/">Retirement Date, Form 6-A &amp; Jeevan Pramaan Timeline</a></li><li><a class="hover:text-white" href="../../tools/sukanya-samriddhi-yojana-calculator/">Sukanya Samriddhi Yojana (SSY @ 8.2%) Calculator</a></li><li><a class="hover:text-white" href="../../tools/post-office-savings-calculator/">Post Office Savings Calculator (SCSS, MIS, PPF, NSC)</a></li><li><a class="hover:text-white" href="../../tools/house-building-advance-calculator/">House Building Advance (HBA) Loan Calculator</a></li></ul></div></nav>
+
+      <div class="pt-5 border-t border-slate-800/90 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-bold text-slate-200">Quick Jump:</span>
+          <a href="../../" data-footer-nav="tab:tab-salary" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">🧮 7th &amp; 8th Salary</a>
+          <a href="../../pay-matrix/" data-footer-nav="tab:tab-matrix" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">📊 Pay Matrix (L1–18)</a>
+          <a href="../../arrears-allowances/" data-footer-nav="tab:tab-arrears" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">⏳ Arrears &amp; NDA</a>
+          <a href="../../pension/" data-footer-nav="tab:tab-pension" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">🏛️ UPS / NPS / Gratuity</a>
+          <a href="../../income-tax/" data-footer-nav="tab:tab-tax" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">🧾 FY 26-27 Tax</a>
+          <a href="../../tools/" data-footer-nav="tab:tab-microtools" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-300 hover:text-white border border-slate-800">🧰 All 46 Calculators</a>
+          <a href="../../8th-pay-commission/" data-footer-nav="tab:tab-guides" class="footer-nav-btn px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800">📱 8th CPC Info &amp; States</a>
+        </div>
+        <div class="text-[11px] text-slate-500 max-w-xl lg:text-right">
+          <strong>Disclaimer:</strong> 7th CPC figures follow official DoPT, DoE, DoPPW &amp; CBDT notifications (updated Oct 2026). 8th CPC projections (1.83×–2.86× fitment) are analytical estimates for financial planning pending final Gazette notification of the 8th Central Pay Commission. GovtSalaryCalc is an independent website and is not affiliated with or endorsed by the Government of India or any ministry or department. All results are estimates for information only; confirm your pay with your DDO, PAO or controlling office.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal-payslip" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3 no-print">
+        <h3 class="text-base font-bold text-slate-900" data-i18n="slip_modal_title">Government Format Monthly Salary Slip (7th vs 8th CPC)</h3>
+        <button type="button" id="btn-close-payslip" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold">✕</button>
+      </div>
+
+      <div id="printable-slip-area" class="space-y-4 text-xs sm:text-sm border border-slate-300 rounded-xl p-4">
+        <div class="text-center border-b border-slate-200 pb-3">
+          <div class="text-xs font-bold uppercase tracking-widest text-slate-500">Government of India · Central Civil Services</div>
+          <h4 class="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5">ESTIMATED SALARY COMPARATIVE STATEMENT (7TH vs 8TH CPC)</h4>
+          <p class="text-xs text-slate-600 mt-0.5" id="slip-header-meta">Pay Level: Level 10 | City Class: X | Fitment Factor: 1.92×</p>
+        </div>
+        <div id="slip-body-content"></div>
+        <div class="text-[11px] text-slate-500 border-t border-slate-200 pt-2 flex justify-between">
+          <span>Generated via govtsalarycalc.com (Oct 2026 Rates)</span>
+          <span>For informational &amp; planning use</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-end gap-2 pt-2 no-print">
+        <button type="button" id="btn-copy-slip-text" class="android-ripple px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold">
+          📋 Copy Text for WhatsApp
+        </button>
+        <button type="button" id="btn-print-now" class="android-ripple px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold">
+          🖨️ Print / Save as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-cmd-search" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-sm flex items-start justify-center pt-12 sm:pt-20 p-3 no-print">
+    <div class="bg-[#131c31] text-white rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-700 overflow-hidden">
+      <div class="p-3.5 border-b border-slate-700 flex items-center gap-3">
+        <span class="text-sky-400 text-base">🔍</span>
+        <input type="text" id="inp-cmd-query" placeholder="Search any calculator, pay level (L1–18), Defence/CAPF/Railway post, State or Guide..." class="w-full bg-transparent text-sm text-white placeholder-slate-400 focus:outline-none" />
+        <button type="button" id="btn-close-cmd-search" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300">ESC</button>
+      </div>
+      <div id="cmd-search-results" class="max-h-96 overflow-y-auto custom-scrollbar divide-y divide-slate-800/80 p-2 text-xs">
+        
+      </div>
+    </div>
+  </div>
+
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 shadow-lg flex md:hidden items-center justify-around py-1.5 px-1 no-print">
+    <a href="../../" data-tab="tab-salary" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-blue-700 font-bold text-[10px]">
+      <span class="text-base">🧮</span>
+      <span data-i18n="mob_salary">Salary</span>
+    </a>
+    <a href="../../pay-matrix/" data-tab="tab-matrix" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-slate-500 font-medium text-[10px]">
+      <span class="text-base">📊</span>
+      <span data-i18n="mob_matrix">Matrix</span>
+    </a>
+    <a href="../../arrears-allowances/" data-tab="tab-arrears" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-slate-500 font-medium text-[10px]">
+      <span class="text-base">⏳</span>
+      <span data-i18n="mob_arrears">Arrears</span>
+    </a>
+    <a href="../../pension/" data-tab="tab-pension" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-slate-500 font-medium text-[10px]">
+      <span class="text-base">🏛️</span>
+      <span data-i18n="mob_pension">Pension</span>
+    </a>
+    <a href="../../income-tax/" data-tab="tab-tax" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-slate-500 font-medium text-[10px]">
+      <span class="text-base">🧾</span>
+      <span data-i18n="mob_tax">Tax/Posts</span>
+    </a>
+    <a href="../../tools/" data-tab="tab-microtools" class="mob-nav-btn flex flex-col items-center py-1 px-2 rounded-xl text-slate-500 font-medium text-[10px]">
+      <span class="text-base">🧰</span>
+      <span data-i18n="mob_microtools">All Tools</span>
+    </a>
+  </nav>
+
+</body>
+</html>

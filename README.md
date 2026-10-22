@@ -12,8 +12,12 @@
 | `/arrears-allowances/` | 8th CPC arrears, DA arrears, HRA exemption, NDA, bonus |
 | `/pension/` | UPS / NPS / gratuity / MACP |
 | `/income-tax/` | Income tax FY 2026-27 and post presets |
-| `/tools/` | All 94+ micro-calculators |
+| `/tools/` | All 46 calculators, with a link to each |
+| `/tools/<slug>/` | One page per calculator (46), e.g. `/tools/dearness-allowance-calculator/` |
 | `/8th-pay-commission/` | 8th CPC info, 20-state comparison, news, glossary |
+| `/8th-pay-commission/fitment-factor/` | Fitment factor explained, new basic pay of every level at each factor |
+| `/7th-pay-commission/` | 7th CPC in one page: pay levels, DA and HRA rates |
+| `/hi/...` | Hindi version of every page above |
 
 Calculator inputs and the chosen language are remembered in the browser, so they
 carry over from page to page.
@@ -30,9 +34,25 @@ these instead:
 - `src/sections/*.html` – each page's calculator
 - `src/content/*.html` – the explanatory text under each calculator
 - `src/content/faqs.json` – each page's FAQs (shown on the page and sent to Google as FAQ data)
+- `src/content/hi/*.html`, `src/content/faqs_hi.json` – the same text and FAQs in Hindi
+- `src/content/tools.json` – each calculator page's address (slug), Google title and description
+- `src/partials/footer.html` – `{{SITE_LINKS}}` is replaced with the footer link directory
 - `src/tailwind.css` – custom styles
 - `assets/js/app.js` – all calculator logic
-- `build.py` – page titles, descriptions and URLs
+- `build.py` – page titles, descriptions and URLs (English and Hindi), and the generated
+  7th CPC and fitment factor tables
+
+The build reads calculator names, inputs and rules, the pay matrix and the Hindi menu
+text straight from `assets/js/app.js`, so a new calculator in `MICRO_TOOLS_REGISTRY` only
+needs an entry in `src/content/tools.json` to get its own page.
+
+### Languages
+
+Every page is built in English (site root) and Hindi (`hi/`), linked with `hreflang` tags.
+The हिंदी / English buttons switch between the two pages; বাংলা still switches the
+English page in place. Text in the calculators is translated by the `I18N` dictionary in
+`assets/js/app.js`; the build also applies it to the Hindi pages so they are in Hindi
+before any script runs.
 
 Then rebuild and commit:
 

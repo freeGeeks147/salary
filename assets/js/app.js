@@ -15,13 +15,28 @@
     "tab-pension": "pension/",
     "tab-tax": "income-tax/",
     "tab-microtools": "tools/",
-    "tab-guides": "8th-pay-commission/"
+    "tab-guides": "8th-pay-commission/",
+    "tab-cpc7": "7th-pay-commission/",
+    "tab-fitment": "8th-pay-commission/fitment-factor/"
   };
 
+  // Pages in another language live under a prefix (e.g. "hi/"), set on <html data-prefix>.
+  const LANG_PREFIX = document.documentElement.getAttribute("data-prefix") || "";
+
   function pageUrl(tabId, navAction) {
-    const url = new URL(PAGE_URLS[tabId] || "", SITE_ROOT);
+    const url = new URL(LANG_PREFIX + (PAGE_URLS[tabId] || ""), SITE_ROOT);
     if (navAction) url.searchParams.set("go", navAction);
     return url.href;
+  }
+
+  // Each micro-tool also has its own page at tools/<slug>/ (see build.py), so it can be
+  // found in search and shared. build.py writes the slugs into every page.
+  const TOOL_SLUGS = window.GSC_TOOL_SLUGS || {};
+  function toolPageUrl(id) {
+    return TOOL_SLUGS[id] ? new URL(LANG_PREFIX + "tools/" + TOOL_SLUGS[id] + "/", SITE_ROOT).href : null;
+  }
+  function currentToolPage() {
+    return document.body.getAttribute("data-mt-tool");
   }
 
   function getCurrentPageTab() {
@@ -201,12 +216,12 @@
       menu_search: "Search",
       dd_news_item1: "News Adda (Latest Updates)",
       dd_news_item2: "8th CPC & DA Notifications",
-      hero_stat_users: "Monthly users",
-      hero_stat_calcs: "Calculators & Micro-Tools",
-      hero_stat_free: "Free forever · Offline Ready",
+      hero_stat_users: "Pay levels covered",
+      hero_stat_calcs: "Calculators",
+      hero_stat_free: "Free · No sign-up",
       btn_calc_now: "Calculate now",
       btn_read_articles: "Read articles & News Adda",
-      btn_all_94_tools: "All 94+ Micro-Tools",
+      btn_all_94_tools: "All 46 Calculators",
       btn_join_discussion: "Discussion & Q&A",
       disc_badge_live: "Central & State Govt Employee Forum · Verified DoPT / DoE Rules",
       disc_title: "8th Pay Commission Discussion, Fitment Poll & Employee Q&A",
@@ -228,7 +243,7 @@
       fn_badge: "Official Calculation Methodology & Statutory Footnotes",
       fn_heading: "Footer Notes: 7th & 8th CPC Rules, DoPT / DoE OMs, Pension & Tax Formulas",
       fn_back_top: "Back to Top",
-      btn_browse_all_tools: "Browse All 94+ Calculators Directory",
+      btn_browse_all_tools: "Browse all 46 calculators",
       btn_back_home: "8th CPC Salary Calculator",
       lp_badge_title: "LIVE PREVIEW",
       lp_7th_heading: "7TH CPC · MONTHLY (60% DA)",
@@ -249,15 +264,15 @@
       nav_arrears: "Arrears & Allowances",
       nav_pension: "UPS / NPS / Gratuity",
       nav_tax: "Tax & Post Presets",
-      nav_microtools: "All 94+ Micro-Tools",
+      nav_microtools: "All 46 Calculators",
       nav_guides: "8th CPC Info & APK",
       mob_microtools: "All Tools",
       banner_94_badge: "Complete GovtSalaryCalc.com Suite · 8th CPC Integrated",
-      banner_94_title: "Explore All 94+ Government Salary, Allowance, Pension, Leave & Tax Micro-Tools",
+      banner_94_title: "Explore 46 Government Salary, Allowance, Pension, Leave & Tax Micro-Tools",
       banner_94_sub: "Every micro-tool automatically syncs with your 8th CPC Projected Basic Pay & Fitment Factor (GPF, LTC, Tour TA/DA, HBA, Form 10E, Bank/PSU, 20 States, EWS/OBC & more).",
-      btn_open_all_tools: "Open All 94+ Micro-Tools Hub →",
-      mt_hub_title: "All 94+ Government Salary, Allowance, Leave, Pension & Tax Micro-Tools",
-      mt_hub_sub: "Modular Android MVVM-ready engine — tap any tool below to open its interactive calculator synced with your 7th or 8th CPC pay.",
+      btn_open_all_tools: "Open All 46 Calculators Hub →",
+      mt_hub_title: "46 Government Salary, Allowance, Leave, Pension & Tax Micro-Tools",
+      mt_hub_sub: "Tap any calculator below to open it. Results use the pay level and basic pay from the main salary calculator.",
       mt_pay_basis_lbl: "Pay Basis for Tools:",
       mob_salary: "Salary",
       mob_matrix: "Matrix",
@@ -369,12 +384,12 @@
       menu_search: "खोजें",
       dd_news_item1: "न्यूज़ अड्डा (ताज़ा खबरें)",
       dd_news_item2: "8वां वेतन आयोग व DA सूचनाएं",
-      hero_stat_users: "मासिक उपयोगकर्ता",
-      hero_stat_calcs: "कैलकुलेटर और टूल्स",
-      hero_stat_free: "हमेशा मुफ़्त · ऑफ़लाइन",
+      hero_stat_users: "वेतन स्तर शामिल",
+      hero_stat_calcs: "कैलकुलेटर",
+      hero_stat_free: "मुफ़्त · बिना साइन-अप",
       btn_calc_now: "अभी गणना करें",
       btn_read_articles: "लेख और समाचार पढ़ें",
-      btn_all_94_tools: "सभी 94+ कैलकुलेटर",
+      btn_all_94_tools: "सभी 46 कैलकुलेटर",
       btn_join_discussion: "चर्चा और प्रश्नोत्तर (Q&A)",
       disc_badge_live: "केंद्रीय और राज्य कर्मचारी मंच · आधिकारिक DoPT / DoE नियम",
       disc_title: "8वां वेतन आयोग चर्चा मंच, फिटमेंट पोल और कर्मचारी प्रश्नोत्तर (Q&A)",
@@ -396,7 +411,7 @@
       fn_badge: "आधिकारिक गणना पद्धति और वैधानिक फुटनोट्स",
       fn_heading: "फुटनोट्स (Footer Notes): 7वां व 8वां वेतन आयोग नियम, DoPT / DoE आदेश, पेंशन और टैक्स सूत्र",
       fn_back_top: "ऊपर जाएं",
-      btn_browse_all_tools: "सभी 94+ कैलकुलेटर की सूची देखें",
+      btn_browse_all_tools: "सभी 46 कैलकुलेटर की सूची देखें",
       btn_back_home: "8वां वेतन आयोग मुख्य कैलकुलेटर",
       lp_badge_title: "लाइव प्रीव्यू",
       lp_7th_heading: "7वां वेतन आयोग · मासिक (60% DA)",
@@ -417,14 +432,14 @@
       nav_arrears: "एरियर और भत्ते",
       nav_pension: "UPS / NPS / ग्रेच्युटी",
       nav_tax: "इनकम टैक्स व पद",
-      nav_microtools: "सभी 94+ कैलकुलेटर",
+      nav_microtools: "सभी 46 कैलकुलेटर",
       nav_guides: "8वां वेतन आयोग व ऐप",
       mob_microtools: "सभी टूल्स",
       banner_94_badge: "संपूर्ण GovtSalaryCalc.com सूट · 8वां वेतन आयोग एकीकृत",
-      banner_94_title: "सभी 94+ सरकारी वेतन, भत्ते, पेंशन, छुट्टी और टैक्स माइक्रो-टूल्स देखें",
+      banner_94_title: "सभी 46 सरकारी वेतन, भत्ते, पेंशन, छुट्टी और टैक्स माइक्रो-टूल्स देखें",
       banner_94_sub: "हर टूल आपकी 8वें वेतन आयोग की अनुमानित बेसिक पे और फिटमेंट फैक्टर के साथ अपने-आप जुड़ता है (GPF, LTC, Tour TA/DA, HBA, Form 10E, बैंक/PSU, 20 राज्य, EWS/OBC आदि)।",
-      btn_open_all_tools: "सभी 94+ माइक्रो-टूल्स खोलें →",
-      mt_hub_title: "सभी 94+ सरकारी वेतन, भत्ते, छुट्टी, पेंशन और टैक्स कैलकुलेटर",
+      btn_open_all_tools: "सभी 46 माइक्रो-टूल्स खोलें →",
+      mt_hub_title: "सभी 46 सरकारी वेतन, भत्ते, छुट्टी, पेंशन और टैक्स कैलकुलेटर",
       mt_hub_sub: "किसी भी टूल कार्ड पर टैप करें और 7वें या 8वें वेतन आयोग के आधार पर तुरंत गणना करें।",
       mt_pay_basis_lbl: "गणना का आधार:",
       mob_salary: "सैलरी",
@@ -537,12 +552,12 @@
       menu_search: "খুঁজুন",
       dd_news_item1: "নিউজ আড্ডা (সর্বশেষ আপডেট)",
       dd_news_item2: "৮ম বেতন কমিশন ও DA বিজ্ঞপ্তি",
-      hero_stat_users: "মাসিক ব্যবহারকারী",
-      hero_stat_calcs: "ক্যালকুলেটর ও টুলস",
-      hero_stat_free: "চিরকাল বিনামূল্যে · অফলাইন",
+      hero_stat_users: "বেতন স্তর অন্তর্ভুক্ত",
+      hero_stat_calcs: "ক্যালকুলেটর",
+      hero_stat_free: "বিনামূল্যে · সাইন-আপ ছাড়া",
       btn_calc_now: "এখনই হিসাব করুন",
       btn_read_articles: "নিবন্ধ ও খবর পড়ুন",
-      btn_all_94_tools: "সব ৯৪+ ক্যালকুলেটর",
+      btn_all_94_tools: "সব ৪৬ ক্যালকুলেটর",
       btn_join_discussion: "আলোচনা ও প্রশ্নোত্তর (Q&A)",
       disc_badge_live: "কেন্দ্রীয় ও রাজ্য সরকারি কর্মচারী ফোরাম · সরকারি DoPT / DoE নিয়ম",
       disc_title: "৮ম বেতন কমিশন আলোচনা, ফিটমেন্ট পোল ও কর্মচারী প্রশ্নোত্তর (Q&A)",
@@ -564,7 +579,7 @@
       fn_badge: "সরকারি গণনা পদ্ধতি ও বিধিবদ্ধ ফুটনোট",
       fn_heading: "ফুটনোট (Footer Notes): ৭ম ও ৮ম বেতন কমিশনের নিয়ম, DoPT / DoE আদেশ, পেনশন ও ট্যাক্স সূত্র",
       fn_back_top: "উপরে যান",
-      btn_browse_all_tools: "সব ৯৪+ ক্যালকুলেটরের তালিকা দেখুন",
+      btn_browse_all_tools: "সব ৪৬ ক্যালকুলেটরের তালিকা দেখুন",
       btn_back_home: "৮ম বেতন কমিশন মূল ক্যালকুলেটর",
       lp_badge_title: "লাইভ প্রিভিউ",
       lp_7th_heading: "৭ম বেতন কমিশন · মাসিক (60% DA)",
@@ -585,14 +600,14 @@
       nav_arrears: "বকেয়া ও ভাতা (Arrears)",
       nav_pension: "UPS / NPS / গ্র্যাচুইটি",
       nav_tax: "ইনকাম ট্যাক্স ও পদ",
-      nav_microtools: "সব ৯৪+ ক্যালকুলেটর",
+      nav_microtools: "সব ৪৬ ক্যালকুলেটর",
       nav_guides: "৮ম বেতন কমিশন ও অ্যাপ",
       mob_microtools: "সব টুলস",
       banner_94_badge: "সম্পূর্ণ GovtSalaryCalc.com স্যুট · ৮ম বেতন কমিশন যুক্ত",
-      banner_94_title: "সব ৯৪+ সরকারি বেতন, ভাতা, পেনশন, ছুটি ও ট্যাক্স মাইক্রো-টুলস দেখুন",
+      banner_94_title: "সব ৪৬ সরকারি বেতন, ভাতা, পেনশন, ছুটি ও ট্যাক্স মাইক্রো-টুলস দেখুন",
       banner_94_sub: "প্রতিটি টুল আপনার ৮ম বেতন কমিশনের সম্ভাব্য বেসিক পে এবং ফিটমেন্ট ফ্যাক্টরের সাথে স্বয়ংক্রিয়ভাবে যুক্ত হয় (GPF, LTC, Tour TA/DA, HBA, Form 10E, ব্যাংক/PSU, ২০টি রাজ্য, EWS/OBC ইত্যাদি)।",
-      btn_open_all_tools: "সব ৯৪+ মাইক্রো-টুলস খুলুন →",
-      mt_hub_title: "সব ৯৪+ সরকারি বেতন, ভাতা, ছুটি, পেনশন ও ট্যাক্স ক্যালকুলেটর",
+      btn_open_all_tools: "সব ৪৬ মাইক্রো-টুলস খুলুন →",
+      mt_hub_title: "সব ৪৬ সরকারি বেতন, ভাতা, ছুটি, পেনশন ও ট্যাক্স ক্যালকুলেটর",
       mt_hub_sub: "যেকোনো টুল কার্ডে ট্যাপ করুন এবং ৭ম বা ৮ম বেতন কমিশনের ভিত্তিতে তাৎক্ষণিক হিসাব দেখুন।",
       mt_pay_basis_lbl: "গণনার ভিত্তি:",
       mob_salary: "বেতন",
@@ -1697,17 +1712,40 @@
     }
   };
 
+  // Hindi pages have their own URLs (hi/...), listed in <link rel="alternate" hreflang>.
+  // Choosing Hindi on an English page, or English/Bengali on a Hindi page, opens the other
+  // page; Bengali is switched in place on English pages.
+  function alternateUrl(lang) {
+    if (!document.querySelector('link[rel="alternate"][hreflang="' + lang + '"]')) return null;
+    let rest = window.location.pathname.slice(SITE_ROOT.pathname.length);
+    if (rest.startsWith("hi/")) rest = rest.slice(3);
+    return new URL((lang === "hi" ? "hi/" : "") + rest, SITE_ROOT).href;
+  }
+
+  function switchLanguage(lang) {
+    if (lang === "hi" && !LANG_PREFIX && alternateUrl("hi")) {
+      window.location.href = alternateUrl("hi");
+      return;
+    }
+    if (lang !== "hi" && LANG_PREFIX && alternateUrl("en")) {
+      safeStorageSet(LANG_KEY, lang);
+      window.location.href = alternateUrl("en");
+      return;
+    }
+    applyLanguage(lang);
+  }
+
   function applyLanguage(lang) {
     state.lang = I18N[lang] ? lang : "en";
-    safeStorageSet(LANG_KEY, state.lang);
+    if (!LANG_PREFIX) safeStorageSet(LANG_KEY, state.lang);
     document.documentElement.lang = state.lang;
     const dict = I18N[state.lang];
 
     document.querySelectorAll(".lang-btn").forEach(btn => {
       const isAct = btn.getAttribute("data-lang") === state.lang;
       btn.className = isAct
-        ? "lang-btn px-2 py-1 rounded-lg text-[11px] font-semibold transition bg-sky-500 text-white shadow-sm"
-        : "lang-btn px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white";
+        ? "lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition bg-sky-500 text-white shadow-sm"
+        : "lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white";
     });
 
     byId("app-title").textContent = dict.app_title;
@@ -1919,7 +1957,7 @@
         "tab-guides": dict.nav_guides
       };
       if (topBarTitle) {
-        topBarTitle.textContent = customTitle || tabNames[tabId] || "";
+        topBarTitle.textContent = customTitle || tabNames[tabId] || document.body.getAttribute("data-page-name") || "";
       }
     }
 
@@ -1939,7 +1977,7 @@
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const lang = btn.getAttribute("data-lang");
-        applyLanguage(lang);
+        switchLanguage(lang);
         showToast(lang === "hi" ? "भाषा हिंदी में बदल गई" : (lang === "bn" ? "ভাষা বাংলায় পরিবর্তিত হয়েছে" : "Language switched to English"));
       });
     });
@@ -2291,7 +2329,7 @@
   }
 
   // =========================================================================
-  // 16. MODULAR ANDROID-READY MICRO-TOOLS ENGINE (ALL 94+ TOOLS SUITE)
+  // 16. MICRO-TOOLS ENGINE (46 TOOLS)
   //     Designed as a pure declarative registry + stateless compute engine
   //     for 1:1 portability to Android Jetpack Compose / Kotlin MVVM.
   // =========================================================================
@@ -4233,7 +4271,7 @@
     });
 
     if (countBadge) {
-      countBadge.textContent = `${filtered.length} Suite(s) Shown (Covers All 94 Tools)`;
+      countBadge.textContent = `${filtered.length} of ${MICRO_TOOLS_REGISTRY.length} calculators shown`;
     }
 
     grid.innerHTML = filtered.map(tool => {
@@ -4253,7 +4291,7 @@
         ? "border-2 border-emerald-600 bg-emerald-50/50 shadow-md"
         : "border border-slate-200 bg-white hover:border-blue-400 hover:shadow-sm";
 
-      return `<button type="button" data-mt-id="${tool.id}" class="mt-tool-card android-ripple text-left rounded-2xl p-3.5 transition flex flex-col justify-between gap-2.5 ${cardCls}">
+      return `<a href="${toolPageUrl(tool.id) || "#"}" data-mt-id="${tool.id}" class="mt-tool-card android-ripple text-left rounded-2xl p-3.5 transition flex flex-col justify-between gap-2.5 ${cardCls}">
         <div>
           <div class="flex items-center justify-between gap-2">
             <span class="text-lg">${tool.icon}</span>
@@ -4266,7 +4304,7 @@
           <span class="text-[11px] font-mono font-extrabold text-emerald-700 truncate">${previewOut.primaryVal}</span>
           <span class="text-[11px] font-bold text-blue-700 shrink-0">${isSelected ? "Active ●" : "Open →"}</span>
         </div>
-      </button>`;
+      </a>`;
     }).join("");
 
     renderActiveMicroToolWorkbench();
@@ -4373,7 +4411,10 @@
       grid.addEventListener("click", (e) => {
         const card = e.target.closest(".mt-tool-card");
         if (!card) return;
-        mtState.activeToolId = card.getAttribute("data-mt-id");
+        const id = card.getAttribute("data-mt-id");
+        if (toolPageUrl(id) && currentToolPage() !== id) return; // the card is a link to the tool's own page
+        e.preventDefault();
+        mtState.activeToolId = id;
         byId("mt-wb-inputs").setAttribute("data-rendered-tool", "");
         renderMicroToolsGrid();
       });
@@ -4578,10 +4619,41 @@
     return null;
   }
 
+  // Menu and footer items that are real links (<a href>) to another page are followed
+  // normally, so they work without JavaScript and search engines can crawl them.
+  function isLinkToOtherPage(el, action) {
+    if (el.tagName !== "A" || !el.getAttribute("href") || el.getAttribute("href") === "#") return false;
+    const [type, val] = (action || "").split(":");
+    if (type === "tab") return !document.getElementById(val);
+    if (type === "mt") return currentToolPage() !== val;
+    return true;
+  }
+
+  // Shows one micro-tool on its own (focus mode) on the tools page.
+  function openMicroTool(id, quiet) {
+    mtState.activeToolId = id;
+    mtState.category = "ALL";
+    mtState.searchQuery = "";
+    const sInp = document.getElementById("inp-mt-search");
+    if (sInp) sInp.value = "";
+    byId("mt-wb-inputs").setAttribute("data-rendered-tool", "");
+    const toolObj = MICRO_TOOLS_REGISTRY.find(t => t.id === id);
+    const tTitle = toolObj ? (toolObj.title[state.lang] || toolObj.title.en) : "Calculator";
+    setMicroToolsFocusMode(true);
+    switchMainTab("tab-microtools", tTitle);
+    renderMicroToolsGrid();
+    if (!quiet) showToast(tTitle);
+  }
+
   function executeNavAction(actionStr) {
     if (!actionStr) return;
     closeAllDropdowns();
     const [type, val] = actionStr.split(":");
+
+    if (type === "mt" && toolPageUrl(val) && currentToolPage() !== val) {
+      window.location.href = toolPageUrl(val);
+      return;
+    }
 
     const targetTab = getNavActionTab(type, val);
     if (targetTab && !document.getElementById(targetTab)) {
@@ -4615,19 +4687,8 @@
       renderPayslipModalContent();
       byId("modal-payslip").classList.remove("hidden");
     } else if (type === "mt") {
-      mtState.activeToolId = val;
-      mtState.category = "ALL";
-      mtState.searchQuery = "";
-      const sInp = document.getElementById("inp-mt-search");
-      if (sInp) sInp.value = "";
-      byId("mt-wb-inputs").setAttribute("data-rendered-tool", "");
-      const toolObj = MICRO_TOOLS_REGISTRY.find(t => t.id === val);
-      const tTitle = toolObj ? (toolObj.title[state.lang] || toolObj.title.en) : "Calculator";
-      setMicroToolsFocusMode(true);
-      switchMainTab("tab-microtools", tTitle);
-      renderMicroToolsGrid();
+      openMicroTool(val);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      showToast(tTitle);
     } else if (type === "level") {
       state.levelId = val;
       populateLevelAndBasicDropdowns(false);
@@ -4783,7 +4844,10 @@
       const itemBtn = e.target.closest(".mega-item-btn");
       if (!itemBtn) return;
       e.stopPropagation();
-      executeNavAction(itemBtn.getAttribute("data-nav-action"));
+      const action = itemBtn.getAttribute("data-nav-action");
+      if (isLinkToOtherPage(itemBtn, action)) return; // let the browser follow the link
+      e.preventDefault();
+      executeNavAction(action);
     });
 
     // Close dropdowns on outside click
@@ -5810,8 +5874,10 @@
 
     document.querySelectorAll(".footer-nav-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
+        const action = btn.getAttribute("data-footer-nav");
+        if (isLinkToOtherPage(btn, action)) return;
         e.preventDefault();
-        executeNavAction(btn.getAttribute("data-footer-nav"));
+        executeNavAction(action);
       });
     });
   }
@@ -5832,9 +5898,14 @@
     renderAll20StatesTable();
     renderMicroToolsGrid();
 
-    const savedLang = safeStorageGet(LANG_KEY, "en");
+    // A Hindi page (<html lang="hi" data-prefix="hi/">) always opens in Hindi; elsewhere the
+    // visitor's last choice is remembered.
+    const pageLang = document.documentElement.getAttribute("data-prefix") ? document.documentElement.lang : null;
+    let savedLang = pageLang || safeStorageGet(LANG_KEY, "en");
+    if (!pageLang && savedLang === "hi" && alternateUrl("hi")) savedLang = "en"; // Hindi has its own pages
     if (savedLang !== "en") applyLanguage(savedLang);
     switchMainTab(getCurrentPageTab());
+    if (currentToolPage()) openMicroTool(currentToolPage(), true);
 
     const params = new URLSearchParams(window.location.search);
     const pendingAction = params.get("go");
