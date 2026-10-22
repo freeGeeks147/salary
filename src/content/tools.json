@@ -1,0 +1,238 @@
+{
+  "_comment": "One page per micro-tool at /tools/<slug>/. title <= 60 chars, description <= 155 chars. intro and faqs are optional; tool details (inputs, rule) come from assets/js/app.js.",
+  "ta_calculator_guide": {
+    "slug": "transport-allowance-calculator",
+    "title": "Transport Allowance (TA) Calculator 2026 | Govt Employees",
+    "description": "Calculate transport allowance (TA) and DA on TA for central govt employees by pay level, for higher TPTA cities and other cities, including the 2× Divyangjan rate.",
+    "intro": "Transport Allowance depends on your pay level and on whether you are posted in one of the 19 higher TPTA cities. Dearness Allowance is paid on top of TA at the current DA rate."
+  },
+  "city_class_guide": {
+    "slug": "hra-city-classification-x-y-z",
+    "title": "X, Y, Z City Classification for HRA & TA (2026 List)",
+    "description": "Which cities are X, Y and Z class for HRA and transport allowance, the HRA rate for each (30%, 20%, 10%) and minimum HRA, with 7th vs 8th CPC rates."
+  },
+  "leave_rules_guide": {
+    "slug": "leave-encashment-calculator",
+    "title": "Leave Encashment Calculator – CCS Leave Rules (EL, HPL)",
+    "description": "Calculate earned leave encashment at retirement (up to 300 days) and see CCS Leave Rules for EL, half pay leave, commuted leave and casual leave."
+  },
+  "da_calculator_tool": {
+    "slug": "dearness-allowance-calculator",
+    "title": "DA Calculator 2026 – Dearness Allowance for Govt Employees",
+    "description": "Calculate your Dearness Allowance (DA) at the current rate and projected July 2026 and January 2027 rates, and see how DA merges into basic pay in the 8th CPC.",
+    "intro": "Dearness Allowance (DA) is a percentage of your basic pay, revised twice a year (January and July) using the AICPI-IW price index. This calculator shows your DA in rupees at the current and projected rates."
+  },
+  "hra_calculator_tool": {
+    "slug": "hra-calculator",
+    "title": "HRA Calculator for Central Govt Employees – 7th & 8th CPC",
+    "description": "Calculate House Rent Allowance for X, Y and Z class cities at 30%, 20% and 10% of basic pay, with the minimum HRA and the projected 8th CPC HRA rates.",
+    "intro": "House Rent Allowance (HRA) is a percentage of basic pay that depends on the class of the city you are posted in. The rate goes up when DA crosses 25% and 50%."
+  },
+  "capf_handbook_suite": {
+    "slug": "capf-salary-calculator",
+    "title": "CAPF Salary Calculator – BSF, CRPF, CISF, ITBP, SSB Ranks",
+    "description": "CAPF salary by rank for BSF, CRPF, CISF, ITBP and SSB: pay level, risk and hardship allowance, ration money and projected 8th CPC pay."
+  },
+  "railway_hub_suite": {
+    "slug": "railway-salary-calculator",
+    "title": "Railway Salary Calculator – Running Allowance & Bonus (PLB)",
+    "description": "Indian Railways salary for Loco Pilot, TTE, Trackman, JE and more: pay level, running allowance (kilometrage) and productivity linked bonus (PLB)."
+  },
+  "first_pay": {
+    "slug": "first-salary-calculator",
+    "title": "First Salary Calculator for New Govt Joiners (SSC, UPSC)",
+    "description": "Work out your first month's in-hand salary after joining a central government job mid-month, with pro-rata basic pay, DA, HRA, TA and deductions."
+  },
+  "pay_fixation_fr22": {
+    "slug": "promotion-pay-fixation-calculator",
+    "title": "Promotion & MACP Pay Fixation Calculator – FR 22(I)(a)(1)",
+    "description": "Calculate your new basic pay on promotion or MACP under FR 22(I)(a)(1): one notional increment, then fixation in the next level of the pay matrix."
+  },
+  "pay_protection": {
+    "slug": "pay-protection-calculator",
+    "title": "Pay Protection Calculator – Central Govt Direct Recruits",
+    "description": "Check pay protection when a central government employee joins a new post by direct recruitment: protected basic pay in the new level of the pay matrix."
+  },
+  "deputation_allowance": {
+    "slug": "deputation-allowance-calculator",
+    "title": "Deputation Allowance Calculator – Same & Other Station",
+    "description": "Calculate deputation (duty) allowance for central govt employees: 5% of basic for the same station and 10% for another station, with the monthly ceilings."
+  },
+  "increment_hike": {
+    "slug": "annual-increment-calculator",
+    "title": "Annual Increment Calculator – 3% Pay Matrix Increment",
+    "description": "See your next basic pay after the 3% annual increment in January or July, and how your salary grows over the coming years in the 7th CPC pay matrix."
+  },
+  "subsistence_allowance": {
+    "slug": "subsistence-allowance-calculator",
+    "title": "Subsistence Allowance Calculator During Suspension (FR 53)",
+    "description": "Calculate subsistence allowance during suspension under FR 53: 50% of pay plus DA for the first three months, and the revised 75% or 25% after review."
+  },
+  "ctc_to_inhand": {
+    "slug": "ctc-to-in-hand-salary-calculator",
+    "title": "CTC to In-Hand Salary Calculator – Private vs Govt Job",
+    "description": "Convert a private sector CTC into monthly in-hand salary and compare it with a central government job's take-home pay, allowances and benefits."
+  },
+  "salary_exp_cert": {
+    "slug": "salary-certificate-format",
+    "title": "Salary Certificate & Experience Certificate Format (Govt)",
+    "description": "Ready salary certificate and experience certificate format for central government employees, filled with your pay level, basic pay and allowances."
+  },
+  "tour_tada_ctg": {
+    "slug": "ta-da-on-tour-transfer-calculator",
+    "title": "TA/DA on Tour & Transfer (CTG) Calculator – 7th CPC",
+    "description": "Calculate daily allowance on tour, hotel and taxi limits, and composite transfer grant (CTG) on transfer for central govt employees by pay level."
+  },
+  "posting_allowances": {
+    "slug": "special-duty-allowance-calculator",
+    "title": "Special Duty & Hardship Allowance – NE, Ladakh, Islands",
+    "description": "Calculate special duty allowance and tough location allowance for postings in the North East, Ladakh, and Andaman & Nicobar and Lakshadweep islands."
+  },
+  "ltc_calculator": {
+    "slug": "ltc-calculator",
+    "title": "LTC Calculator 2026 – Fare Entitlement & Leave Encashment",
+    "description": "Calculate LTC fare entitlement by pay level and 10 days earned leave encashment with LTC for the 2026–2029 block, for central government employees."
+  },
+  "cea_hostel": {
+    "slug": "children-education-allowance-calculator",
+    "title": "Children Education Allowance (CEA) & Hostel Subsidy 2026",
+    "description": "Calculate Children Education Allowance (₹2,812.50 a month per child) and hostel subsidy for up to two children, with the DA-linked increase."
+  },
+  "govt_quarters": {
+    "slug": "govt-quarters-vs-hra-calculator",
+    "title": "Government Quarters vs HRA Calculator – Type I to VIII",
+    "description": "Compare living in government quarters (licence fee, Type I to VIII by pay level) with taking HRA and renting a house, in monthly take-home terms."
+  },
+  "rent_receipt_gen": {
+    "slug": "rent-receipt-generator",
+    "title": "Rent Receipt Generator for HRA Exemption (Form 124 / 12BB)",
+    "description": "Create rent receipts for HRA exemption and see the HRA exemption under section 10(13A), with the details your DDO needs in Form 124 (old Form 12BB)."
+  },
+  "cghs_ward_card": {
+    "slug": "cghs-contribution-ward-entitlement",
+    "title": "CGHS Contribution & Ward Entitlement by Pay Level (2026)",
+    "description": "Monthly CGHS contribution and hospital ward entitlement (general, semi-private, private) by pay level, plus the one-time lifetime card for pensioners."
+  },
+  "cgegis_insurance": {
+    "slug": "cgegis-calculator",
+    "title": "CGEGIS Calculator – Group Insurance Deduction & Maturity",
+    "description": "Central Government Employees Group Insurance Scheme: monthly deduction by group, insurance cover, and the savings fund paid at retirement."
+  },
+  "gpf_calculator": {
+    "slug": "gpf-calculator",
+    "title": "GPF Calculator 2026 – 7.1% Interest, Advance & Withdrawal",
+    "description": "Calculate your General Provident Fund balance with 7.1% interest, and check GPF advance and final withdrawal limits for central govt employees.",
+    "intro": "The General Provident Fund (GPF) is open to employees under the old pension scheme. You choose a monthly subscription, and the balance earns interest set by the government each quarter (7.1% at present)."
+  },
+  "vpf_epf_calculator": {
+    "slug": "epf-vpf-calculator",
+    "title": "EPF & VPF Calculator – 8.25% Interest Maturity Amount",
+    "description": "Calculate your EPF and VPF maturity amount at 8.25% interest with yearly salary growth, for PSU, autonomous body and private sector employees."
+  },
+  "commuted_pension": {
+    "slug": "commutation-of-pension-calculator",
+    "title": "Commutation of Pension Calculator – 40% & Restoration",
+    "description": "Calculate the lump sum for commuting up to 40% of your pension, the reduced monthly pension, and when the commuted part is restored after 15 years.",
+    "intro": "Commutation lets a pensioner take up to 40% of the monthly pension as a one-time lump sum. The lump sum is pension × 12 × the commutation factor for your age, and the commuted part is restored after 15 years."
+  },
+  "family_pension_80plus": {
+    "slug": "family-pension-calculator",
+    "title": "Family Pension Calculator – 50% / 30% & Age 80+",
+    "description": "Calculate enhanced (50%) and ordinary (30%) family pension under CCS Pension Rules 2021, and the additional pension for pensioners aged 80 and above."
+  },
+  "death_benefits_nps_opt": {
+    "slug": "death-benefits-calculator",
+    "title": "Death in Service Benefits Calculator – NPS / OPS Option",
+    "description": "Benefits to the family on death in service: ex-gratia, death gratuity, family pension and the NPS Form 1 option to get old pension scheme benefits."
+  },
+  "disability_pension_eop": {
+    "slug": "disability-pension-calculator",
+    "title": "Disability Pension Calculator – EOP Rules 2023",
+    "description": "Calculate disability pension and the disability element under the CCS (Extraordinary Pension) Rules 2023, by percentage of disability and last pay."
+  },
+  "apy_eps95": {
+    "slug": "atal-pension-yojana-eps-95-calculator",
+    "title": "Atal Pension Yojana & EPS-95 Pension Calculator",
+    "description": "Monthly contribution needed for Atal Pension Yojana (₹1,000 to ₹5,000 pension) and your EPS-95 pension from pensionable salary and years of service."
+  },
+  "gulf_gratuity": {
+    "slug": "gulf-gratuity-calculator",
+    "title": "Gulf Gratuity Calculator – UAE, Saudi Arabia, Qatar (EOSB)",
+    "description": "Calculate end-of-service gratuity (EOSB) in the UAE, Saudi Arabia and Qatar from your basic salary and years of service."
+  },
+  "ccl_maternity_leave": {
+    "slug": "child-care-leave-maternity-leave-calculator",
+    "title": "Child Care Leave (CCL) & Maternity Leave Calculator",
+    "description": "Check child care leave (730 days, pay rules) and maternity leave (180 days) balances and pay for central government employees."
+  },
+  "retire_date_dlc": {
+    "slug": "retirement-date-calculator",
+    "title": "Retirement Date Calculator – FR 56 & Pension Timeline",
+    "description": "Find your retirement date from date of birth under FR 56, and the pension paperwork timeline: Form 6-A, pension papers and Jeevan Pramaan."
+  },
+  "retirement_planning_gap": {
+    "slug": "retirement-planning-calculator",
+    "title": "Retirement Planning Calculator – Pension Gap for Govt Staff",
+    "description": "Will your pension cover your expenses after retirement? Estimate the pension gap and the extra savings you need, with inflation."
+  },
+  "form_10e_sec89": {
+    "slug": "form-10e-arrears-tax-relief-calculator",
+    "title": "Form 10E Calculator – Section 89(1) Tax Relief on Arrears",
+    "description": "Calculate income tax relief under section 89(1) on salary arrears (such as 8th CPC arrears) and fill Form 10E before filing your return."
+  },
+  "hba_loan_calc": {
+    "slug": "house-building-advance-calculator",
+    "title": "House Building Advance (HBA) Calculator – 7.10% Interest",
+    "description": "Calculate House Building Advance eligibility (34× basic or up to ₹25 lakh), monthly recovery of principal and simple interest for central govt employees."
+  },
+  "post_office_savings": {
+    "slug": "post-office-savings-calculator",
+    "title": "Post Office Savings Calculator – SCSS, MIS, PPF, NSC 2026",
+    "description": "Calculate returns on Post Office schemes: Senior Citizen Savings Scheme, Monthly Income Scheme, PPF and NSC at current interest rates."
+  },
+  "sukanya_samriddhi": {
+    "slug": "sukanya-samriddhi-yojana-calculator",
+    "title": "Sukanya Samriddhi Yojana Calculator – 8.2% Maturity",
+    "description": "Calculate Sukanya Samriddhi Yojana (SSY) maturity amount at 8.2% tax-free interest from your yearly deposit and your daughter's age."
+  },
+  "nri_tax_forms": {
+    "slug": "nri-status-checker",
+    "title": "NRI Status Checker & New Income Tax Forms Guide 2026-27",
+    "description": "Check your residential status (resident, RNOR or NRI) from days in India, and the new income tax form numbers from FY 2026-27."
+  },
+  "bank_iba_12bps": {
+    "slug": "bank-salary-calculator-12th-bipartite",
+    "title": "Bank Salary Calculator – 12th Bipartite, RBI & LIC Pay",
+    "description": "Bank employee salary under the 12th bipartite settlement for clerks and officers, plus RBI and LIC pay scales, with DA and allowances."
+  },
+  "psu_cpse_3prc": {
+    "slug": "psu-salary-calculator-ida",
+    "title": "PSU Salary Calculator – 3rd PRC IDA Pay Scales E0 to E9",
+    "description": "CPSE / PSU executive salary on IDA pay scales (E0 to E9) under the 3rd Pay Revision Committee, with IDA, perks and performance pay."
+  },
+  "agniveer_defence": {
+    "slug": "agniveer-salary-calculator",
+    "title": "Agniveer Salary Calculator – Seva Nidhi & Defence MSP",
+    "description": "Agniveer monthly package, in-hand pay and Seva Nidhi after four years, plus Military Service Pay (MSP) for defence ranks."
+  },
+  "state_govt_compare": {
+    "slug": "state-government-salary-da-comparison",
+    "title": "State Government Salary & DA Comparison (20 States)",
+    "description": "Compare state government employee DA, pay commission and salary across 20 states with the central government."
+  },
+  "faculty_doctor_npa": {
+    "slug": "professor-doctor-salary-npa-calculator",
+    "title": "Professor & Govt Doctor Salary Calculator – UGC, IIT, NPA",
+    "description": "Salary of assistant, associate and full professors (UGC, IIT) and government doctors with 20% non-practising allowance (NPA)."
+  },
+  "age_ews_obc_checker": {
+    "slug": "age-relaxation-ews-obc-creamy-layer-checker",
+    "title": "Age Relaxation, EWS & OBC Creamy Layer Checker",
+    "description": "Check upper age relaxation for SC, ST, OBC, PwBD and ex-servicemen, and whether your family income meets EWS or OBC non-creamy layer limits."
+  },
+  "conduct_rules_checker": {
+    "slug": "ccs-conduct-rules-checker",
+    "title": "CCS Conduct Rules Checker – Gifts, Property & Shares",
+    "description": "Check CCS (Conduct) Rules limits for gifts, buying property and investing in shares, and when you must inform or take permission."
+  }
+}

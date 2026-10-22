@@ -10,7 +10,7 @@
         <span class="text-sky-300 font-semibold">1.92× Fitment</span>
         <span>60% DA Active</span>
         <span class="hidden sm:inline">FY 2026-27</span>
-        <span class="hidden md:inline text-emerald-300">100% Offline Ready</span>
+        <span class="hidden md:inline text-emerald-300">Free · No sign-up</span>
       </div>
     </div>
 
@@ -27,13 +27,13 @@
               <div id="app-title" class="text-sm sm:text-base font-extrabold tracking-tight text-white leading-none">CPC Calculator</div>
               <span class="hidden xl:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-sky-500/20 text-sky-300 border border-sky-400/30">8th CPC</span>
             </div>
-            <p id="app-subtitle" class="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">7TH &amp; 8TH PAY COMMISSION</p>
+            <p id="app-subtitle" class="hidden sm:block text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">7TH &amp; 8TH PAY COMMISSION</p>
           </div>
         </button>
       </div>
 
       <!-- Center: 9 Interactive Dropdown Triggers (Desktop) -->
-      <div class="hidden lg:flex items-center gap-0.5 text-xs font-medium text-slate-200" id="desktop-dropdown-bar">
+      <div class="hidden xl:flex items-center gap-0.5 text-xs font-medium text-slate-200" id="desktop-dropdown-bar">
         <button type="button" data-dd-trigger="dd-calculators" class="dd-trigger-btn px-2.5 py-2 rounded-lg hover:bg-slate-800/90 hover:text-white transition flex items-center gap-1">
           <span data-i18n="menu_calculators">Calculators</span> <span class="text-[10px] text-slate-400">▾</span>
         </button>
@@ -65,36 +65,36 @@
 
       <!-- Right: WhatsApp Share + Language Toggle + Search ⌘K + Salary Slip + Mobile Menu -->
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <button type="button" id="btn-nav-whatsapp" title="Share on WhatsApp" class="android-ripple w-8 h-8 rounded-full bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm">
+        <button type="button" id="btn-nav-whatsapp" title="Share on WhatsApp" aria-label="Share on WhatsApp" class="android-ripple hidden sm:flex w-8 h-8 rounded-full bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm">
           💬
         </button>
 
         <div class="inline-flex rounded-xl bg-slate-800/90 p-0.5 border border-slate-700" role="group" aria-label="Language Selector">
-          <button type="button" id="lang-en" data-lang="en" class="lang-btn px-2 py-1 rounded-lg text-[11px] font-semibold transition bg-emerald-500 text-white shadow-sm">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition bg-emerald-500 text-white shadow-sm">
             English
           </button>
-          <button type="button" id="lang-hi" data-lang="hi" class="lang-btn px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
+          <button type="button" id="lang-hi" data-lang="hi" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
             हिंदी
           </button>
-          <button type="button" id="lang-bn" data-lang="bn" class="lang-btn px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
+          <button type="button" id="lang-bn" data-lang="bn" class="lang-btn px-1.5 sm:px-2 py-1 rounded-lg text-[11px] font-semibold transition text-slate-300 hover:text-white">
             বাংলা
           </button>
         </div>
 
-        <button type="button" id="btn-cmd-search" class="android-ripple px-2.5 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-xs font-medium text-slate-300 border border-slate-700 flex items-center gap-2">
+        <button type="button" id="btn-cmd-search" aria-label="Search" class="android-ripple hidden sm:flex px-2.5 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-xs font-medium text-slate-300 border border-slate-700 flex items-center gap-2">
           <span>🔍</span>
           <span class="hidden sm:inline" data-i18n="menu_search">Search</span>
           <kbd class="hidden md:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-slate-900 text-slate-400 rounded border border-slate-700">⌘K</kbd>
         </button>
 
-        <button type="button" id="btn-open-payslip" class="android-ripple hidden xl:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15">
+        <button type="button" id="btn-open-payslip" class="android-ripple hidden 2xl:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15">
           <span>📄</span>
           <span id="lbl-payslip-btn">Salary Slip</span>
         </button>
 
         <!-- Mobile Mega-Menu Drawer Button -->
-        <button type="button" id="btn-mobile-megamenu" class="lg:hidden android-ripple px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-sky-300 border border-slate-700 flex items-center gap-1">
-          <span>☰</span> <span>Menu</span>
+        <button type="button" id="btn-mobile-megamenu" aria-label="Menu" class="xl:hidden android-ripple px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-sky-300 border border-slate-700 flex items-center gap-1">
+          <span>☰</span> <span class="hidden sm:inline">Menu</span>
         </button>
       </div>
 
@@ -387,7 +387,6 @@
            DROPDOWN 8: LEARN
            ============================================================== -->
       <div id="dd-learn" class="dd-panel hidden absolute right-28 top-full mt-1 w-56 bg-[#131c31] border border-slate-700/90 rounded-2xl p-2.5 text-xs text-slate-200 z-50 mega-dropdown-panel space-y-1">
-        <button type="button" data-nav-action="scroll:discussion-section" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-bold text-emerald-400">💬 Employee Discussion &amp; Q&amp;A</button>
         <button type="button" data-nav-action="scroll:app-footer" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-semibold text-sky-300">📌 Official Footer Notes (1–8)</button>
         <button type="button" data-nav-action="guide:articles" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">Articles &amp; Deep Dives</button>
         <button type="button" data-nav-action="guide:glossary" class="mega-item-btn w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 font-medium">Glossary (CPC Terms)</button>
@@ -424,7 +423,7 @@
           <span>🧾</span> <span data-i18n="nav_tax">Tax &amp; Post Presets</span>
         </a>
         <a href="{{ROOT}}tools/" data-tab="tab-microtools" id="nav-btn-microtools" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-emerald-300 bg-emerald-500/15 border border-emerald-400/30 hover:bg-white/10">
-          <span>🧰</span> <span data-i18n="nav_microtools">All 94+ Micro-Tools</span>
+          <span>🧰</span> <span data-i18n="nav_microtools">All 46 Calculators</span>
         </a>
         <a href="{{ROOT}}8th-pay-commission/" data-tab="tab-guides" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 text-slate-200 hover:bg-white/10">
           <span>📱</span> <span data-i18n="nav_guides">8th CPC Info &amp; APK</span>
