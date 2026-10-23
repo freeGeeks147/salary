@@ -290,7 +290,7 @@
       lbl_annual_gain: "Annual Extra In-Hand:",
       lbl_7th_annual: "7th CPC Annual:",
       btn_view_payslip: "View Payslip",
-      btn_copy_share: "Share Summary",
+      btn_copy_share: "Share on WhatsApp",
       sec_input_title: "Salary Parameters (7th & 8th CPC)",
       sec_input_sub: "Select your level, basic pay, city & fitment factor",
       btn_reset: "Reset",
@@ -458,7 +458,7 @@
       lbl_annual_gain: "सालाना अतिरिक्त इन-हैंड:",
       lbl_7th_annual: "7वां वेतन सालाना:",
       btn_view_payslip: "पे-स्लिप देखें",
-      btn_copy_share: "शेयर करें",
+      btn_copy_share: "WhatsApp पर भेजें",
       sec_input_title: "वेतन विवरण (7वां और 8वां वेतन आयोग)",
       sec_input_sub: "अपना पे लेवल, बेसिक पे, शहर और फिटमेंट फैक्टर चुनें",
       btn_reset: "रीसेट",
@@ -626,7 +626,7 @@
       lbl_annual_gain: "বার্ষিক অতিরিক্ত ইন-হ্যান্ড:",
       lbl_7th_annual: "৭ম বেতন বার্ষিক:",
       btn_view_payslip: "পে-স্লিপ দেখুন",
-      btn_copy_share: "শেয়ার করুন",
+      btn_copy_share: "WhatsApp-এ শেয়ার করুন",
       sec_input_title: "বেতনের বিবরণ (৭ম ও ৮ম বেতন কমিশন)",
       sec_input_sub: "আপনার পে লেভেল, বেসিক পে, শহর এবং ফিটমেন্ট ফ্যাক্টর নির্বাচন করুন",
       btn_reset: "রিসেট",
@@ -1038,6 +1038,33 @@
       if (saved[k] !== undefined && typeof saved[k] === typeof state[k]) state[k] = saved[k];
     });
     if (!PAY_LEVEL_META.some(l => l.id === String(state.levelId))) state.levelId = "10";
+  }
+
+  // A shared link (?lv=10&bp=56100&fit=1.92&hra=X) opens the same result; it wins over saved state.
+  function applySharedLinkParams() {
+    const q = new URLSearchParams(window.location.search);
+    const lv = q.get("lv");
+    if (!lv || !PAY_LEVEL_META.some(l => l.id === lv)) return;
+    state.levelId = lv;
+    const cells = OFFICIAL_CELLS[lv] || [];
+    const bp = parseInt(q.get("bp"), 10);
+    state.basicPay = cells.includes(bp) ? bp : (cells[0] || state.basicPay);
+    const fit = parseFloat(q.get("fit"));
+    if (fit >= 1 && fit <= 4) state.fitment = Math.round(fit * 100) / 100;
+    if (["X", "Y", "Z"].includes(q.get("hra"))) state.hraClass = q.get("hra");
+  }
+
+  function shareLink() {
+    const url = new URL(pageUrl("tab-salary"));
+    url.search = new URLSearchParams({ lv: state.levelId, bp: state.basicPay, fit: state.fitment.toFixed(2), hra: state.hraClass }).toString();
+    return url.href;
+  }
+
+  // Opens WhatsApp (app on phones, web on laptops) with the summary and a link to the same result.
+  function shareOnWhatsApp() {
+    const more = state.lang === "hi" ? "अपनी सैलरी देखें (मुफ़्त):" : "Check your salary (free):";
+    const text = getSummaryText() + "\n\n" + more + " " + shareLink();
+    window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener");
   }
 
   // Reflects the restored state in the calculator controls (salary page only).
@@ -1648,6 +1675,18 @@
   function getSummaryText() {
     const { levelMeta, cpc7, cpc8 } = state.lastResult;
     const diff = cpc8.net - cpc7.net;
+    if (state.lang === "hi") {
+      return [
+        `🇮🇳 *8वां वेतन आयोग: सैलरी का अनुमान*`,
+        `• पे लेवल: ${levelMeta.name} (${levelMeta.gp})`,
+        `• फिटमेंट फैक्टर: ${state.fitment.toFixed(2)}× | शहर श्रेणी: ${state.hraClass}`,
+        `• बेसिक पे: ${formatINR(cpc7.basic)} → ${formatINR(cpc8.basic)}`,
+        `• 7वें वेतन आयोग में इन-हैंड (${cpc7.daPct}% DA): ${formatINR(cpc7.net)}/माह`,
+        `• 8वें वेतन आयोग में अनुमानित इन-हैंड: ${formatINR(cpc8.net)}/माह`,
+        `• हर महीने बढ़ोतरी: +${formatINR(diff)} (+${formatINR(diff * 12)}/साल)`,
+        `(अनुमान, आधिकारिक नहीं)`
+      ].join("\n");
+    }
     return [
       `🇮🇳 *8th Pay Commission Salary Estimate*`,
       `• Pay Level: ${levelMeta.name} (${levelMeta.gp})`,
@@ -1655,7 +1694,8 @@
       `• 7th CPC Basic: ${formatINR(cpc7.basic)} → 8th CPC Basic: ${formatINR(cpc8.basic)}`,
       `• 7th CPC In-Hand (${cpc7.daPct}% DA): ${formatINR(cpc7.net)}/mo`,
       `• 8th CPC Projected In-Hand: ${formatINR(cpc8.net)}/mo`,
-      `• Monthly Net Hike: +${formatINR(diff)}/mo (+${formatINR(diff * 12)}/yr)`
+      `• Monthly Net Hike: +${formatINR(diff)}/mo (+${formatINR(diff * 12)}/yr)`,
+      `(Estimate, not official)`
     ].join("\n");
   }
 
@@ -2274,9 +2314,7 @@
     byId("btn-copy-slip-text").addEventListener("click", () => {
       copyToClipboard(getSummaryText(), "Salary Summary copied to clipboard!");
     });
-    byId("btn-share-whatsapp").addEventListener("click", () => {
-      copyToClipboard(getSummaryText(), "Summary copied! Ready to paste in WhatsApp.");
-    });
+    byId("btn-share-whatsapp").addEventListener("click", shareOnWhatsApp);
 
     // CSV Export
     byId("btn-export-csv").addEventListener("click", () => {
@@ -4867,9 +4905,7 @@
     // Navbar WhatsApp share button
     const navWaBtn = document.getElementById("btn-nav-whatsapp");
     if (navWaBtn) {
-      navWaBtn.addEventListener("click", () => {
-        copyToClipboard(getSummaryText(), "Salary Summary copied! Ready to share on WhatsApp.");
-      });
+      navWaBtn.addEventListener("click", shareOnWhatsApp);
     }
 
     // Sector context banner dismiss
@@ -5885,6 +5921,7 @@
   // Initialize on DOMContentLoaded / load
   function init() {
     restoreCalcState();
+    applySharedLinkParams();
     bindSharedInputs();
     populateLevelAndBasicDropdowns(true);
     renderPostPresets();
