@@ -192,6 +192,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{root}assets/css/site.css" />
+  <script async src="https://analytics.ahrefs.com/analytics.js" data-key="mVizr0+CAUqYCIW32aAg9A"></script>
   <script>window.GSC_TOOL_SLUGS = {tool_slugs};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="{root}assets/js/app.js"></script>
