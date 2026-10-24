@@ -17,7 +17,8 @@
     "tab-microtools": "tools/",
     "tab-guides": "8th-pay-commission/",
     "tab-cpc7": "7th-pay-commission/",
-    "tab-fitment": "8th-pay-commission/fitment-factor/"
+    "tab-fitment": "8th-pay-commission/fitment-factor/",
+    "tab-hike": "8th-pay-commission/salary-hike/"
   };
 
   // Pages in another language live under a prefix (e.g. "hi/"), set on <html data-prefix>.
