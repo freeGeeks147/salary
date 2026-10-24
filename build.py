@@ -37,12 +37,12 @@ PAGES = [
         "section": "salary",
         "hero": True,
         "name": "8th Pay Commission Salary Calculator",
-        "title": "8th Pay Commission Salary Calculator 2026 | 7th & 8th CPC",
-        "description": "Free 8th Pay Commission salary calculator: compare 7th & 8th CPC in-hand pay with DA, HRA, TA, NPS & income tax at any fitment factor. Updated 2026.",
+        "title": "8th Pay Commission Salary Calculator 2026: New Salary & In-Hand Pay",
+        "description": "Check your 8th Pay Commission salary: new basic pay, DA, HRA, TA, NPS, tax and in-hand pay at any fitment factor, side by side with your 7th CPC salary. Free, Hindi & English.",
         "hi": {
             "name": "8वां वेतन आयोग सैलरी कैलकुलेटर",
-            "title": "8वां वेतन आयोग सैलरी कैलकुलेटर 2026 | 7वां और 8वां CPC",
-            "description": "मुफ़्त 8वां वेतन आयोग सैलरी कैलकुलेटर: किसी भी फिटमेंट फैक्टर पर DA, HRA, TA, NPS और इनकम टैक्स के साथ 7वें और 8वें CPC की इन-हैंड सैलरी की तुलना।",
+            "title": "8वां वेतन आयोग सैलरी कैलकुलेटर 2026: नई सैलरी और इन-हैंड वेतन",
+            "description": "8वें वेतन आयोग में अपनी सैलरी देखें: किसी भी फिटमेंट फैक्टर पर नई बेसिक पे, DA, HRA, TA, NPS, टैक्स और इन-हैंड वेतन, 7वें CPC की सैलरी के साथ तुलना। मुफ़्त, हिंदी और अंग्रेज़ी में।",
         },
     },
     {
@@ -110,11 +110,11 @@ PAGES = [
         "section": "guides",
         "name": "8th Pay Commission Latest News & Timeline",
         "title": "8th Pay Commission Latest News, Timeline & Fitment Factor",
-        "description": "8th Pay Commission latest status, chairperson, timeline, expected fitment factor and effective date, plus state govt salary and DA comparison.",
+        "description": "8th Pay Commission latest news with sources: current status, report deadline, fitment factor proposals, effective date and DA updates, checked every two days.",
         "hi": {
             "name": "8वां वेतन आयोग ताज़ा ख़बर और टाइमलाइन",
             "title": "8वां वेतन आयोग: ताज़ा ख़बर, टाइमलाइन और फिटमेंट फैक्टर",
-            "description": "8वें वेतन आयोग की ताज़ा स्थिति, अध्यक्ष, टाइमलाइन, अपेक्षित फिटमेंट फैक्टर और लागू होने की तारीख, साथ में राज्यों के वेतन और DA की तुलना।",
+            "description": "स्रोतों के साथ 8वें वेतन आयोग की ताज़ा ख़बर: मौजूदा स्थिति, रिपोर्ट की समय-सीमा, फिटमेंट फैक्टर प्रस्ताव, लागू होने की तारीख और DA अपडेट, हर दो दिन में जाँची गई।",
         },
     },
     {
@@ -341,6 +341,7 @@ TABLE_WRAP = "overflow-x-auto rounded-xl border border-slate-200"
 TABLE = "w-full text-sm text-left"
 TH = "px-3 py-2.5 bg-slate-100 text-slate-700 font-semibold whitespace-nowrap"
 TD = "px-3 py-2.5 border-t border-slate-100 whitespace-nowrap"
+TD_WRAP = "px-3 py-2.5 border-t border-slate-100 align-top"
 BTN = "inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold"
 
 
@@ -513,7 +514,7 @@ def section_fitment(lang):
         (t(lang, "7th Pay Commission (2016), actual", "7वां वेतन आयोग (2016), वास्तविक"), "2.57", t(lang, "Final: minimum pay ₹7,000 → ₹18,000", "अंतिम: न्यूनतम वेतन ₹7,000 → ₹18,000")),
         (t(lang, "Most quoted estimate", "सबसे ज़्यादा उद्धृत अनुमान"), "1.92", t(lang, "60% DA merged (×1.60) plus a 20% rise (×1.20)", "60% DA मिलाकर (×1.60) और 20% बढ़ोतरी (×1.20)")),
         (t(lang, "Analyst estimates (Ambit Capital, as reported)", "विश्लेषकों के अनुमान (Ambit Capital, रिपोर्ट के अनुसार)"), "1.83 – 2.46", t(lang, "Range in a brokerage report", "ब्रोकरेज रिपोर्ट की रेंज")),
-        (t(lang, "Staff side (NC-JCM), as reported", "कर्मचारी पक्ष (NC-JCM), रिपोर्ट के अनुसार"), t(lang, "2.57 or more", "2.57 या ज़्यादा"), t(lang, "Asked for at least the 7th CPC factor", "कम से कम 7वें CPC जितना फैक्टर माँगा")),
+        (t(lang, "Staff side (NC-JCM) memorandum, April 2026", "कर्मचारी पक्ष (NC-JCM) का ज्ञापन, अप्रैल 2026"), "3.833", t(lang, "Demand: minimum pay ₹69,000, 6% increment", "माँग: न्यूनतम वेतन ₹69,000, 6% इंक्रीमेंट")),
         (t(lang, "Employee unions' demands, as reported (May 2026)", "कर्मचारी संगठनों की माँग, रिपोर्ट के अनुसार (मई 2026)"), "2.86 – 4.38", t(lang, "Demands, not estimates", "माँग, अनुमान नहीं")),
     ]
     est_rows = "".join(f'<tr><td class="{TD} whitespace-normal min-w-[200px]">{a}</td><td class="{TD} font-mono font-bold">{b}</td><td class="{TD} whitespace-normal min-w-[200px] text-slate-600">{c}</td></tr>' for a, b, c in estimates)
@@ -556,7 +557,7 @@ def section_fitment(lang):
         </div>
         <div class="space-y-2">
           <label for="fc-range" class="text-sm font-semibold text-slate-700">{t(lang, "Fitment factor", "फिटमेंट फैक्टर")}: ×<input id="fc-num" type="number" min="1" max="4" step="0.01" value="1.92" class="w-20 rounded-lg border border-slate-300 px-2 py-1 font-mono" aria-label="{t(lang, "Fitment factor", "फिटमेंट फैक्टर")}"></label>
-          <input id="fc-range" type="range" min="1.5" max="3.5" step="0.01" value="1.92" class="w-full accent-emerald-600">
+          <input id="fc-range" type="range" min="1.5" max="4" step="0.01" value="1.92" class="w-full accent-emerald-600">
           {fitment_chips(1.92)}
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -646,6 +647,138 @@ def section_hike(lang):
 """
 
 
+# ---------------------------------------------------------------------------
+# 8th CPC news (src/content/news.json, kept up to date by the news agent)
+# ---------------------------------------------------------------------------
+
+# Sources the news agent may cite. Official: government sites. Outlets: established
+# national news organisations. Anything else (blogs, calculator sites, social media
+# other than official accounts, forums) is rejected by the build.
+OFFICIAL_SOURCES = [
+    "pib.gov.in", "8cpc.gov.in", "doe.gov.in", "dopt.gov.in", "finmin.gov.in", "egazette.gov.in",
+    "sansad.in", "loksabha.nic.in", "rajyasabha.nic.in", "pensionersportal.gov.in", "cabsec.gov.in",
+    "newsonair.gov.in", "ddnews.gov.in", "x.com/PIB_India", "x.com/FinMinIndia",
+]
+NEWS_OUTLETS = [
+    "thehindu.com", "thehindubusinessline.com", "indianexpress.com", "newindianexpress.com", "hindustantimes.com",
+    "livemint.com", "timesofindia.indiatimes.com", "economictimes.indiatimes.com", "business-standard.com",
+    "financialexpress.com", "moneycontrol.com", "ndtv.com", "ndtvprofit.com", "indiatoday.in", "businesstoday.in",
+    "news18.com", "zeebiz.com", "zeenews.india.com", "india.com", "tribuneindia.com", "deccanherald.com",
+    "telegraphindia.com", "theprint.in", "outlookmoney.com", "outlookbusiness.com", "outlookindia.com",
+    "upstox.com", "goodreturns.in", "jagran.com", "bhaskar.com", "amarujala.com", "livehindustan.com",
+    "aajtak.in", "abplive.com", "scconline.com",
+]
+MONTHS = {"en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          "hi": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"]}
+
+
+def source_kind(url):
+    """'official', 'outlet' or None for a source URL."""
+    m = re.match(r"https://(?:www\.|m\.)?([^/?#]+)(/[^?#]*)?", url)
+    if not m:
+        return None
+    host, path = m.group(1).lower(), (m.group(2) or "")
+    matches = lambda allowed: any(host == a or host.endswith("." + a) if "/" not in a else (host + path).startswith(a) for a in allowed)
+    return "official" if matches(OFFICIAL_SOURCES) else "outlet" if matches(NEWS_OUTLETS) else None
+
+
+def load_news():
+    """Reads news.json and refuses to build if an entry breaks the sourcing rules."""
+    news = json.loads(read("content/news.json"))
+    errors = []
+    checked = datetime.date.fromisoformat(news["last_checked"])
+    for s in news["status"]:
+        if not all(s.get(k, {}).get(l) for k in ("label", "value") for l in LANGS):
+            errors.append(f"status {s.get('label')}: needs label and value in {LANGS}")
+        if not source_kind(s.get("source", "")):
+            errors.append(f"status {s['label']['en']}: source not allowed: {s.get('source')}")
+    for item in news["items"]:
+        name = item.get("title", {}).get("en", "?")
+        try:
+            if datetime.date.fromisoformat(item["date"]) > checked:
+                errors.append(f"{name}: date after last_checked")
+        except (KeyError, ValueError):
+            errors.append(f"{name}: date must be YYYY-MM-DD")
+        if not all(item.get(k, {}).get(l) for k in ("title", "summary") for l in LANGS):
+            errors.append(f"{name}: needs title and summary in {LANGS}")
+        kinds = [source_kind(src.get("url", "")) for src in item.get("sources", [])]
+        if None in kinds or not kinds:
+            errors.append(f"{name}: every source must be an official site or a listed outlet: {[s.get('url') for s in item.get('sources', [])]}")
+        hosts = {re.sub(r"^https://(www\.|m\.)?", "", src["url"]).split("/")[0] for src in item.get("sources", [])}
+        if item.get("kind") == "official" and "official" not in kinds:
+            errors.append(f"{name}: kind 'official' needs an official source")
+        if item.get("kind") == "reported" and len(hosts) < 2:
+            errors.append(f"{name}: kind 'reported' needs two different sources")
+        if item.get("kind") not in ("official", "reported"):
+            errors.append(f"{name}: kind must be 'official' or 'reported'")
+    if errors:
+        raise SystemExit("news.json failed the sourcing check:\n  " + "\n  ".join(errors))
+    news["items"].sort(key=lambda i: i["date"], reverse=True)
+    return news
+
+
+def news_date(iso, lang):
+    d = datetime.date.fromisoformat(iso)
+    return f"{d.day} {MONTHS[lang][d.month - 1]} {d.year}"
+
+
+def news_month(iso, lang):
+    d = datetime.date.fromisoformat(iso)
+    return f"{MONTHS[lang][d.month - 1]} {d.year}"
+
+
+def news_list(news, lang, limit):
+    badge = {"official": ("bg-emerald-100 text-emerald-800", t(lang, "Official", "आधिकारिक")),
+             "reported": ("bg-sky-100 text-sky-800", t(lang, "Reported", "रिपोर्ट"))}
+    out = []
+    for item in news["items"][:limit]:
+        cls, label = badge[item["kind"]]
+        links = " · ".join(f'<a class="text-blue-700 hover:underline" href="{html.escape(s["url"])}" rel="noopener nofollow" target="_blank">{html.escape(s["name"])}</a>' for s in item["sources"])
+        out.append(
+            f'<li class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">'
+            f'<div class="flex flex-wrap items-center gap-2 text-xs"><time datetime="{item["date"]}" class="font-semibold text-slate-500">{news_date(item["date"], lang)}</time>'
+            f'<span class="px-2 py-0.5 rounded-md font-bold {cls}">{label}</span></div>'
+            f'<h3 class="font-bold text-slate-900">{html.escape(item["title"][lang])}</h3>'
+            f'<p class="text-sm text-slate-700">{html.escape(item["summary"][lang])}</p>'
+            f'<p class="text-xs text-slate-500">{t(lang, "Sources", "स्रोत")}: {links}</p></li>')
+    return '<ul class="space-y-3">' + "".join(out) + "</ul>"
+
+
+def news_block(news, lang):
+    rows = "".join(
+        f'<tr><td class="{TD_WRAP} font-semibold w-1/3">{html.escape(s["label"][lang])}</td>'
+        f'<td class="{TD_WRAP}">{html.escape(s["value"][lang])} '
+        f'<a class="text-xs text-blue-700 hover:underline" href="{html.escape(s["source"])}" rel="noopener nofollow" target="_blank">[{t(lang, "source", "स्रोत")}]</a></td></tr>'
+        for s in news["status"])
+    checked = news_date(news["last_checked"], lang)
+    return f"""      <div class="{CARD}">
+        <h1 class="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">{t(lang, "8th Pay Commission latest news", "8वां वेतन आयोग: ताज़ा ख़बर")}</h1>
+        <p class="text-sm text-slate-600">{t(lang, f"Checked on {checked}. Only news confirmed by an official government source or by two established news outlets is listed, with links. Demands and estimates are marked as such.", f"{checked} को जाँचा गया। यहाँ केवल वही ख़बरें हैं जिनकी पुष्टि किसी आधिकारिक सरकारी स्रोत या दो स्थापित समाचार संस्थानों ने की है, लिंक के साथ। माँगों और अनुमानों को साफ़ बताया गया है।")}</p>
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Status at a glance", "एक नज़र में स्थिति")}</h2>
+        <div class="{TABLE_WRAP}"><table class="{TABLE}"><tbody>{rows}</tbody></table></div>
+        {link_buttons([
+            (t(lang, "Calculate my 8th CPC salary →", "मेरी 8वें CPC की सैलरी निकालें →"), "{{ROOT}}"),
+            (t(lang, "Fitment factor", "फिटमेंट फैक्टर"), "{{ROOT}}8th-pay-commission/fitment-factor/"),
+            (t(lang, "Salary hike by level", "लेवल अनुसार सैलरी बढ़ोतरी"), "{{ROOT}}8th-pay-commission/salary-hike/"),
+        ])}
+      </div>
+      <div class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Latest updates", "ताज़ा अपडेट")}</h2>
+        {news_list(news, lang, 15)}
+      </div>"""
+
+
+def home_news(news, lang):
+    """Short 'latest news' box under the homepage calculator."""
+    return (f'<h2>{t(lang, "8th Pay Commission latest news", "8वां वेतन आयोग: ताज़ा ख़बर")}</h2>\n'
+            + news_list(news, lang, 3)
+            + f'\n<p><a href="{{{{ROOT}}}}8th-pay-commission/">{t(lang, "All updates and the full status →", "सभी अपडेट और पूरी स्थिति →")}</a></p>\n')
+
+
+def section_guides(lang):
+    return read("sections/guides.html").replace("{{NEWS_BLOCK}}", news_block(NEWS, lang))
+
+
 def section_tool(tool, lang):
     """The tools page section, opened on one tool, with that tool's heading."""
     markup = read("sections/tools.html")
@@ -656,7 +789,8 @@ def section_tool(tool, lang):
     return markup
 
 
-SECTION_BUILDERS = {"cpc7": section_cpc7, "fitment": section_fitment, "hike": section_hike}
+SECTION_BUILDERS = {"cpc7": section_cpc7, "fitment": section_fitment, "hike": section_hike, "guides": section_guides}
+NEWS = load_news()
 
 
 # ---------------------------------------------------------------------------
@@ -901,6 +1035,12 @@ if __name__ == "__main__":
             sec = page["section"]
             section = SECTION_BUILDERS[sec](lang) if sec in SECTION_BUILDERS else read(f"sections/{sec}.html")
             prose = read(f"content/{sec}.html" if lang == "en" else f"content/hi/{sec}.html")
+            if sec == "salary":
+                prose += "\n" + home_news(NEWS, lang)
+            if sec == "guides":
+                month = news_month(NEWS["last_checked"], "en")
+                page = {**page, "title": f"8th Pay Commission Latest News ({month}): Status & Timeline",
+                        "hi": {**page["hi"], "title": f"8वां वेतन आयोग ताज़ा ख़बर ({news_month(NEWS['last_checked'], 'hi')}): स्थिति और टाइमलाइन"}}
             if sec == "tools":
                 prose += "\n<h2>" + t(lang, "All calculators", "सभी कैलकुलेटर") + "</h2>\n" + tools_directory(lang)
             if page.get("parent"):
