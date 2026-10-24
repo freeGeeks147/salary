@@ -63,10 +63,10 @@ allow-lists to get an item through.
    - `src/sections/salary.html`: in `#sel-7th-da`, make the new rate the `selected` "(Now)" option and relabel the old one
    - `assets/js/app.js`: set `da7th:` in `state` to the new rate
    - mention this clearly in the pull request
-7. **Official fitment factor, pay matrix or effective date.** Add the news item and update the status rows, but do **not** change the calculators. Open a GitHub issue in `freeGeeks147/salary` titled "Official 8th CPC figures announced: update calculators", with the facts and source links, for the owner.
+7. **Official fitment factor, pay matrix or effective date.** Add the news item and update the status rows, but do **not** change the calculators. Tell the owner: open a GitHub issue in `freeGeeks147/salary` titled "Official 8th CPC figures announced: update calculators", with the facts and source links. If you cannot open issues, put the same text at the top of your final summary instead.
 8. Run `python3 build.py`. It must print `built N pages`. If it fails the sourcing check, fix the item or remove it; never weaken the check.
 9. Check `git status`: only `src/content/news.json`, generated `index.html` pages and `sitemap.xml` should change (plus the DA files in step 6, if any).
-10. Commit on a new branch `news/YYYY-MM-DD` with the message `News update YYYY-MM-DD` (list the items added, or "no new verified news"). Push, open a pull request to `main` with each new item and its source links, and merge it.
+10. Commit with the message `News update YYYY-MM-DD` (list the items added and their source links, or "no new verified news"). If GitHub pull request tools are available: push to a new branch `news/YYYY-MM-DD`, open a pull request to `main` and merge it. If they are not available: `git pull --rebase origin main`, then `git push origin HEAD:main`. Retry a failed push up to 4 times (2s, 4s, 8s, 16s apart). The site publishes from `main` either way.
 11. Finish with a short summary: items added (with sources), or "No new verified news; last_checked updated".
 
 ## Never
