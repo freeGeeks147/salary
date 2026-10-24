@@ -69,6 +69,12 @@ allow-lists to get an item through.
 10. Commit with the message `News update YYYY-MM-DD` (list the items added and their source links, or "no new verified news"). If GitHub pull request tools are available: push to a new branch `news/YYYY-MM-DD`, open a pull request to `main` and merge it. If they are not available: `git pull --rebase origin main`, then `git push origin HEAD:main`. Retry a failed push up to 4 times (2s, 4s, 8s, 16s apart). The site publishes from `main` either way.
 11. Finish with a short summary: items added (with sources), or "No new verified news; last_checked updated".
 
+## Telegram
+
+You do not post to Telegram. When your change to `src/content/news.json` reaches `main`, the
+`Telegram channel posts` workflow posts each new item to t.me/8thcpcpay automatically.
+So write every item as if it will be read on its own in the channel.
+
 ## Never
 
 - Change anything outside `freeGeeks147/salary`, or post to social media.
