@@ -1,7 +1,7 @@
-# GovtSalaryCalc.com
+# 8thCPCPay.com
 
 7th & 8th Pay Commission salary calculator, published with GitHub Pages at
-[govtsalarycalc.com](https://govtsalarycalc.com).
+[8thcpcpay.com](https://8thcpcpay.com).
 
 ## Pages
 
@@ -76,7 +76,7 @@ npx tailwindcss@3.4.17 -i src/tailwind.css -o assets/css/site.css --minify
 
 1. In the repository on GitHub: **Settings → Pages → Build and deployment**,
    choose **Deploy from a branch**, branch `main`, folder `/ (root)`, and save.
-2. The `CNAME` file already contains `govtsalarycalc.com`. Under
+2. The `CNAME` file already contains `8thcpcpay.com`. Under
    **Settings → Pages → Custom domain** it should show the same domain.
 3. At your domain registrar, replace the DNS records that point to Google Sites with:
 
@@ -94,4 +94,4 @@ npx tailwindcss@3.4.17 -i src/tailwind.css -o assets/css/site.css --minify
 
 4. Once DNS has propagated (minutes to a few hours), tick **Enforce HTTPS** in
    **Settings → Pages**.
-5. In Google Search Console, submit `https://govtsalarycalc.com/sitemap.xml`.
+5. In Google Search Console, submit `https://8thcpcpay.com/sitemap.xml`.

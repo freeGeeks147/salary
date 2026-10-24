@@ -24,8 +24,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
-SITE_URL = "https://govtsalarycalc.com/"
-SITE_NAME = "GovtSalaryCalc"
+SITE_URL = "https://8thcpcpay.com/"
+SITE_NAME = "8th CPC Pay"
 OG_IMAGE = SITE_URL + "assets/og-image.jpg"
 LANGS = ["en", "hi"]
 
@@ -49,7 +49,7 @@ PAGES = [
         "path": "pay-matrix/",
         "section": "matrix",
         "name": "7th & 8th CPC Pay Matrix",
-        "title": "7th & 8th CPC Pay Matrix Table (Level 1–18) | GovtSalaryCalc",
+        "title": "7th & 8th CPC Pay Matrix Table (Level 1–18) | 8th CPC Pay",
         "description": "Full 7th CPC pay matrix for all pay levels 1–18 with projected 8th Pay Commission basic pay at any fitment factor, plus fitment factor history.",
         "hi": {
             "name": "7वें और 8वें CPC का पे मैट्रिक्स",
@@ -61,7 +61,7 @@ PAGES = [
         "path": "arrears-allowances/",
         "section": "arrears",
         "name": "8th CPC Arrears & Allowance Calculator",
-        "title": "8th CPC Arrears & DA Arrears Calculator | GovtSalaryCalc",
+        "title": "8th CPC Arrears & DA Arrears Calculator | 8th CPC Pay",
         "description": "Calculate 8th Pay Commission arrears from January 2026, DA arrears, HRA exemption u/s 10(13A), night duty allowance and Diwali bonus (PLB).",
         "hi": {
             "name": "8वें CPC का एरियर और भत्ता कैलकुलेटर",
@@ -73,7 +73,7 @@ PAGES = [
         "path": "pension/",
         "section": "pension",
         "name": "UPS vs NPS Pension & Gratuity Calculator",
-        "title": "UPS vs NPS Pension & Gratuity Calculator | GovtSalaryCalc",
+        "title": "UPS vs NPS Pension & Gratuity Calculator | 8th CPC Pay",
         "description": "Compare Unified Pension Scheme (UPS) and NPS pension for central govt employees, with gratuity, leave encashment, commutation and MACP pay fixation.",
         "hi": {
             "name": "UPS बनाम NPS पेंशन और ग्रेच्युटी कैलकुलेटर",
@@ -97,7 +97,7 @@ PAGES = [
         "path": "tools/",
         "section": "tools",
         "name": "Government Employee Calculators",
-        "title": "46 Govt Employee Calculators: DA, HRA, GPF, LTC | GovtSalaryCalc",
+        "title": "46 Govt Employee Calculators: DA, HRA, GPF, LTC | 8th CPC Pay",
         "description": "DA, HRA, transport allowance, LTC, CGHS, leave, TA/DA on tour, posting allowance, GPF, pension and 40 more calculators for central government employees.",
         "hi": {
             "name": "सरकारी कर्मचारियों के कैलकुलेटर",
@@ -588,7 +588,7 @@ def json_ld(page, faqs, lang):
     else:
         graph[:0] = [
             {"@type": "Organization", "@id": SITE_URL + "#organization", "name": SITE_NAME, "url": SITE_URL, "logo": SITE_URL + "assets/favicon.svg"},
-            {"@type": "WebSite", "@id": SITE_URL + "#website", "name": SITE_NAME, "alternateName": "GovtSalaryCalc.com", "url": SITE_URL, "publisher": {"@id": SITE_URL + "#organization"}},
+            {"@type": "WebSite", "@id": SITE_URL + "#website", "name": SITE_NAME, "alternateName": "8thCPCPay.com", "url": SITE_URL, "publisher": {"@id": SITE_URL + "#organization"}},
         ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
 
@@ -659,7 +659,7 @@ def tool_pages():
             "description": seo["description"],
             "hi": {
                 "name": tool["title"]["hi"],
-                "title": f'{tool["title"]["hi"]} | GovtSalaryCalc',
+                "title": f'{tool["title"]["hi"]} | 8th CPC Pay',
                 "description": tool["desc"]["hi"],
             },
         })
