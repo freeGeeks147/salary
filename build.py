@@ -122,12 +122,25 @@ PAGES = [
         "section": "fitment",
         "parent": "8th-pay-commission/",
         "name": "8th Pay Commission Fitment Factor",
-        "title": "8th Pay Commission Fitment Factor: Basic Pay by Level",
-        "description": "8th CPC fitment factor explained, with the new basic pay for every pay level at 1.83, 1.92, 2.08, 2.28, 2.57 and 2.86, and the minimum salary at each.",
+        "title": "8th Pay Commission Fitment Factor 2026: 1.92 to 2.86, Pay by Level",
+        "description": "8th Pay Commission fitment factor: every estimate so far (1.83 to 2.86), a calculator for any factor, the new basic pay for all 18 levels and the real hike after DA merges.",
         "hi": {
             "name": "8वें वेतन आयोग का फिटमेंट फैक्टर",
-            "title": "8वें वेतन आयोग का फिटमेंट फैक्टर: लेवल अनुसार नई बेसिक पे",
-            "description": "8वें CPC का फिटमेंट फैक्टर आसान भाषा में, हर पे लेवल की नई बेसिक पे 1.83, 1.92, 2.08, 2.28, 2.57 और 2.86 पर, और हर फैक्टर पर न्यूनतम वेतन।",
+            "title": "8वें वेतन आयोग का फिटमेंट फैक्टर 2026: 1.92 से 2.86, लेवल अनुसार वेतन",
+            "description": "8वें वेतन आयोग का फिटमेंट फैक्टर: अब तक के सभी अनुमान (1.83 से 2.86), किसी भी फैक्टर का कैलकुलेटर, सभी 18 लेवल की नई बेसिक पे और DA मिलने के बाद असली बढ़ोतरी।",
+        },
+    },
+    {
+        "path": "8th-pay-commission/salary-hike/",
+        "section": "hike",
+        "parent": "8th-pay-commission/",
+        "name": "8th Pay Commission Salary Hike",
+        "title": "8th Pay Commission Salary Hike: Increase for Every Level (Table)",
+        "description": "How much will your salary go up in the 8th Pay Commission? Monthly and yearly hike for pay levels 1 to 18 at fitment factors 1.83 to 2.86, after DA merges into basic pay.",
+        "hi": {
+            "name": "8वें वेतन आयोग में सैलरी बढ़ोतरी",
+            "title": "8वें वेतन आयोग में सैलरी बढ़ोतरी: हर लेवल का इज़ाफ़ा (टेबल)",
+            "description": "8वें वेतन आयोग में आपकी सैलरी कितनी बढ़ेगी? पे लेवल 1 से 18 की मासिक और सालाना बढ़ोतरी, फिटमेंट फैक्टर 1.83 से 2.86 पर, DA के बेसिक में मिलने के बाद।",
         },
     },
     {
@@ -160,6 +173,9 @@ POPULAR_TOOLS = [
 ]
 
 FITMENT_FACTORS = [1.83, 1.92, 2.08, 2.28, 2.57, 2.86]
+# DA rate today (7th CPC, from January 2026). It merges into basic pay when the 8th CPC starts,
+# so the real increase at a fitment factor f is f / (1 + DA) - 1.
+DA_NOW = 60
 
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="{lang}"{prefix_attr}>
@@ -312,6 +328,7 @@ TAB_PATHS = {
     "tab-pension": "pension/", "tab-tax": "income-tax/", "tab-microtools": "tools/",
     "tab-guides": "8th-pay-commission/", "tab-cpc7": "7th-pay-commission/",
     "tab-fitment": "8th-pay-commission/fitment-factor/",
+    "tab-hike": "8th-pay-commission/salary-hike/",
 }
 
 
@@ -400,31 +417,166 @@ def section_cpc7(lang):
 """
 
 
+def level_name(lv, lang):
+    return lv["name"].replace("Level", t(lang, "Level", "लेवल"))
+
+
+def real_hike(f):
+    """Increase over today's basic + DA when DA merges into basic pay at fitment factor f."""
+    return f / (1 + DA_NOW / 100) - 1
+
+
+def pct(x):
+    return f"{x * 100:+.1f}%"
+
+
+# Small scripts for the fitment calculator and the hike table. Plain strings (not f-strings),
+# filled in with str.replace so the braces stay JavaScript.
+FITMENT_CALC_JS = """<script>
+(function () {
+  var D = __DATA__, root = document.getElementById("fit-calc");
+  if (!root) return;
+  var lvl = root.querySelector("#fc-level"), basic = root.querySelector("#fc-basic"),
+      rng = root.querySelector("#fc-range"), num = root.querySelector("#fc-num");
+  function inr(n) { return "\\u20b9" + Math.round(n).toLocaleString("en-IN"); }
+  function setText(id, v) { root.querySelector(id).textContent = v; }
+  function run() {
+    var f = Math.min(4, Math.max(1, parseFloat(num.value) || 1.92)), b = parseFloat(basic.value) || 0;
+    var now = b * (1 + D.da / 100), nb = b * f;
+    setText("#fc-new", inr(nb));
+    setText("#fc-now", inr(now));
+    setText("#fc-hike", (nb >= now ? "+" : "\\u2212") + inr(Math.abs(nb - now)));
+    setText("#fc-pct", (now ? ((nb / now - 1) * 100).toFixed(1) : "0.0") + "%");
+    root.querySelector("#fc-link").href = D.home + "?lv=" + lvl.value + "&bp=" + b + "&fit=" + f.toFixed(2) + "&hra=X";
+    Array.prototype.forEach.call(root.querySelectorAll("[data-fit]"), function (c) {
+      c.classList.toggle("fc-on", Math.abs(parseFloat(c.dataset.fit) - f) < 0.005);
+    });
+  }
+  lvl.addEventListener("change", function () { basic.value = D.entry[lvl.value]; run(); });
+  basic.addEventListener("input", run);
+  rng.addEventListener("input", function () { num.value = parseFloat(rng.value).toFixed(2); run(); });
+  num.addEventListener("input", function () { rng.value = num.value; run(); });
+  Array.prototype.forEach.call(root.querySelectorAll("[data-fit]"), function (c) {
+    c.addEventListener("click", function () { num.value = rng.value = c.dataset.fit; run(); });
+  });
+  run();
+})();
+</script>"""
+
+HIKE_TABLE_JS = """<script>
+(function () {
+  var D = __DATA__, root = document.getElementById("hike-table");
+  if (!root) return;
+  function inr(n) { return "\\u20b9" + Math.round(n).toLocaleString("en-IN"); }
+  function show(f) {
+    Array.prototype.forEach.call(root.querySelectorAll("tr[data-basic]"), function (tr) {
+      var b = +tr.dataset.basic, now = b * (1 + D.da / 100), nb = b * f;
+      tr.querySelector(".h-new").textContent = inr(nb);
+      tr.querySelector(".h-month").textContent = "+" + inr(nb - now);
+      tr.querySelector(".h-year").textContent = "+" + inr((nb - now) * 12);
+      tr.querySelector(".h-pct").textContent = "+" + ((nb / now - 1) * 100).toFixed(1) + "%";
+      var a = tr.querySelector("a");
+      a.href = a.href.replace(/fit=[0-9.]+/, "fit=" + f.toFixed(2));
+    });
+    root.querySelector("#hike-fit-label").textContent = f.toFixed(2);
+    Array.prototype.forEach.call(root.querySelectorAll("[data-fit]"), function (c) {
+      c.classList.toggle("fc-on", Math.abs(parseFloat(c.dataset.fit) - f) < 0.005);
+      c.setAttribute("aria-pressed", c.classList.contains("fc-on"));
+    });
+  }
+  Array.prototype.forEach.call(root.querySelectorAll("[data-fit]"), function (c) {
+    c.addEventListener("click", function () { show(parseFloat(c.dataset.fit)); });
+  });
+})();
+</script>"""
+
+CHIP = "px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+CHIP_STYLE = "<style>.fc-on{background:#059669!important;color:#fff!important;border-color:#059669!important}</style>"
+
+
+def fitment_chips(default):
+    return '<div class="flex flex-wrap gap-2">' + "".join(
+        f'<button type="button" class="{CHIP}{" fc-on" if f == default else ""}" data-fit="{f:.2f}" aria-pressed="{"true" if f == default else "false"}">×{f:.2f}</button>'
+        for f in FITMENT_FACTORS) + "</div>"
+
+
 def section_fitment(lang):
     head = "".join(f'<th class="{TH} text-right{" bg-emerald-100 text-emerald-900" if f == 1.92 else ""}">×{f:.2f}</th>' for f in FITMENT_FACTORS)
     rows = "".join(
-        f'<tr><td class="{TD} font-semibold">{lv["name"].replace("Level", t(lang, "Level", "लेवल"))}</td><td class="{TD} font-mono text-right">{inr(lv["entry"])}</td>'
+        f'<tr><td class="{TD} font-semibold">{level_name(lv, lang)}</td><td class="{TD} font-mono text-right">{inr(lv["entry"])}</td>'
         + "".join(f'<td class="{TD} font-mono text-right{" bg-emerald-50 font-bold" if f == 1.92 else ""}">{inr(lv["entry"] * f)}</td>' for f in FITMENT_FACTORS)
         + "</tr>"
         for lv in LEVELS
     )
+    estimates = [
+        (t(lang, "6th Pay Commission (2006), actual", "6वां वेतन आयोग (2006), वास्तविक"), "1.86", t(lang, "Final", "अंतिम")),
+        (t(lang, "7th Pay Commission (2016), actual", "7वां वेतन आयोग (2016), वास्तविक"), "2.57", t(lang, "Final: minimum pay ₹7,000 → ₹18,000", "अंतिम: न्यूनतम वेतन ₹7,000 → ₹18,000")),
+        (t(lang, "Most quoted estimate", "सबसे ज़्यादा उद्धृत अनुमान"), "1.92", t(lang, "60% DA merged (×1.60) plus a 20% rise (×1.20)", "60% DA मिलाकर (×1.60) और 20% बढ़ोतरी (×1.20)")),
+        (t(lang, "Analyst estimates (Ambit Capital, as reported)", "विश्लेषकों के अनुमान (Ambit Capital, रिपोर्ट के अनुसार)"), "1.83 – 2.46", t(lang, "Range in a brokerage report", "ब्रोकरेज रिपोर्ट की रेंज")),
+        (t(lang, "Staff side (NC-JCM), as reported", "कर्मचारी पक्ष (NC-JCM), रिपोर्ट के अनुसार"), t(lang, "2.57 or more", "2.57 या ज़्यादा"), t(lang, "Asked for at least the 7th CPC factor", "कम से कम 7वें CPC जितना फैक्टर माँगा")),
+        (t(lang, "Employee unions' demands, as reported (May 2026)", "कर्मचारी संगठनों की माँग, रिपोर्ट के अनुसार (मई 2026)"), "2.86 – 4.38", t(lang, "Demands, not estimates", "माँग, अनुमान नहीं")),
+    ]
+    est_rows = "".join(f'<tr><td class="{TD} whitespace-normal min-w-[200px]">{a}</td><td class="{TD} font-mono font-bold">{b}</td><td class="{TD} whitespace-normal min-w-[200px] text-slate-600">{c}</td></tr>' for a, b, c in estimates)
+    real_rows = "".join(
+        f'<tr><td class="{TD} font-mono font-bold">×{f:.2f}</td><td class="{TD} font-mono text-right">{inr(18000 * f)}</td>'
+        f'<td class="{TD} font-mono text-right">{inr(18000 * f - 18000 * (1 + DA_NOW / 100))}</td>'
+        f'<td class="{TD} font-mono text-right font-bold text-emerald-700">{pct(real_hike(f))}</td></tr>'
+        for f in FITMENT_FACTORS)
+    options = "".join(f'<option value="{lv["id"]}"{" selected" if lv["id"] == "7" else ""}>{level_name(lv, lang)} · {inr(lv["entry"])}</option>' for lv in LEVELS)
+    data = json.dumps({"da": DA_NOW, "entry": {lv["id"]: lv["entry"] for lv in LEVELS}, "home": "{{ROOT}}"})
+    entry7 = next(lv["entry"] for lv in LEVELS if lv["id"] == "7")
+    out = lambda k, label, big=False: (f'<div class="rounded-xl {"bg-emerald-50 border-emerald-200" if big else "bg-slate-50 border-slate-200"} border p-3"><div class="text-xs text-slate-500">{label}</div>'
+                                       f'<div id="{k}" class="font-serif-display text-xl sm:text-2xl font-bold {"text-emerald-700" if big else "text-slate-900"}">–</div></div>')
     return f"""    <section id="tab-fitment" class="tab-panel space-y-5">
+      {CHIP_STYLE}
       <div class="{CARD}">
         <h1 class="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">{t(lang, "8th Pay Commission fitment factor", "8वें वेतन आयोग का फिटमेंट फैक्टर")}</h1>
-        <p class="text-base text-slate-600 max-w-3xl">{t(lang, "Your new basic pay = your 7th CPC basic pay × the fitment factor. The factor has not been announced yet; here is what each likely factor would mean.", "आपकी नई बेसिक पे = 7वें CPC की बेसिक पे × फिटमेंट फैक्टर। फैक्टर अभी घोषित नहीं हुआ है; यहाँ देखें कि हर संभावित फैक्टर का क्या मतलब होगा।")}</p>
+        <p class="text-base text-slate-600 max-w-3xl">{t(lang, "Your new basic pay = your 7th CPC basic pay × the fitment factor. The factor has not been announced yet (October 2026). Below: every estimate so far, a calculator for any factor, and what each factor really means for your pay.", "आपकी नई बेसिक पे = 7वें CPC की बेसिक पे × फिटमेंट फैक्टर। फैक्टर अभी घोषित नहीं हुआ है (अक्टूबर 2026)। नीचे: अब तक के सभी अनुमान, किसी भी फैक्टर का कैलकुलेटर, और हर फैक्टर का आपकी सैलरी पर असली असर।")}</p>
         {fact_cards([
             (t(lang, "Minimum pay at 1.92", "1.92 पर न्यूनतम वेतन"), inr(18000 * 1.92)),
             (t(lang, "Minimum pay at 2.28", "2.28 पर न्यूनतम वेतन"), inr(18000 * 2.28)),
             (t(lang, "Minimum pay at 2.86", "2.86 पर न्यूनतम वेतन"), inr(18000 * 2.86)),
+            (t(lang, "Real hike at 1.92", "1.92 पर असली बढ़ोतरी"), pct(real_hike(1.92))),
             (t(lang, "7th CPC factor", "7वें CPC का फैक्टर"), "2.57"),
-            (t(lang, "6th CPC factor", "6वें CPC का फैक्टर"), "1.86"),
             (t(lang, "8th CPC factor", "8वें CPC का फैक्टर"), t(lang, "Not announced", "घोषित नहीं")),
         ])}
         {link_buttons([
             (t(lang, "Calculate my 8th CPC salary →", "मेरी 8वें CPC की सैलरी निकालें →"), "{{ROOT}}"),
-            (t(lang, "Full pay matrix", "पूरा पे मैट्रिक्स"), "{{ROOT}}pay-matrix/"),
+            (t(lang, "Salary hike by level", "लेवल अनुसार सैलरी बढ़ोतरी"), "{{ROOT}}8th-pay-commission/salary-hike/"),
             (t(lang, "8th CPC latest news", "8वें CPC की ताज़ा ख़बर"), "{{ROOT}}8th-pay-commission/"),
         ])}
+      </div>
+      <div id="fit-calc" class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Try any fitment factor", "कोई भी फिटमेंट फैक्टर आज़माएँ")}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <label class="text-sm font-semibold text-slate-700">{t(lang, "Pay level", "पे लेवल")}
+            <select id="fc-level" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 bg-white">{options}</select></label>
+          <label class="text-sm font-semibold text-slate-700">{t(lang, "Your basic pay now (₹)", "आपकी अभी की बेसिक पे (₹)")}
+            <input id="fc-basic" type="number" inputmode="numeric" min="0" step="100" value="{entry7}" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="space-y-2">
+          <label for="fc-range" class="text-sm font-semibold text-slate-700">{t(lang, "Fitment factor", "फिटमेंट फैक्टर")}: ×<input id="fc-num" type="number" min="1" max="4" step="0.01" value="1.92" class="w-20 rounded-lg border border-slate-300 px-2 py-1 font-mono" aria-label="{t(lang, "Fitment factor", "फिटमेंट फैक्टर")}"></label>
+          <input id="fc-range" type="range" min="1.5" max="3.5" step="0.01" value="1.92" class="w-full accent-emerald-600">
+          {fitment_chips(1.92)}
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {out("fc-new", t(lang, "New basic pay", "नई बेसिक पे"), True)}
+          {out("fc-now", t(lang, f"Basic + {DA_NOW}% DA today", f"आज बेसिक + {DA_NOW}% DA"))}
+          {out("fc-hike", t(lang, "Increase per month", "हर महीने बढ़ोतरी"))}
+          {out("fc-pct", t(lang, "Real hike", "असली बढ़ोतरी"))}
+        </div>
+        <p class="text-xs text-slate-500">{t(lang, f"DA ({DA_NOW}% now) is expected to merge into basic pay and restart from 0%, so the real hike is measured against basic + DA. HRA, TA and deductions change too: see your full in-hand pay in the calculator.", f"DA (अभी {DA_NOW}%) के बेसिक में मिलकर 0% से दोबारा शुरू होने की उम्मीद है, इसलिए असली बढ़ोतरी बेसिक + DA से मापी गई है। HRA, TA और कटौतियाँ भी बदलती हैं: पूरी इन-हैंड सैलरी कैलकुलेटर में देखें।")} <a id="fc-link" class="font-semibold text-blue-700 hover:underline" href="{{{{ROOT}}}}">{t(lang, "Full in-hand salary →", "पूरी इन-हैंड सैलरी →")}</a></p>
+      </div>
+      <div class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Fitment factor estimates so far", "अब तक के फिटमेंट फैक्टर अनुमान")}</h2>
+        <div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr><th class="{TH}">{t(lang, "Source", "स्रोत")}</th><th class="{TH}">{t(lang, "Factor", "फैक्टर")}</th><th class="{TH}">{t(lang, "Note", "टिप्पणी")}</th></tr></thead><tbody>{est_rows}</tbody></table></div>
+        <p class="text-xs text-slate-500">{t(lang, "Estimates and demands as reported in the media up to October 2026. Only the Government's decision on the 8th CPC report is final.", "अक्टूबर 2026 तक मीडिया में आए अनुमान और माँगें। केवल 8वें CPC की रिपोर्ट पर सरकार का फ़ैसला अंतिम होगा।")}</p>
+      </div>
+      <div class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Why a 1.92 factor is not a 92% raise", "1.92 फैक्टर का मतलब 92% बढ़ोतरी क्यों नहीं")}</h2>
+        <p class="text-sm text-slate-600">{t(lang, f"Today you get basic pay plus {DA_NOW}% DA. When the 8th CPC starts, that DA is folded into the new basic pay and restarts from 0%. So compare the new basic with basic + DA today. For the minimum pay of ₹18,000, that is {inr(18000 * (1 + DA_NOW / 100))} today:", f"आज आपको बेसिक पे के साथ {DA_NOW}% DA मिलता है। 8वां CPC लागू होने पर यह DA नई बेसिक पे में जुड़ जाता है और 0% से दोबारा शुरू होता है। इसलिए नई बेसिक की तुलना आज की बेसिक + DA से करें। ₹18,000 न्यूनतम वेतन पर यह आज {inr(18000 * (1 + DA_NOW / 100))} है:")}</p>
+        <div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr><th class="{TH}">{t(lang, "Factor", "फैक्टर")}</th><th class="{TH} text-right">{t(lang, "New minimum basic", "नई न्यूनतम बेसिक")}</th><th class="{TH} text-right">{t(lang, "Increase per month", "हर महीने बढ़ोतरी")}</th><th class="{TH} text-right">{t(lang, "Real hike", "असली बढ़ोतरी")}</th></tr></thead><tbody>{real_rows}</tbody></table></div>
+        <p class="text-xs text-slate-500">{t(lang, "The same percentages apply to every level, because every basic pay is multiplied by the same factor.", "यही प्रतिशत हर लेवल पर लागू होते हैं, क्योंकि हर बेसिक पे उसी फैक्टर से गुणा होती है।")}</p>
       </div>
       <div class="{CARD}">
         <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "New starting basic pay for every level", "हर लेवल की नई शुरुआती बेसिक पे")}</h2>
@@ -432,6 +584,64 @@ def section_fitment(lang):
         <div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr><th class="{TH}">{t(lang, "Level", "लेवल")}</th><th class="{TH} text-right">{t(lang, "7th CPC now", "अभी (7वां CPC)")}</th>{head}</tr></thead><tbody>{rows}</tbody></table></div>
         <p class="text-xs text-slate-500">{t(lang, "Estimates only. The final factor will be decided by the 8th Pay Commission and the Government of India.", "केवल अनुमान। अंतिम फैक्टर 8वां वेतन आयोग और भारत सरकार तय करेंगे।")}</p>
       </div>
+      {FITMENT_CALC_JS.replace("__DATA__", data)}
+    </section>
+"""
+
+
+def section_hike(lang):
+    default = 1.92
+    rows = "".join(
+        f'<tr id="level-{lv["id"]}" data-basic="{lv["entry"]}"><td class="{TD} whitespace-normal min-w-[150px]"><div class="font-semibold">{level_name(lv, lang)}</div>'
+        f'<div class="text-xs text-slate-500">{html.escape(lv["post"].split("/")[0].strip())}</div></td>'
+        f'<td class="{TD} font-mono text-right">{inr(lv["entry"] * (1 + DA_NOW / 100))}</td>'
+        f'<td class="{TD} font-mono text-right font-bold h-new">{inr(lv["entry"] * default)}</td>'
+        f'<td class="{TD} font-mono text-right text-emerald-700 font-bold h-month">+{inr(lv["entry"] * default - lv["entry"] * (1 + DA_NOW / 100))}</td>'
+        f'<td class="{TD} font-mono text-right h-year">+{inr((lv["entry"] * default - lv["entry"] * (1 + DA_NOW / 100)) * 12)}</td>'
+        f'<td class="{TD} font-mono text-right h-pct">{pct(real_hike(default))}</td>'
+        f'<td class="{TD}"><a class="text-blue-700 font-semibold hover:underline" href="{{{{ROOT}}}}?lv={lv["id"]}&amp;bp={lv["entry"]}&amp;fit={default:.2f}&amp;hra=X">{t(lang, "In-hand →", "इन-हैंड →")}</a></td></tr>'
+        for lv in LEVELS)
+    summary = "".join(
+        f'<tr><td class="{TD} font-mono font-bold">×{f:.2f}</td><td class="{TD} font-mono text-right font-bold text-emerald-700">{pct(real_hike(f))}</td>'
+        f'<td class="{TD} font-mono text-right">+{inr(18000 * f - 18000 * (1 + DA_NOW / 100))}</td>'
+        f'<td class="{TD} font-mono text-right">+{inr(56100 * f - 56100 * (1 + DA_NOW / 100))}</td></tr>'
+        for f in FITMENT_FACTORS)
+    data = json.dumps({"da": DA_NOW})
+    l1 = 18000 * default - 18000 * (1 + DA_NOW / 100)
+    return f"""    <section id="tab-hike" class="tab-panel space-y-5">
+      {CHIP_STYLE}
+      <div class="{CARD}">
+        <h1 class="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">{t(lang, "8th Pay Commission salary hike", "8वें वेतन आयोग में सैलरी बढ़ोतरी")}</h1>
+        <p class="text-base text-slate-600 max-w-3xl">{t(lang, f"How much will your pay go up? The table shows the increase for every pay level: today's basic pay + {DA_NOW}% DA, against the new basic pay at your chosen fitment factor (DA merges into basic and restarts from 0%).", f"आपकी सैलरी कितनी बढ़ेगी? टेबल में हर पे लेवल की बढ़ोतरी है: आज की बेसिक पे + {DA_NOW}% DA, आपके चुने फिटमेंट फैक्टर पर नई बेसिक पे के मुक़ाबले (DA बेसिक में मिलकर 0% से दोबारा शुरू होता है)।")}</p>
+        {fact_cards([
+            (t(lang, "Real hike at 1.92", "1.92 पर असली बढ़ोतरी"), pct(real_hike(1.92))),
+            (t(lang, "Real hike at 2.28", "2.28 पर असली बढ़ोतरी"), pct(real_hike(2.28))),
+            (t(lang, "Real hike at 2.86", "2.86 पर असली बढ़ोतरी"), pct(real_hike(2.86))),
+            (t(lang, "Level 1 at 1.92, per month", "1.92 पर लेवल 1, हर महीने"), "+" + inr(l1)),
+            (t(lang, "Level 1 at 1.92, per year", "1.92 पर लेवल 1, हर साल"), "+" + inr(l1 * 12)),
+            (t(lang, "Fitment factor", "फिटमेंट फैक्टर"), t(lang, "Not announced", "घोषित नहीं")),
+        ])}
+        {link_buttons([
+            (t(lang, "Calculate my in-hand salary →", "मेरी इन-हैंड सैलरी निकालें →"), "{{ROOT}}"),
+            (t(lang, "Fitment factor explained", "फिटमेंट फैक्टर समझें"), "{{ROOT}}8th-pay-commission/fitment-factor/"),
+            (t(lang, "Arrears calculator", "एरियर कैलकुलेटर"), "{{ROOT}}arrears-allowances/"),
+        ])}
+      </div>
+      <div id="hike-table" class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Salary hike for every level at ×", "हर लेवल की सैलरी बढ़ोतरी, फैक्टर ×")}<span id="hike-fit-label">{default:.2f}</span></h2>
+        <p class="text-sm text-slate-600">{t(lang, "Pick a fitment factor. Figures are for the starting basic pay of each level; for your own cell, HRA and deductions use the in-hand link.", "फिटमेंट फैक्टर चुनें। आंकड़े हर लेवल की शुरुआती बेसिक पे के हैं; अपने सेल, HRA और कटौतियों के लिए इन-हैंड लिंक देखें।")}</p>
+        {fitment_chips(default)}
+        <div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr>
+          <th class="{TH}">{t(lang, "Level", "लेवल")}</th><th class="{TH} text-right">{t(lang, f"Basic + DA now", "अभी बेसिक + DA")}</th><th class="{TH} text-right">{t(lang, "New basic", "नई बेसिक")}</th>
+          <th class="{TH} text-right">{t(lang, "Hike / month", "बढ़ोतरी / माह")}</th><th class="{TH} text-right">{t(lang, "Hike / year", "बढ़ोतरी / साल")}</th><th class="{TH} text-right">{t(lang, "Real hike", "असली बढ़ोतरी")}</th><th class="{TH}"></th>
+        </tr></thead><tbody>{rows}</tbody></table></div>
+        <p class="text-xs text-slate-500">{t(lang, f"Estimates only, with DA at {DA_NOW}% today. HRA, transport allowance, NPS and tax also change, so in-hand pay moves a little differently.", f"केवल अनुमान, आज DA {DA_NOW}% मानकर। HRA, परिवहन भत्ता, NPS और टैक्स भी बदलते हैं, इसलिए इन-हैंड सैलरी थोड़ी अलग बढ़ती है।")}</p>
+      </div>
+      <div class="{CARD}">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Hike at each fitment factor", "हर फिटमेंट फैक्टर पर बढ़ोतरी")}</h2>
+        <div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr><th class="{TH}">{t(lang, "Factor", "फैक्टर")}</th><th class="{TH} text-right">{t(lang, "Real hike", "असली बढ़ोतरी")}</th><th class="{TH} text-right">{t(lang, "Level 1 (₹18,000) / month", "लेवल 1 (₹18,000) / माह")}</th><th class="{TH} text-right">{t(lang, "Level 10 (₹56,100) / month", "लेवल 10 (₹56,100) / माह")}</th></tr></thead><tbody>{summary}</tbody></table></div>
+      </div>
+      {HIKE_TABLE_JS.replace("__DATA__", data)}
     </section>
 """
 
@@ -446,7 +656,7 @@ def section_tool(tool, lang):
     return markup
 
 
-SECTION_BUILDERS = {"cpc7": section_cpc7, "fitment": section_fitment}
+SECTION_BUILDERS = {"cpc7": section_cpc7, "fitment": section_fitment, "hike": section_hike}
 
 
 # ---------------------------------------------------------------------------
@@ -504,6 +714,7 @@ def site_links(lang):
             (t(lang, "All 46 calculators", "सभी 46 कैलकुलेटर"), "tools/")]
     cpc = [(t(lang, "8th Pay Commission news", "8वां वेतन आयोग ख़बर"), "8th-pay-commission/"),
            (t(lang, "8th CPC fitment factor", "8वें CPC का फिटमेंट फैक्टर"), "8th-pay-commission/fitment-factor/"),
+           (t(lang, "8th CPC salary hike", "8वें CPC में सैलरी बढ़ोतरी"), "8th-pay-commission/salary-hike/"),
            (t(lang, "7th Pay Commission", "7वां वेतन आयोग"), "7th-pay-commission/")]
     col = lambda head, items: (f'<div><div class="font-bold text-slate-200 mb-2">{head}</div><ul class="space-y-1">'
                                + "".join(f'<li><a class="hover:text-white" href="{{{{ROOT}}}}{p}">{html.escape(n)}</a></li>' for n, p in items) + "</ul></div>")

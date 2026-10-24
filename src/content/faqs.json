@@ -139,6 +139,36 @@
     [
       "What were the fitment factors in earlier pay commissions?",
       "The 6th Pay Commission used 1.86 and the 7th Pay Commission used 2.57."
+    ],
+    [
+      "Is the 1.92 fitment factor confirmed?",
+      "No. 1.92 is the most widely quoted estimate, not an official figure. As of October 2026 the 8th Pay Commission has not announced a fitment factor; analyst estimates range from about 1.83 to 2.46 and employee unions have asked for 2.86 or more."
+    ],
+    [
+      "Does a 1.92 fitment factor mean a 92% salary hike?",
+      "No. DA of 60% merges into basic pay and restarts from 0%, so the real increase over today's basic + DA is 1.92 ÷ 1.60 − 1 = 20%. At 2.28 it is 42.5% and at 2.86 it is 78.8%."
+    ],
+    [
+      "When will the 8th Pay Commission fitment factor be announced?",
+      "The Commission's report is due within about 18 months of its Terms of Reference (November 2025), so around mid-2027. The Government decides the final factor after that."
+    ]
+  ],
+  "hike": [
+    [
+      "How much will salary increase in the 8th Pay Commission?",
+      "It depends on the fitment factor, which is not announced yet. Compared with today's basic pay + 60% DA, the real increase is about 14% at 1.83, 20% at 1.92, 42.5% at 2.28 and 79% at 2.86."
+    ],
+    [
+      "What will the Level 1 salary be in the 8th Pay Commission?",
+      "At a 1.92 fitment factor the Level 1 basic pay of ₹18,000 becomes ₹34,560, which is ₹5,760 a month more than today's ₹18,000 + 60% DA. At 2.28 it would be ₹41,040 and at 2.86 ₹51,480."
+    ],
+    [
+      "Is the percentage hike the same for every pay level?",
+      "Yes, for basic pay plus DA. Every basic pay is multiplied by the same factor, so the percentage is the same and the rupee increase is bigger at higher levels. In-hand pay differs slightly because HRA, NPS and tax also change."
+    ],
+    [
+      "From when will the 8th Pay Commission salary hike apply?",
+      "The new pay is expected to count from 1 January 2026. Since the report is due around mid-2027, the increase for the months before it is paid is expected to come as arrears."
     ]
   ]
 }
