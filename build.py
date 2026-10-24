@@ -204,7 +204,10 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <meta name="twitter:title" content="{title}" />
   <meta name="twitter:description" content="{description}" />
   <meta name="twitter:image" content="{og_image}" />
+  <link rel="icon" href="{root}favicon.ico" sizes="48x48" />
   <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="{root}assets/favicon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="{root}assets/favicon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -941,7 +944,7 @@ def json_ld(page, faqs, lang):
         })
     else:
         graph[:0] = [
-            {"@type": "Organization", "@id": SITE_URL + "#organization", "name": SITE_NAME, "url": SITE_URL, "logo": SITE_URL + "assets/favicon.svg"},
+            {"@type": "Organization", "@id": SITE_URL + "#organization", "name": SITE_NAME, "url": SITE_URL, "logo": SITE_URL + "assets/favicon-512.png"},
             {"@type": "WebSite", "@id": SITE_URL + "#website", "name": SITE_NAME, "alternateName": "8thCPCPay.com", "url": SITE_URL, "publisher": {"@id": SITE_URL + "#organization"}},
         ]
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
