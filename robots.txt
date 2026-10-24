@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://govtsalarycalc.com/sitemap.xml
+Sitemap: https://8thcpcpay.com/sitemap.xml
