@@ -176,6 +176,7 @@ FITMENT_FACTORS = [1.83, 1.92, 2.08, 2.28, 2.57, 2.86]
 # DA rate today (7th CPC, from January 2026). It merges into basic pay when the 8th CPC starts,
 # so the real increase at a fitment factor f is f / (1 + DA) - 1.
 DA_NOW = 60
+TELEGRAM_URL = "https://t.me/8thcpcpay"
 
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="{lang}"{prefix_attr}>
@@ -741,7 +742,7 @@ def news_list(news, lang, limit):
             f'<h3 class="font-bold text-slate-900">{html.escape(item["title"][lang])}</h3>'
             f'<p class="text-sm text-slate-700">{html.escape(item["summary"][lang])}</p>'
             f'<p class="text-xs text-slate-500">{t(lang, "Sources", "स्रोत")}: {links}</p></li>')
-    return '<ul class="space-y-3">' + "".join(out) + "</ul>"
+    return '<ul class="news-list space-y-3">' + "".join(out) + "</ul>"
 
 
 def news_block(news, lang):
@@ -764,15 +765,23 @@ def news_block(news, lang):
       </div>
       <div class="{CARD}">
         <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">{t(lang, "Latest updates", "ताज़ा अपडेट")}</h2>
+        {telegram_button(lang)}
         {news_list(news, lang, 15)}
       </div>"""
+
+
+def telegram_button(lang):
+    return (f'<p class="not-prose"><a href="{TELEGRAM_URL}" rel="noopener" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold text-white bg-sky-600 hover:bg-sky-700 no-underline">'
+            '<svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.4 2.9c.9-.3 1.7.2 1.5 1.4z"/></svg>'
+            + t(lang, "Follow 8th CPC updates on Telegram", "8वें CPC के अपडेट Telegram पर पाएँ") + "</a></p>")
 
 
 def home_news(news, lang):
     """Short 'latest news' box under the homepage calculator."""
     return (f'<h2>{t(lang, "8th Pay Commission latest news", "8वां वेतन आयोग: ताज़ा ख़बर")}</h2>\n'
             + news_list(news, lang, 3)
-            + f'\n<p><a href="{{{{ROOT}}}}8th-pay-commission/">{t(lang, "All updates and the full status →", "सभी अपडेट और पूरी स्थिति →")}</a></p>\n')
+            + f'\n<p><a href="{{{{ROOT}}}}8th-pay-commission/">{t(lang, "All updates and the full status →", "सभी अपडेट और पूरी स्थिति →")}</a></p>\n'
+            + telegram_button(lang) + "\n")
 
 
 def section_guides(lang):
@@ -958,7 +967,7 @@ def build_page(page, lang, faqs, section, prose):
         content += FAQ_TEMPLATE.format(
             heading=t(lang, "Frequently asked questions", "अक्सर पूछे जाने वाले सवाल"),
             items="\n".join(FAQ_ITEM_TEMPLATE.format(q=html.escape(q), a=html.escape(a)) for q, a in faqs))
-    footer = read("partials/footer.html").replace("{{SITE_LINKS}}", site_links(lang))
+    footer = read("partials/footer.html").replace("{{SITE_LINKS}}", site_links(lang)).replace("{{TELEGRAM}}", telegram_button(lang))
     pieces = {
         "header": nav_links(read("partials/header.html")),
         "hero": read("partials/hero.html") if page.get("hero") else "",

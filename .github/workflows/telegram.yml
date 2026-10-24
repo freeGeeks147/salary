@@ -1,0 +1,55 @@
+name: Telegram channel posts
+
+on:
+  # New verified news: post the items the news agent just added to news.json.
+  push:
+    branches: [main]
+    paths: [src/content/news.json]
+  # Pay-level salary posts, about 10:15 am IST on Monday, Wednesday and Friday.
+  schedule:
+    - cron: '43 4 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: What to post
+        type: choice
+        options: [level, intro, news]
+      level:
+        description: Pay level for a level post (blank for today's)
+        required: false
+      dry_run:
+        description: Only print the post, don't send it
+        type: boolean
+        default: true
+
+concurrency: telegram
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Post
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          MODE: ${{ inputs.mode }}
+          LEVEL: ${{ inputs.level }}
+          DRY: ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: |
+          if [ "$EVENT" = push ]; then
+            python3 scripts/telegram_post.py news --before "$BEFORE"
+          elif [ "$EVENT" = schedule ]; then
+            python3 scripts/telegram_post.py level
+          elif [ "$MODE" = news ]; then
+            python3 scripts/telegram_post.py news --before HEAD~1 $DRY
+          else
+            python3 scripts/telegram_post.py "$MODE" ${LEVEL:+--level "$LEVEL"} $DRY
+          fi
