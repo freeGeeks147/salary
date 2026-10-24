@@ -988,8 +988,11 @@ def build_page(page, lang, faqs, section, prose):
     ).replace("{{ROOT}}", lang_root)
     target = ROOT / out_path / "index.html"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(strip_comments(out), encoding="utf-8")
-    return out_path
+    html_out = strip_comments(out)
+    changed = not target.exists() or target.read_text(encoding="utf-8") != html_out
+    if changed:
+        target.write_text(html_out, encoding="utf-8")
+    return out_path, changed
 
 
 def tool_pages():
@@ -1011,15 +1014,19 @@ def tool_pages():
     return pages
 
 
-def build_sitemap(paths):
+def build_sitemap(pages):
+    """pages: [(path, changed)]. A page's lastmod moves to today only when its HTML changed,
+    so search engines can trust the dates; unchanged pages keep the date from the last sitemap."""
     today = datetime.date.today().isoformat()
+    sitemap = ROOT / "sitemap.xml"
+    previous = dict(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>", sitemap.read_text(encoding="utf-8"))) if sitemap.exists() else {}
     urls = "".join(
-        f'  <url><loc>{SITE_URL}{p}</loc><lastmod>{today}</lastmod>'
+        f'  <url><loc>{SITE_URL}{p}</loc><lastmod>{today if changed else previous.get(SITE_URL + p, today)}</lastmod>'
         f'<xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}{p.removeprefix("hi/")}"/>'
         f'<xhtml:link rel="alternate" hreflang="hi" href="{SITE_URL}hi/{p.removeprefix("hi/")}"/></url>\n'
-        for p in paths
+        for p, changed in pages
     )
-    (ROOT / "sitemap.xml").write_text(
+    sitemap.write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
         f"{urls}</urlset>\n",
@@ -1053,4 +1060,4 @@ if __name__ == "__main__":
             page = {**page, "crumbs": [(tools_hub["name"], page_url("tools/", lang))]}
             written.append(build_page(page, lang, [], section_tool(tool, lang), tool_content(tool, lang)))
     build_sitemap(written)
-    print(f"built {len(written)} pages and sitemap.xml")
+    print(f"built {len(written)} pages ({sum(c for _, c in written)} changed) and sitemap.xml")
