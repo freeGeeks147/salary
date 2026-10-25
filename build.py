@@ -886,7 +886,7 @@ def contact_block(lang, page_path):
     <button type="submit" class="w-full rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-slate-950 font-bold py-2.5 text-sm">{t(lang, "Send message", "संदेश भेजें")}</button>
     <p class="contact-status text-sm font-semibold min-h-[1.25rem] text-slate-300 data-[state=sent]:text-emerald-400 data-[state=error]:text-rose-400 data-[state=email]:text-rose-400 data-[state=missing]:text-rose-400 data-[state=short]:text-rose-400 data-[state=limit]:text-rose-400" role="status" aria-live="polite"></p>
   </form>
-  <script src="/assets/js/contact.js" defer></script>
+  <script src="/assets/js/contact.js?v=2" defer></script>
 </section>"""
 
 
