@@ -865,6 +865,31 @@ def site_links(lang):
             + "</nav>")
 
 
+def contact_block(lang, page_path):
+    """Footer "Get in touch" form. It posts to indiacwg.com/api/contact.php, which emails
+    the owner; the owner's address is not on the page."""
+    field = "w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2.5 text-sm text-white focus:outline-none focus:border-sky-400"
+    label = "block text-xs font-semibold text-slate-300 mb-1"
+    page = "/" + ("hi/" if lang == "hi" else "") + page_path
+    return f"""<section id="contact" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
+  <div>
+    <h3 class="text-base sm:text-lg font-extrabold text-white">{t(lang, "Get in touch", "संपर्क करें")}</h3>
+    <p class="text-sm text-slate-400 mt-2 leading-relaxed">{t(lang, "Have a question about your pay calculation? Found a wrong rate or a bug in a calculator? Send us a message. We read every message and reply by email.", "अपनी सैलरी की गणना के बारे में सवाल है? कोई दर ग़लत दिखी या कैलकुलेटर में गड़बड़ी? हमें संदेश भेजें। हम हर संदेश पढ़ते हैं और ईमेल से जवाब देते हैं।")}</p>
+    <p class="text-xs text-slate-500 mt-2">{t(lang, "We are an independent website, not a government office. For your own pay or pension records, contact your DDO, PAO or controlling office.", "हम एक स्वतंत्र वेबसाइट हैं, कोई सरकारी दफ़्तर नहीं। अपने वेतन या पेंशन रिकॉर्ड के लिए अपने DDO, PAO या नियंत्रक कार्यालय से संपर्क करें।")}</p>
+  </div>
+  <form id="contact-form" action="https://indiacwg.com/api/contact.php" method="post" class="space-y-3">
+    <div><label for="cf-name" class="{label}">{t(lang, "Your name", "आपका नाम")}</label><input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name" required class="{field}"></div>
+    <div><label for="cf-email" class="{label}">{t(lang, "Your email", "आपका ईमेल")}</label><input id="cf-email" name="email" type="email" maxlength="200" autocomplete="email" required class="{field}"></div>
+    <div><label for="cf-message" class="{label}">{t(lang, "Message", "संदेश")}</label><textarea id="cf-message" name="message" rows="5" maxlength="5000" required class="{field}"></textarea></div>
+    <input type="hidden" name="page" value="{page}">
+    <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true"><label for="cf-website">Leave this empty</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <button type="submit" class="w-full rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-slate-950 font-bold py-2.5 text-sm">{t(lang, "Send message", "संदेश भेजें")}</button>
+    <p class="contact-status text-sm font-semibold min-h-[1.25rem] text-slate-300 data-[state=sent]:text-emerald-400 data-[state=error]:text-rose-400 data-[state=email]:text-rose-400 data-[state=missing]:text-rose-400 data-[state=short]:text-rose-400 data-[state=limit]:text-rose-400" role="status" aria-live="polite"></p>
+  </form>
+  <script src="/assets/js/contact.js" defer></script>
+</section>"""
+
+
 # ---------------------------------------------------------------------------
 # Page assembly
 # ---------------------------------------------------------------------------
@@ -961,7 +986,8 @@ def build_page(page, lang, faqs, section, prose):
         content += FAQ_TEMPLATE.format(
             heading=t(lang, "Frequently asked questions", "अक्सर पूछे जाने वाले सवाल"),
             items="\n".join(FAQ_ITEM_TEMPLATE.format(q=html.escape(q), a=html.escape(a)) for q, a in faqs))
-    footer = read("partials/footer.html").replace("{{SITE_LINKS}}", site_links(lang))
+    footer = (read("partials/footer.html").replace("{{SITE_LINKS}}", site_links(lang))
+              .replace("{{CONTACT}}", contact_block(lang, page["path"])))
     pieces = {
         "header": nav_links(read("partials/header.html")),
         "hero": read("partials/hero.html") if page.get("hero") else "",
