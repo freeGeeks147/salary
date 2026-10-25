@@ -837,7 +837,7 @@ def tool_content(tool, lang):
 <p>{html.escape(intro)}</p>
 <h2>{t(lang, "How to use it", "इसे कैसे इस्तेमाल करें")}</h2>
 <ol>
-<li>{t(lang, "Set your pay level and basic pay in the <a href=\"{{ROOT}}\">main salary calculator</a> (it starts at Level 10, ₹56,100). This calculator uses them automatically.", "<a href=\"{{ROOT}}\">मुख्य सैलरी कैलकुलेटर</a> में अपना पे लेवल और बेसिक पे भरें (शुरुआत लेवल 10, ₹56,100 से)। यह कैलकुलेटर उन्हें अपने-आप इस्तेमाल करता है।")}</li>
+<li>{t(lang, "Set your pay level and basic pay in the <a href='{{ROOT}}'>main salary calculator</a> (it starts at Level 10, ₹56,100). This calculator uses them automatically.", "<a href='{{ROOT}}'>मुख्य सैलरी कैलकुलेटर</a> में अपना पे लेवल और बेसिक पे भरें (शुरुआत लेवल 10, ₹56,100 से)। यह कैलकुलेटर उन्हें अपने-आप इस्तेमाल करता है।")}</li>
 <li>{t(lang, "Choose whether to use your current 7th CPC pay or projected 8th CPC pay with the switch at the top.", "ऊपर के स्विच से चुनें कि मौजूदा 7वें CPC का वेतन इस्तेमाल हो या अनुमानित 8वें CPC का।")}</li>
 <li>{t(lang, "Fill in the boxes below the title. The result and the full breakdown update as you type.", "शीर्षक के नीचे के बॉक्स भरें। नतीजा और पूरा ब्योरा टाइप करते ही बदल जाता है।")}</li>
 </ol>
