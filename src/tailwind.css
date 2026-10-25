@@ -78,6 +78,5 @@ input[type="range"] {
 .seo-content a { @apply text-sky-700 font-semibold underline underline-offset-2 hover:text-sky-900; }
 .seo-content strong { @apply font-semibold text-slate-900; }
 html[lang="hi"] .seo-content p, html[lang="hi"] .seo-content li { @apply leading-loose; }
-/* Buttons and the news list inside text sections keep their own look */
-.seo-content .not-prose a { @apply text-white no-underline hover:text-white; }
+/* The news list inside text sections keeps its own look */
 .seo-content ul.news-list { @apply list-none pl-0 space-y-3; }
