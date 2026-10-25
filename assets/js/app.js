@@ -4722,6 +4722,9 @@
           el.focus();
         }
       }, 60);
+    } else if (type === "anchor") {
+      const el = document.getElementById(val);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (type === "modal" && val === "payslip") {
       renderPayslipModalContent();
       byId("modal-payslip").classList.remove("hidden");
