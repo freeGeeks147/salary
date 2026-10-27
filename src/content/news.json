@@ -1,6 +1,6 @@
 {
   "_rules": "Edited by the news agent (see .github/news-agent.md). build.py checks every entry: each source must be an official government site or a listed news outlet; kind 'official' needs one official source, kind 'reported' needs two different outlets. Demands, estimates and expectations must say so.",
-  "last_checked": "2026-10-24",
+  "last_checked": "2026-10-27",
   "status": [
     {
       "label": {"en": "Constituted", "hi": "गठन"},
