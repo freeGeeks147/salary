@@ -8,7 +8,7 @@ update them (and the date in AS_OF) when new orders come out.
 import html
 
 AS_OF = {"en": "October 2026", "hi": "अक्टूबर 2026"}
-DA_NOW = 60          # central DA from 1 January 2026
+DA_NOW = 63          # central DA from 1 July 2026 (approved 28 October 2026)
 FIT = 1.92           # most quoted 8th CPC fitment estimate (not official)
 
 # 7th CPC pay matrix: first cell of each level (entry basic pay).
@@ -329,7 +329,7 @@ def state(lang):
 <p>{t(lang, "States are not bound by the central pay commission. Each state decides its own pay structure and DA. They fall into two groups.", "राज्य केंद्रीय वेतन आयोग से बंधे नहीं हैं। हर राज्य अपना वेतन ढाँचा और DA ख़ुद तय करता है। राज्य दो समूहों में आते हैं।")}</p>
 <h3>{t(lang, "1. States that use the 7th CPC pay matrix", "1. 7वें CPC पे मैट्रिक्स वाले राज्य")}</h3>
 <p>{html.escape(cen)}.</p>
-<p>{t(lang, "Their employees have the same pay levels (Level 1 ₹18,000 upwards) as central employees, sometimes with a few state-specific levels. These states usually raise DA to match the centre a few weeks or months after each central DA hike, so DA is at or close to the central 60% (from January 2026). They have historically adopted each central pay commission, usually 6 to 18 months after the centre.", "इनके कर्मचारियों के पे लेवल केंद्र जैसे ही हैं (लेवल 1 ₹18,000 से ऊपर), कहीं-कहीं कुछ राज्य-विशेष लेवल के साथ। ये राज्य आमतौर पर केंद्र के हर DA बढ़ोतरी के कुछ हफ़्ते या महीने बाद DA बढ़ाते हैं, इसलिए DA केंद्र के 60% (जनवरी 2026 से) के बराबर या उसके आसपास है। ये राज्य हर केंद्रीय वेतन आयोग को अपनाते रहे हैं, आमतौर पर केंद्र के 6 से 18 महीने बाद।")}</p>
+<p>{t(lang, "Their employees have the same pay levels (Level 1 ₹18,000 upwards) as central employees, sometimes with a few state-specific levels. These states usually raise DA to match the centre a few weeks or months after each central DA hike, so DA is at or close to the central rate (63% from July 2026). They have historically adopted each central pay commission, usually 6 to 18 months after the centre.", "इनके कर्मचारियों के पे लेवल केंद्र जैसे ही हैं (लेवल 1 ₹18,000 से ऊपर), कहीं-कहीं कुछ राज्य-विशेष लेवल के साथ। ये राज्य आमतौर पर केंद्र के हर DA बढ़ोतरी के कुछ हफ़्ते या महीने बाद DA बढ़ाते हैं, इसलिए DA केंद्र की दर (जुलाई 2026 से 63%) के बराबर या उसके आसपास है। ये राज्य हर केंद्रीय वेतन आयोग को अपनाते रहे हैं, आमतौर पर केंद्र के 6 से 18 महीने बाद।")}</p>
 <h3>{t(lang, "2. States with their own pay commission", "2. अपने वेतन आयोग वाले राज्य")}</h3>
 {table([t(lang, "State", "राज्य"), t(lang, "Pay structure", "वेतन ढाँचा")], rows)}
 <p class="{NOTE}">{t(lang, "In these states the DA percentage is not comparable with the central DA, because it is paid on a different (revised) basic pay. A lower DA percentage does not mean lower pay.", "इन राज्यों का DA प्रतिशत केंद्र के DA से तुलनीय नहीं है, क्योंकि यह अलग (संशोधित) बेसिक पे पर मिलता है। कम DA प्रतिशत का मतलब कम वेतन नहीं है।")}</p>
@@ -360,16 +360,16 @@ GUIDES = {
 SEO = {
     "capf_handbook_suite": {
         "title": ("CAPF Salary 2026: Constable to Commandant Pay & 8th CPC", "CAPF वेतन 2026: कांस्टेबल से कमांडेंट तक और 8वां CPC"),
-        "description": ("CAPF salary by rank for BSF, CRPF, CISF, ITBP, SSB: pay level, basic pay, gross with DA 60%, risk & hardship allowance, ration money and 8th CPC estimate.",
-                        "BSF, CRPF, CISF, ITBP, SSB में रैंक के अनुसार वेतन: पे लेवल, बेसिक, 60% DA के साथ ग्रॉस, रिस्क-हार्डशिप भत्ता, राशन मनी और 8वें CPC का अनुमान।")},
+        "description": ("CAPF salary by rank for BSF, CRPF, CISF, ITBP, SSB: pay level, basic pay, gross with DA 63%, risk & hardship allowance, ration money and 8th CPC estimate.",
+                        "BSF, CRPF, CISF, ITBP, SSB में रैंक के अनुसार वेतन: पे लेवल, बेसिक, 63% DA के साथ ग्रॉस, रिस्क-हार्डशिप भत्ता, राशन मनी और 8वें CPC का अनुमान।")},
     "agniveer_defence": {
         "title": ("Agniveer Salary & Army Pay Scale 2026 (Sepoy to General)", "अग्निवीर वेतन और सेना वेतनमान 2026 (सिपाही से जनरल)"),
-        "description": ("Agniveer pay year 1 to 4, in-hand and Seva Nidhi (₹11.71 lakh), plus Army pay scale for every rank with MSP, DA 60% and the 8th CPC estimate.",
-                        "अग्निवीर का साल 1 से 4 तक वेतन, हाथ में और सेवा निधि (₹11.71 लाख), साथ में हर रैंक का सेना वेतनमान, MSP, 60% DA और 8वें CPC का अनुमान।")},
+        "description": ("Agniveer pay year 1 to 4, in-hand and Seva Nidhi (₹11.71 lakh), plus Army pay scale for every rank with MSP, DA 63% and the 8th CPC estimate.",
+                        "अग्निवीर का साल 1 से 4 तक वेतन, हाथ में और सेवा निधि (₹11.71 लाख), साथ में हर रैंक का सेना वेतनमान, MSP, 63% DA और 8वें CPC का अनुमान।")},
     "railway_hub_suite": {
         "title": ("Railway Salary 2026: Pay Level of Every Post & 8th CPC", "रेलवे वेतन 2026: हर पद का पे लेवल और 8वां CPC"),
-        "description": ("Railway salary by post: Group D, ALP, clerk, Station Master, JE, SSE pay level and gross with DA 60%, running allowance, PLB bonus and 8th CPC estimate.",
-                        "पद के अनुसार रेलवे वेतन: ग्रुप D, ALP, क्लर्क, स्टेशन मास्टर, JE, SSE का पे लेवल और 60% DA के साथ ग्रॉस, रनिंग भत्ता, PLB बोनस और 8वें CPC का अनुमान।")},
+        "description": ("Railway salary by post: Group D, ALP, clerk, Station Master, JE, SSE pay level and gross with DA 63%, running allowance, PLB bonus and 8th CPC estimate.",
+                        "पद के अनुसार रेलवे वेतन: ग्रुप D, ALP, क्लर्क, स्टेशन मास्टर, JE, SSE का पे लेवल और 63% DA के साथ ग्रॉस, रनिंग भत्ता, PLB बोनस और 8वें CPC का अनुमान।")},
     "psu_cpse_3prc": {
         "title": ("PSU Salary 2026: E0 to E9 Pay Scales, IDA & In-Hand", "PSU वेतन 2026: E0 से E9 वेतनमान, IDA और इन-हैंड"),
         "description": ("PSU (CPSE) salary under the 3rd PRC: E0 to E9 pay scales, IDA 55.7%, HRA, perks, PRP, and when the 4th pay revision is due (January 2027).",
