@@ -527,7 +527,7 @@
       
       <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-blue-950 text-white rounded-2xl p-4 shadow-md border border-emerald-500/30 flex flex-wrap items-center justify-between gap-3">
         <div class="space-y-0.5">
-          <div class="flex items-center gap-2">
+          <div id="mt-context-row" class="hidden flex items-center gap-2">
             <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-emerald-500 text-slate-950">8th CPC Live Context</span>
             <span class="text-xs font-mono text-emerald-300" id="mt-context-summary">Level 10 · 7th Basic: ₹56,100 → 8th Basic: ₹1,07,712 (1.92×)</span>
           </div>
@@ -535,7 +535,8 @@
           <p class="text-xs text-slate-300">15-year deposit &amp; 21-year 100% tax-free maturity value for a girl child (@ 8.2% p.a.)</p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/15">
+        <p id="mt-context-note" class="text-xs text-emerald-200 max-w-md">This calculator does not depend on your central government pay.</p>
+        <div id="mt-basis-toggle" class="hidden flex flex-wrap items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/15">
           <span class="text-xs font-semibold px-2 text-slate-200" data-i18n="mt_pay_basis_lbl">Pay Basis for Tools:</span>
           <button type="button" id="btn-mt-basis-8th" data-mt-basis="8TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm">
             ⚡ 8th CPC Projected Pay
