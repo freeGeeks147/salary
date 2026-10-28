@@ -2599,7 +2599,7 @@
             ["Monthly HRA Gain", `+${formatINR(h8 - h7)}/mo`],
             ["Annual HRA Gain (12 Months)", `+${formatINR((h8 - h7) * 12)}/yr`]
           ],
-          rule: "HRA Slab Revision Rule: Even though HRA percentage resets from 30/20/10% to 24/16/8% when DA resets to 0% in the 8th CPC, your actual rupee HRA increases because it is calculated on the 1.92× higher 8th CPC Basic Pay."
+          rule: "HRA Slab Rule: HRA is 30/20/10% of basic while DA is 50% or more. The 8th CPC rates are not decided; this calculator assumes they start again at 24/16/8% (as in the 7th CPC) on the higher 8th CPC basic pay, so the rupee HRA still rises."
         };
       }
     },
@@ -2647,7 +2647,7 @@
             ["Risk & Hardship Allowance + Ration Money (RMA)", `${formatINR(riskAmt)} + ₹4,558/mo`],
             ["Annual Dress Allowance (Paid in July)", inp.capfRankCode === 5 ? "₹25,000/yr" : "₹12,500/yr (Enhanced +25%)"]
           ],
-          rule: "MHA CAPF Guidelines: Personnel up to Inspector receive tax-free Ration Money Allowance (₹151.93/day in 2025-26 ≈ ₹4,558/mo), Risk & Hardship Allowance (₹6,000 to ₹25,000/mo), 60 days Earned Leave per year, and 1 month extra salary (compensatory pay)."
+          rule: "MHA CAPF Guidelines: Personnel up to Inspector receive tax-free Ration Money Allowance (₹151.93/day in 2025-26 ≈ ₹4,558/mo), and Risk & Hardship Allowance by posting category (₹6,000 to ₹31,500/mo under the MHA matrix)."
         };
       }
     },
@@ -2667,14 +2667,14 @@
         bn: "লোকো পাইলট ৩০% রানিং পে এলিমেন্ট, কিলোমিটার ভাতা, স্টেশন মাস্টার NDA ও ৭৮-দিনের বোনাস"
       },
       inputs: [
-        { key: "rlyPostCode", label: "Railway Post (1=Trackman L1, 2=ALP L2, 3=TTE L5, 4=Station Master/JE L6, 5=SSE L7)", type: "number", def: 2, min: 1, max: 5 },
+        { key: "rlyPostCode", label: "Railway Post (1=Trackman L1, 2=ALP L2, 3=Sr CCTC/TTE L5, 4=Station Master/JE L6, 5=SSE L7)", type: "number", def: 2, min: 1, max: 5 },
         { key: "monthlyKms", label: "Monthly Running Kilometres (For ALP/Loco Pilot)", type: "number", def: 3500, min: 0, max: 10000, step: 500 }
       ],
       compute: (inp, ctx) => {
         const posts = {
           1: { name: "Track Maintainer-IV (Group D — Level 1)", b7: 18000, running: false, extra: 2700, extraName: "Risk & Hardship Allowance" },
           2: { name: "Assistant Loco Pilot (ALP — Level 2)", b7: 19900, running: true, extra: 0, extraName: "Kilometre Running Allowance" },
-          3: { name: "Travelling Ticket Examiner (TTE — Level 5)", b7: 29200, running: false, extra: 4500, extraName: "Travelling Allowance (TA)" },
+          3: { name: "Sr Commercial cum Ticket Clerk / TTE (Level 5)", b7: 29200, running: false, extra: 4500, extraName: "Duty-related allowances (estimate)" },
           4: { name: "Station Master / Junior Engineer (Level 6)", b7: 35400, running: false, extra: 2800, extraName: "Night Duty Allowance (NDA)" },
           5: { name: "Senior Section Engineer (SSE — Level 7)", b7: 44900, running: false, extra: 1800, extraName: "Inspection / Night Allowance" }
         };
@@ -2831,7 +2831,7 @@
         bn: "ডেপুটেশন ভাতা ক্যালকুলেটর (Deputation)"
       },
       desc: {
-        en: "Compare Same City (5% cap ₹4,500) vs New City (10% cap ₹9,000) vs Ex-Cadre Post Pay",
+        en: "Compare Same City (5%, cap ₹5,625) vs New City (10%, cap ₹11,250) vs Ex-Cadre Post Pay",
         hi: "उसी शहर (5%) बनाम नए शहर (10%) में डेपुटेशन भत्ते और नए पद के वेतन की तुलना",
         bn: "একই শহর (৫%) বনাম নতুন শহর (১০%) ডেপুটেশন ভাতা এবং পদের বেতনের তুলনা"
       },
@@ -2840,7 +2840,7 @@
         { key: "deputationPostBasic", label: "Deputation Post Entry Basic (₹)", type: "number", def: 67700, min: 18000, max: 250000 }
       ],
       compute: (inp, ctx) => {
-        const capScale = ctx.basis === "8TH" ? ctx.fitment : 1;
+        const capScale = ctx.basis === "8TH" ? ctx.fitment : (ctx.daPct >= 50 ? 1.25 : 1); // ceilings rose 25% when DA reached 50%
         const rate = inp.stationType === 1 ? 0.05 : 0.10;
         const cap = Math.round((inp.stationType === 1 ? 4500 : 9000) * capScale);
         const depAllowance = Math.min(cap, Math.round(ctx.basic * rate));
@@ -2857,7 +2857,7 @@
             ["Option A: Parent Basic + Deputation Allowance", formatINR(optATotalBasic)],
             ["Option B: Deputation Post Basic Pay", formatINR(optBBasic)]
           ],
-          rule: "DoPT Deputation Rules: Same station gets 5% of Basic (max ₹4,500 in 7th CPC); change of station gets 10% of Basic (max ₹9,000 in 7th CPC; ceilings double when DA crosses 50%/reset)."
+          rule: "DoPT Deputation Rules: Same station gets 5% of Basic (max ₹4,500 in 7th CPC); change of station gets 10% of Basic (max ₹9,000). Both ceilings rose by 25% (to ₹5,625 and ₹11,250) when DA reached 50%."
         };
       }
     },
@@ -3328,7 +3328,7 @@
         const sub = ctx.cgegis;
         const cover = sub * 1000; // ₹30 -> ₹30k, ₹60 -> ₹60k, ₹120 -> ₹1,20,000
         const savingsMo = sub * 0.70;
-        const r = 0.075 / 12;
+        const r = 0.071 / 12; // savings fund earns the GPF rate (7.1%)
         const n = inp.serviceYears * 12;
         const maturity = Math.round(savingsMo * ((Math.pow(1 + r, n) - 1) / r));
         return {
@@ -3652,16 +3652,16 @@
         const uaeEosb = Math.min(inp.gulfBasicINR * 24, Math.round((inp.gulfBasicINR / 30) * uaeDays));
         const saudiEosb = Math.round((inp.gulfBasicINR / 30) * saudiDays);
         return {
-          primaryLabel: `UAE / Qatar EOSB Gratuity (${inp.gulfYears} Years)`,
+          primaryLabel: `UAE EOSB Gratuity (${inp.gulfYears} Years)`,
           primaryVal: formatINR(uaeEosb),
           secondaryVal: `Saudi Arabia EOSB Equivalent: ${formatINR(saudiEosb)}`,
           rows: [
             ["First 5 Years Entitlement (UAE: 21d/yr, Saudi: 15d/yr)", `${first5 * 21} days (UAE) / ${first5 * 15} days (KSA)`],
             ["Beyond 5 Years Entitlement (30 days/yr)", `${after5 * 30} days`],
-            ["UAE / Qatar Total EOSB Payout", formatINR(uaeEosb)],
+            ["UAE Total EOSB Payout", formatINR(uaeEosb)],
             ["Saudi Arabia Total EOSB Payout", formatINR(saudiEosb)]
           ],
-          rule: "UAE Federal Labour Law Art. 51: Expat workers completing ≥1 year receive 21 days' Basic Pay per year for the first 5 years and 30 days' Basic Pay per year thereafter (capped at 2 years' total salary)."
+          rule: "UAE Federal Labour Law Art. 51: Expat workers completing ≥1 year receive 21 days' Basic Pay per year for the first 5 years and 30 days' Basic Pay per year thereafter (capped at 2 years' total salary). Qatar pays at least 3 weeks' basic pay per year of service; Saudi Arabia half a month a year for the first 5 years and a full month after."
         };
       }
     },
@@ -4042,7 +4042,7 @@
             ["Dearness Allowance (DA on Basic + Special)", formatINR(da)],
             ["House Rent Allowance (HRA)", formatINR(hra)]
           ],
-          rule: "IBA 12th Bipartite Settlement (Effective Nov 2022): Officer Scale-I starts at ₹48,480 Basic + 26.5% Special Allowance + ₹850 Learning Allowance (both rank for DA), yielding ~₹74k–₹82k Gross."
+          rule: "IBA 12th Bipartite Settlement (effective Nov 2022): Officer Scale-I starts at ₹48,480 basic; clerks at ₹24,050. Special allowance and other allowances vary by cadre; figures here, and the RBI and LIC profiles, are estimates. Bank DA is 27.83% for Aug–Oct 2026."
         };
       }
     },
@@ -4147,7 +4147,7 @@
         bn: "পশ্চিমবঙ্গ, গুজরাট, মহারাষ্ট্র, ইউপি, রাজস্থান ও বিহারের সাথে কেন্দ্রীয় বেতনের তুলনা"
       },
       inputs: [
-        { key: "stateCode", label: "State (1=Gujarat/UP/Raj 60% DA, 2=Maharashtra, 3=West Bengal ROPA-19, 4=Karnataka 7th SPC)", type: "number", def: 1, min: 1, max: 4 }
+        { key: "stateCode", label: "State (1=Gujarat/UP/Raj, central pattern, 2=Maharashtra, 3=West Bengal ROPA-19, 4=Karnataka 7th SPC) — rough illustration", type: "number", def: 1, min: 1, max: 4 }
       ],
       compute: (inp, ctx) => {
         const stateProfiles = {
@@ -4173,7 +4173,7 @@
             [`State HRA (${st.hraPct}%) + Medical/TA`, formatINR(stHra + 1600)],
             [`Central Govt (${ctx.basis}) Gross Comparison`, formatINR(centralGross)]
           ],
-          rule: "State vs Centre Comparison: States like Gujarat, UP, Rajasthan, and Bihar follow the exact 7th CPC Pay Matrix and match Central DA revisions, whereas Karnataka, Kerala, Punjab, and West Bengal use state-specific pay matrices/DA schedules."
+          rule: "Rough illustration only. States like Gujarat, UP, Rajasthan and Bihar broadly follow the 7th CPC pay matrix and usually match central DA after a delay; Maharashtra, Karnataka, Kerala, Punjab and West Bengal have their own pay structures, so a state DA % is not comparable with the central one. Check your state's latest order."
         };
       }
     },
@@ -4201,7 +4201,7 @@
         const b = ctx.basis === "8TH" ? Math.round(rawB * ctx.fitment) : rawB;
         const npa = inp.roleType === 1 ? Math.round(b * 0.20) : 0;
         const da = Math.round((b + npa) * (ctx.daPct / 100));
-        const hra = Math.round(b * (ctx.hraClass === "X" ? 0.24 : 0.16));
+        const hra = Math.round(b * (ctx.hraClass === "X" ? 0.30 : (ctx.hraClass === "Y" ? 0.20 : 0.10)));
         const gross = b + npa + da + hra + ctx.ta;
         return {
           primaryLabel: inp.roleType === 1 ? `Govt Doctor Gross (with 20% NPA)` : `Academic Faculty Gross (${ctx.basis})`,
