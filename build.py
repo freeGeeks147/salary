@@ -177,7 +177,7 @@ POPULAR_TOOLS = [
 FITMENT_FACTORS = [1.83, 1.92, 2.08, 2.28, 2.57, 2.86]
 # DA rate today (7th CPC, from January 2026). It merges into basic pay when the 8th CPC starts,
 # so the real increase at a fitment factor f is f / (1 + DA) - 1.
-DA_NOW = 60
+DA_NOW = 63
 
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="{lang}"{prefix_attr}>
@@ -379,7 +379,7 @@ def section_cpc7(lang):
     da_rows = "".join(f'<tr><td class="{TD}">{d}</td><td class="{TD} font-mono">{r}</td></tr>' for d, r in [
         (t(lang, "January 2024", "जनवरी 2024"), "50%"), (t(lang, "July 2024", "जुलाई 2024"), "53%"),
         (t(lang, "January 2025", "जनवरी 2025"), "55%"), (t(lang, "July 2025", "जुलाई 2025"), "58%"),
-        (t(lang, "January 2026", "जनवरी 2026"), "60%")])
+        (t(lang, "January 2026", "जनवरी 2026"), "60%"), (t(lang, "July 2026", "जुलाई 2026"), "63%")])
     hra_rows = "".join(f'<tr><td class="{TD}">{c}</td><td class="{TD} font-mono">{a}</td><td class="{TD} font-mono">{b}</td><td class="{TD} font-mono">{d}</td></tr>' for c, a, b, d in [
         (t(lang, "X (big cities)", "X (बड़े शहर)"), "24%", "27%", "30%"),
         (t(lang, "Y (other cities)", "Y (अन्य शहर)"), "16%", "18%", "20%"),
@@ -394,7 +394,7 @@ def section_cpc7(lang):
             (t(lang, "Minimum basic pay", "न्यूनतम बेसिक पे"), "₹18,000"),
             (t(lang, "Maximum basic pay", "अधिकतम बेसिक पे"), "₹2,50,000"),
             (t(lang, "Annual increment", "सालाना इंक्रीमेंट"), "3%"),
-            (t(lang, "DA from Jan 2026", "जनवरी 2026 से DA"), "60%"),
+            (t(lang, "DA from Jul 2026", "जुलाई 2026 से DA"), "63%"),
         ])}
         {link_buttons([
             (t(lang, "Calculate my salary →", "मेरी सैलरी निकालें →"), "{{ROOT}}"),
@@ -520,7 +520,7 @@ def section_fitment(lang):
     estimates = [
         (t(lang, "6th Pay Commission (2006), actual", "6वां वेतन आयोग (2006), वास्तविक"), "1.86", t(lang, "Final", "अंतिम")),
         (t(lang, "7th Pay Commission (2016), actual", "7वां वेतन आयोग (2016), वास्तविक"), "2.57", t(lang, "Final: minimum pay ₹7,000 → ₹18,000", "अंतिम: न्यूनतम वेतन ₹7,000 → ₹18,000")),
-        (t(lang, "Most quoted estimate", "सबसे ज़्यादा उद्धृत अनुमान"), "1.92", t(lang, "60% DA merged (×1.60) plus a 20% rise (×1.20)", "60% DA मिलाकर (×1.60) और 20% बढ़ोतरी (×1.20)")),
+        (t(lang, "Most quoted estimate", "सबसे ज़्यादा उद्धृत अनुमान"), "1.92", t(lang, "60% DA merged (×1.60) plus a 20% rise (×1.20); with DA now 63%, the same rise gives about 1.96", "60% DA मिलाकर (×1.60) और 20% बढ़ोतरी (×1.20); अब DA 63% है, उसी बढ़ोतरी पर लगभग 1.96")),
         (t(lang, "Analyst estimates (Ambit Capital, as reported)", "विश्लेषकों के अनुमान (Ambit Capital, रिपोर्ट के अनुसार)"), "1.83 – 2.46", t(lang, "Range in a brokerage report", "ब्रोकरेज रिपोर्ट की रेंज")),
         (t(lang, "Staff side (NC-JCM) memorandum, April 2026", "कर्मचारी पक्ष (NC-JCM) का ज्ञापन, अप्रैल 2026"), "3.833", t(lang, "Demand: minimum pay ₹69,000, 6% increment", "माँग: न्यूनतम वेतन ₹69,000, 6% इंक्रीमेंट")),
         (t(lang, "Employee unions' demands, as reported (May 2026)", "कर्मचारी संगठनों की माँग, रिपोर्ट के अनुसार (मई 2026)"), "2.86 – 4.38", t(lang, "Demands, not estimates", "माँग, अनुमान नहीं")),

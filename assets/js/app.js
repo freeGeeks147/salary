@@ -722,7 +722,7 @@
     taType: "HIGHER",
     hra8thReset: true,
     divyangTa: false,
-    da7th: 60,
+    da7th: 63,
     da8th: 0,
     pensionScheme: "NPS_UPS",
     addons: {
@@ -1726,8 +1726,8 @@
   const NEWS_BY_LANG = {
     en: {
       heading: "Government Employee News Adda (8th CPC & DA Updates)",
-      t1: "1. 8th Pay Commission Fitment Factor & ToR Update (Oct 2026)",
-      b1: "With AICPI-IW pushing Dearness Allowance to 60% from Jan 2026, staff federations (NC-JCM) have submitted memoranda proposing a 1.92× to 2.57× fitment factor effective 01.01.2026, raising minimum Basic Pay from ₹18,000 to ₹34,560.",
+      t1: "1. DA Raised to 63% from July 2026 (approved 28 Oct 2026)",
+      b1: "The Union Cabinet approved a 3-point increase in DA and DR, from 60% to 63% of basic pay and pension, with effect from 1 July 2026; arrears from July are due. The 8th CPC fitment factor is not announced yet; the staff side (NC-JCM) has asked for 3.833.",
       t2: "2. Unified Pension Scheme (UPS) vs NPS Choice Window",
       b2: "Central Government employees with 25+ years qualifying service are guaranteed 50% of 12-month average Basic Pay as assured pension plus Dearness Relief (DR) and a lump-sum payout (1/10th per 6 months).",
       t3: "3. New Income Tax Act Forms (Effective FY 2026-27)",
@@ -1735,8 +1735,8 @@
     },
     hi: {
       heading: "सरकारी कर्मचारी न्यूज़ अड्डा (8वां वेतन आयोग और DA अपडेट)",
-      t1: "1. 8वां वेतन आयोग फिटमेंट फैक्टर और ToR अपडेट (अक्टूबर 2026)",
-      b1: "जनवरी 2026 से महंगाई भत्ता (DA) 60% होने के साथ, कर्मचारी महासंघों (NC-JCM) ने 01.01.2026 से 1.92× से 2.57× फिटमेंट फैक्टर का प्रस्ताव दिया है, जिससे न्यूनतम बेसिक पे ₹18,000 से बढ़कर ₹34,560 होने का अनुमान है।",
+      t1: "1. जुलाई 2026 से DA बढ़कर 63% (28 अक्टूबर 2026 को मंज़ूर)",
+      b1: "केंद्रीय कैबिनेट ने DA और DR में 3 प्रतिशत अंक की बढ़ोतरी मंज़ूर की, बेसिक पे और पेंशन के 60% से 63%, 1 जुलाई 2026 से; जुलाई से एरियर मिलेगा। 8वें CPC का फिटमेंट फैक्टर अभी घोषित नहीं हुआ है; कर्मचारी पक्ष (NC-JCM) ने 3.833 की माँग की है।",
       t2: "2. एकीकृत पेंशन योजना (UPS) बनाम NPS विकल्प",
       b2: "25+ वर्ष की सेवा पूरी करने वाले केंद्रीय कर्मचारियों को अंतिम 12 माह के औसत मूल वेतन का 50% गारंटीड पेंशन, महंगाई राहत (DR) और एकमुश्त राशि (हर 6 माह की सेवा पर 1/10वां हिस्सा) सुनिश्चित है।",
       t3: "3. नए आयकर अधिनियम फॉर्म (वित्त वर्ष 2026-27 से लागू)",
@@ -1744,8 +1744,8 @@
     },
     bn: {
       heading: "সরকারি কর্মচারী নিউজ আড্ডা (৮ম বেতন কমিশন ও DA আপডেট)",
-      t1: "১. ৮ম বেতন কমিশন ফিটমেন্ট ফ্যাক্টর ও ToR আপডেট (অক্টোবর ২০২৬)",
-      b1: "জানুয়ারি ২০২৬ থেকে মহার্ঘ ভাতা (DA) ৬০% হওয়ায় কর্মচারী ফেডারেশনগুলি (NC-JCM) ০১.০১.২০২৬ থেকে ১.৯২× থেকে ২.৫৭× ফিটমেন্ট ফ্যাক্টরের প্রস্তাব দিয়েছে, যার ফলে সর্বনিম্ন বেসিক পে ₹১৮,০০০ থেকে বেড়ে ₹৩৪,৫৬০ হতে পারে।",
+      t1: "১. জুলাই ২০২৬ থেকে DA বেড়ে ৬৩% (২৮ অক্টোবর ২০২৬ অনুমোদিত)",
+      b1: "কেন্দ্রীয় মন্ত্রিসভা DA ও DR-এ ৩ শতাংশ পয়েন্ট বৃদ্ধি অনুমোদন করেছে, বেসিক পে ও পেনশনের ৬০% থেকে ৬৩%, ১ জুলাই ২০২৬ থেকে; জুলাই থেকে বকেয়া প্রাপ্য। ৮ম CPC-র ফিটমেন্ট ফ্যাক্টর এখনও ঘোষিত হয়নি; কর্মী পক্ষ (NC-JCM) ৩.৮৩৩ চেয়েছে।",
       t2: "২. ইউনিফায়েড পেনশন স্কিম (UPS) বনাম NPS বিকল্প",
       b2: "২৫+ বছর চাকরি পূর্ণ করা কেন্দ্রীয় কর্মচারীদের শেষ ১২ মাসের গড় বেসিক পে-এর ৫০% নিশ্চিত পেনশন, মহার্ঘ ত্রাণ (DR) এবং এককালীন অর্থ প্রদানের গ্যারান্টি দেওয়া হয়েছে।",
       t3: "৩. নতুন আয়কর আইনের ফর্ম (FY 2026-27 থেকে কার্যকর)",
@@ -1827,8 +1827,8 @@
         "Big City (Higher TPTA)": "बड़े शहर (Higher TPTA)",
         "Other City (Standard TA)": "अन्य शहर (सामान्य TA)",
         "No TA": "कोई TA नहीं",
-        "60% (Jan 2026 Now)": "60% (जनवरी 2026 वर्तमान)",
-        "63% (Jul 2026 Est.)": "63% (जुलाई 2026 अनुमानित)",
+        "63% (Jul 2026 Now)": "63% (जुलाई 2026 वर्तमान)",
+        "60% (Jan 2026)": "60% (जनवरी 2026)",
         "66% (Jan 2027 Est.)": "66% (जनवरी 2027 अनुमानित)",
         "58% (Jul 2025 Old)": "58% (जुलाई 2025)",
         "55% (Jan 2025)": "55% (जनवरी 2025)",
@@ -1855,8 +1855,8 @@
         "Big City (Higher TPTA)": "বড় শহর (Higher TPTA)",
         "Other City (Standard TA)": "অন্যান্য শহর (সাধারণ TA)",
         "No TA": "TA নেই",
-        "60% (Jan 2026 Now)": "৬০% (জানুয়ারি ২০২৬ বর্তমান)",
-        "63% (Jul 2026 Est.)": "৬৩% (জুলাই ২০২৬ সম্ভাব্য)",
+        "63% (Jul 2026 Now)": "৬৩% (জুলাই ২০২৬ বর্তমান)",
+        "60% (Jan 2026)": "৬০% (জানুয়ারি ২০২৬)",
         "66% (Jan 2027 Est.)": "৬৬% (জানুয়ারি ২০২৭ সম্ভাব্য)",
         "58% (Jul 2025 Old)": "৫৮% (জুলাই ২০২৫)",
         "55% (Jan 2025)": "৫৫% (জানুয়ারি ২০২৫)",
@@ -2544,7 +2544,7 @@
         bn: "বর্তমান ৬০% DA, জুলাই ২০২৬ (৬৩%) অনুমান এবং ৮ম বেতন কমিশনে DA একীকরণের হিসাব"
       },
       inputs: [
-        { key: "selectedDaPct", label: "DA Percentage Rate (%)", type: "number", def: 60, min: 0, max: 100 },
+        { key: "selectedDaPct", label: "DA Percentage Rate (%)", type: "number", def: 63, min: 0, max: 100 },
         { key: "upcomingHikePct", label: "Next 6-Monthly DA Hike (%)", type: "number", def: 3, min: 1, max: 10 }
       ],
       compute: (inp, ctx) => {
@@ -2559,7 +2559,7 @@
             ["7th CPC Basic Pay", formatINR(ctx.basic7th)],
             [`Current DA (@ ${inp.selectedDaPct}%)`, `${formatINR(curDa)}/mo`],
             [`After +${inp.upcomingHikePct}% Revision (@ ${inp.selectedDaPct + inp.upcomingHikePct}%)`, `${formatINR(nextDa)}/mo (+${formatINR(nextDa - curDa)}/mo)`],
-            ["7th Basic + 60% DA Merged Base (1.60×)", formatINR(mergedBasic)]
+            [`7th Basic + ${inp.selectedDaPct}% DA Merged Base (${(1 + inp.selectedDaPct / 100).toFixed(2)}×)`, formatINR(mergedBasic)]
           ],
           rule: "AICPI-IW Formula: Central Govt DA is revised twice a year on 1st January and 1st July based on the 12-month average of the All-India Consumer Price Index for Industrial Workers (Base 2016=100)."
         };
@@ -2800,7 +2800,7 @@
       },
       inputs: [
         { key: "prevBasic", label: "Previous Post Basic Pay (₹)", type: "number", def: 63100, min: 18000, max: 250000 },
-        { key: "prevDaPct", label: "Previous Post DA (%)", type: "number", def: 60, min: 0, max: 100 }
+        { key: "prevDaPct", label: "Previous Post DA (%)", type: "number", def: 63, min: 0, max: 100 }
       ],
       compute: (inp, ctx) => {
         const scaledPrev = ctx.basis === "8TH" ? Math.round(inp.prevBasic * ctx.fitment) : inp.prevBasic;

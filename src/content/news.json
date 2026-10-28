@@ -1,97 +1,227 @@
 {
   "_rules": "Edited by the news agent (see .github/news-agent.md). build.py checks every entry: each source must be an official government site or a listed news outlet; kind 'official' needs one official source, kind 'reported' needs two different outlets. Demands, estimates and expectations must say so.",
-  "last_checked": "2026-10-27",
+  "last_checked": "2026-10-28",
   "status": [
     {
-      "label": {"en": "Constituted", "hi": "गठन"},
-      "value": {"en": "3 November 2025 (Ministry of Finance resolution)", "hi": "3 नवंबर 2025 (वित्त मंत्रालय का प्रस्ताव)"},
+      "label": {
+        "en": "Constituted",
+        "hi": "गठन"
+      },
+      "value": {
+        "en": "3 November 2025 (Ministry of Finance resolution)",
+        "hi": "3 नवंबर 2025 (वित्त मंत्रालय का प्रस्ताव)"
+      },
       "source": "https://8cpc.gov.in/"
     },
     {
-      "label": {"en": "Chairperson and members", "hi": "अध्यक्ष और सदस्य"},
-      "value": {"en": "Justice Ranjana Prakash Desai (Chairperson), Prof. Pulak Ghosh (Member, part-time), Pankaj Jain (Member-Secretary)", "hi": "जस्टिस रंजना प्रकाश देसाई (अध्यक्ष), प्रो. पुलक घोष (सदस्य, अंशकालिक), पंकज जैन (सदस्य-सचिव)"},
+      "label": {
+        "en": "Chairperson and members",
+        "hi": "अध्यक्ष और सदस्य"
+      },
+      "value": {
+        "en": "Justice Ranjana Prakash Desai (Chairperson), Prof. Pulak Ghosh (Member, part-time), Pankaj Jain (Member-Secretary)",
+        "hi": "जस्टिस रंजना प्रकाश देसाई (अध्यक्ष), प्रो. पुलक घोष (सदस्य, अंशकालिक), पंकज जैन (सदस्य-सचिव)"
+      },
       "source": "https://www.outlookmoney.com/news/8th-pay-commission-constituted-key-areas-and-review-focus-explained"
     },
     {
-      "label": {"en": "Report due", "hi": "रिपोर्ट की समय-सीमा"},
-      "value": {"en": "Within 18 months of constitution, so by about May 2027; interim reports allowed", "hi": "गठन के 18 महीने के अंदर, यानी लगभग मई 2027 तक; अंतरिम रिपोर्ट की अनुमति"},
+      "label": {
+        "en": "Report due",
+        "hi": "रिपोर्ट की समय-सीमा"
+      },
+      "value": {
+        "en": "Within 18 months of constitution, so by about May 2027; interim reports allowed",
+        "hi": "गठन के 18 महीने के अंदर, यानी लगभग मई 2027 तक; अंतरिम रिपोर्ट की अनुमति"
+      },
       "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2183289&reg=48&lang=2"
     },
     {
-      "label": {"en": "Fitment factor", "hi": "फिटमेंट फैक्टर"},
-      "value": {"en": "Not announced. Staff side (NC-JCM) has proposed 3.833; most quoted estimate is 1.92", "hi": "घोषित नहीं। कर्मचारी पक्ष (NC-JCM) ने 3.833 का प्रस्ताव दिया है; सबसे ज़्यादा उद्धृत अनुमान 1.92 है"},
+      "label": {
+        "en": "Fitment factor",
+        "hi": "फिटमेंट फैक्टर"
+      },
+      "value": {
+        "en": "Not announced. Staff side (NC-JCM) has proposed 3.833; most quoted estimate is 1.92",
+        "hi": "घोषित नहीं। कर्मचारी पक्ष (NC-JCM) ने 3.833 का प्रस्ताव दिया है; सबसे ज़्यादा उद्धृत अनुमान 1.92 है"
+      },
       "source": "https://upstox.com/news/personal-finance/latest-updates/8th-pay-commission-merger-of-pay-scales-proposed-by-nc-jcm-staff-side-check-salary-impact/article-193805/"
     },
     {
-      "label": {"en": "Effective date", "hi": "लागू होने की तारीख"},
-      "value": {"en": "Not officially fixed; widely expected to be 1 January 2026, with arrears", "hi": "आधिकारिक रूप से तय नहीं; 1 जनवरी 2026 से एरियर के साथ लागू होने की व्यापक उम्मीद"},
+      "label": {
+        "en": "Effective date",
+        "hi": "लागू होने की तारीख"
+      },
+      "value": {
+        "en": "Not officially fixed; widely expected to be 1 January 2026, with arrears",
+        "hi": "आधिकारिक रूप से तय नहीं; 1 जनवरी 2026 से एरियर के साथ लागू होने की व्यापक उम्मीद"
+      },
       "source": "https://www.deccanherald.com/amp/story/india%2Fcabinet-approves-terms-of-reference-of-8th-pay-commission-likely-to-come-into-effect-from-january-2026-3777696"
     },
     {
-      "label": {"en": "DA today", "hi": "आज का DA"},
-      "value": {"en": "60% of basic pay from 1 January 2026; the July 2026 revision is not yet announced", "hi": "1 जनवरी 2026 से बेसिक पे का 60%; जुलाई 2026 की बढ़ोतरी अभी घोषित नहीं"},
-      "source": "https://www.outlookmoney.com/retirement/pension/july-2026-da-hike-central-government-employees-await-announcement-after-october-14-cabinet-meet"
+      "label": {
+        "en": "DA today",
+        "hi": "आज का DA"
+      },
+      "value": {
+        "en": "63% of basic pay from 1 July 2026 (approved by the Cabinet on 28 October 2026)",
+        "hi": "1 जुलाई 2026 से बेसिक पे का 63% (कैबिनेट ने 28 अक्टूबर 2026 को मंज़ूर किया)"
+      },
+      "source": "https://www.business-standard.com/finance/news/cabinet-approves-3-da-hike-taking-allowance-to-63-from-july-1-126102801064_1.html"
     }
   ],
   "items": [
     {
+      "date": "2026-10-28",
+      "kind": "reported",
+      "title": {
+        "en": "Cabinet raises DA to 63% from July 2026",
+        "hi": "कैबिनेट ने जुलाई 2026 से DA बढ़ाकर 63% किया"
+      },
+      "summary": {
+        "en": "The Union Cabinet approved a 3 percentage point increase in Dearness Allowance and Dearness Relief, from 60% to 63% of basic pay and pension, with effect from 1 July 2026. Arrears from July are due with salary and pension. The annual cost is about ₹10,000 crore, for roughly 49 lakh employees and 69 lakh pensioners.",
+        "hi": "केंद्रीय कैबिनेट ने महंगाई भत्ते और महंगाई राहत में 3 प्रतिशत अंक की बढ़ोतरी मंज़ूर की, बेसिक पे और पेंशन के 60% से 63%, 1 जुलाई 2026 से। जुलाई से एरियर वेतन और पेंशन के साथ मिलेगा। सालाना खर्च लगभग ₹10,000 करोड़ है, लगभग 49 लाख कर्मचारियों और 69 लाख पेंशनभोगियों के लिए।"
+      },
+      "sources": [
+        {
+          "name": "Business Standard",
+          "url": "https://www.business-standard.com/finance/news/cabinet-approves-3-da-hike-taking-allowance-to-63-from-july-1-126102801064_1.html"
+        },
+        {
+          "name": "The Tribune",
+          "url": "https://www.tribuneindia.com/news/india/festive-cheer-for-staff-govt-okays-3-da-hike"
+        }
+      ]
+    },
+    {
       "date": "2026-10-24",
       "kind": "reported",
-      "title": {"en": "July 2026 DA hike still awaited", "hi": "जुलाई 2026 की DA बढ़ोतरी का इंतज़ार जारी"},
-      "summary": {"en": "The Dearness Allowance revision due from 1 July 2026 had not been announced after the Union Cabinet meeting of 14 October. Media reports expect about 3 percentage points (60% to 63%), but that figure is an estimate until the Cabinet decides. Past July revisions were approved in October or later, with arrears from July.", "hi": "1 जुलाई 2026 से देय महंगाई भत्ते की बढ़ोतरी 14 अक्टूबर की केंद्रीय कैबिनेट बैठक के बाद भी घोषित नहीं हुई। मीडिया रिपोर्ट्स में लगभग 3 प्रतिशत अंक (60% से 63%) की उम्मीद है, लेकिन कैबिनेट के फ़ैसले तक यह केवल अनुमान है। पिछली जुलाई की बढ़ोतरी अक्टूबर या बाद में मंज़ूर हुई थी, जुलाई से एरियर के साथ।"},
+      "title": {
+        "en": "July 2026 DA hike still awaited",
+        "hi": "जुलाई 2026 की DA बढ़ोतरी का इंतज़ार जारी"
+      },
+      "summary": {
+        "en": "The Dearness Allowance revision due from 1 July 2026 had not been announced after the Union Cabinet meeting of 14 October. Media reports expect about 3 percentage points (60% to 63%), but that figure is an estimate until the Cabinet decides. Past July revisions were approved in October or later, with arrears from July.",
+        "hi": "1 जुलाई 2026 से देय महंगाई भत्ते की बढ़ोतरी 14 अक्टूबर की केंद्रीय कैबिनेट बैठक के बाद भी घोषित नहीं हुई। मीडिया रिपोर्ट्स में लगभग 3 प्रतिशत अंक (60% से 63%) की उम्मीद है, लेकिन कैबिनेट के फ़ैसले तक यह केवल अनुमान है। पिछली जुलाई की बढ़ोतरी अक्टूबर या बाद में मंज़ूर हुई थी, जुलाई से एरियर के साथ।"
+      },
       "sources": [
-        {"name": "Outlook Money", "url": "https://www.outlookmoney.com/retirement/pension/july-2026-da-hike-central-government-employees-await-announcement-after-october-14-cabinet-meet"},
-        {"name": "Goodreturns", "url": "https://www.goodreturns.in/personal-finance/da-hike-july-2026-central-government-employees-may-get-3-dearness-allowance-hike-8th-pay-commissi-1515053.html"}
+        {
+          "name": "Outlook Money",
+          "url": "https://www.outlookmoney.com/retirement/pension/july-2026-da-hike-central-government-employees-await-announcement-after-october-14-cabinet-meet"
+        },
+        {
+          "name": "Goodreturns",
+          "url": "https://www.goodreturns.in/personal-finance/da-hike-july-2026-central-government-employees-may-get-3-dearness-allowance-hike-8th-pay-commissi-1515053.html"
+        }
       ]
     },
     {
       "date": "2026-04-18",
       "kind": "reported",
-      "title": {"en": "DA raised to 60% from January 2026", "hi": "जनवरी 2026 से DA बढ़कर 60%"},
-      "summary": {"en": "The Union Cabinet approved a 2 percentage point increase in Dearness Allowance and Dearness Relief, from 58% to 60% of basic pay, with effect from 1 January 2026. Arrears from January are paid with salary and pension.", "hi": "केंद्रीय कैबिनेट ने महंगाई भत्ते और महंगाई राहत में 2 प्रतिशत अंक की बढ़ोतरी मंज़ूर की, बेसिक पे के 58% से 60%, 1 जनवरी 2026 से। जनवरी से एरियर वेतन और पेंशन के साथ मिलेगा।"},
+      "title": {
+        "en": "DA raised to 60% from January 2026",
+        "hi": "जनवरी 2026 से DA बढ़कर 60%"
+      },
+      "summary": {
+        "en": "The Union Cabinet approved a 2 percentage point increase in Dearness Allowance and Dearness Relief, from 58% to 60% of basic pay, with effect from 1 January 2026. Arrears from January are paid with salary and pension.",
+        "hi": "केंद्रीय कैबिनेट ने महंगाई भत्ते और महंगाई राहत में 2 प्रतिशत अंक की बढ़ोतरी मंज़ूर की, बेसिक पे के 58% से 60%, 1 जनवरी 2026 से। जनवरी से एरियर वेतन और पेंशन के साथ मिलेगा।"
+      },
       "sources": [
-        {"name": "Deccan Herald", "url": "https://www.deccanherald.com/india/union-cabinet-approves-2-da-hike-for-central-govt-employees-3468449"},
-        {"name": "Outlook Money", "url": "https://www.outlookmoney.com/news/cabinet-approves-2-da-hike-for-employees-and-pensioners-ahead-of-8th-pay-commission"}
+        {
+          "name": "Deccan Herald",
+          "url": "https://www.deccanherald.com/india/union-cabinet-approves-2-da-hike-for-central-govt-employees-3468449"
+        },
+        {
+          "name": "Outlook Money",
+          "url": "https://www.outlookmoney.com/news/cabinet-approves-2-da-hike-for-employees-and-pensioners-ahead-of-8th-pay-commission"
+        }
       ]
     },
     {
       "date": "2026-04-14",
       "kind": "reported",
-      "title": {"en": "Staff side asks for ₹69,000 minimum pay and 3.833 fitment factor", "hi": "कर्मचारी पक्ष ने ₹69,000 न्यूनतम वेतन और 3.833 फिटमेंट फैक्टर माँगा"},
-      "summary": {"en": "The Staff Side of the National Council (JCM) submitted its memorandum to the 8th Pay Commission. Its demands include a minimum basic pay of ₹69,000 (a fitment factor of 3.833), a 6% annual increment instead of 3%, and higher HRA rates. These are demands, not decisions.", "hi": "नेशनल काउंसिल (JCM) के कर्मचारी पक्ष ने 8वें वेतन आयोग को अपना ज्ञापन सौंपा। इसकी माँगों में ₹69,000 न्यूनतम बेसिक पे (3.833 फिटमेंट फैक्टर), 3% की जगह 6% सालाना इंक्रीमेंट और ऊँची HRA दरें शामिल हैं। ये माँगें हैं, फ़ैसले नहीं।"},
+      "title": {
+        "en": "Staff side asks for ₹69,000 minimum pay and 3.833 fitment factor",
+        "hi": "कर्मचारी पक्ष ने ₹69,000 न्यूनतम वेतन और 3.833 फिटमेंट फैक्टर माँगा"
+      },
+      "summary": {
+        "en": "The Staff Side of the National Council (JCM) submitted its memorandum to the 8th Pay Commission. Its demands include a minimum basic pay of ₹69,000 (a fitment factor of 3.833), a 6% annual increment instead of 3%, and higher HRA rates. These are demands, not decisions.",
+        "hi": "नेशनल काउंसिल (JCM) के कर्मचारी पक्ष ने 8वें वेतन आयोग को अपना ज्ञापन सौंपा। इसकी माँगों में ₹69,000 न्यूनतम बेसिक पे (3.833 फिटमेंट फैक्टर), 3% की जगह 6% सालाना इंक्रीमेंट और ऊँची HRA दरें शामिल हैं। ये माँगें हैं, फ़ैसले नहीं।"
+      },
       "sources": [
-        {"name": "Upstox News", "url": "https://upstox.com/news/personal-finance/latest-updates/8th-pay-commission-merger-of-pay-scales-proposed-by-nc-jcm-staff-side-check-salary-impact/article-193805/"},
-        {"name": "India.com", "url": "https://www.india.com/business/8th-pay-commission-big-update-good-news-central-government-employees-nc-jcm-staff-side-seeks-rs-69000-minimum-pay-check-expected-hike-da-pension-finance-ministry-inflation-salary-8382468/"}
+        {
+          "name": "Upstox News",
+          "url": "https://upstox.com/news/personal-finance/latest-updates/8th-pay-commission-merger-of-pay-scales-proposed-by-nc-jcm-staff-side-check-salary-impact/article-193805/"
+        },
+        {
+          "name": "India.com",
+          "url": "https://www.india.com/business/8th-pay-commission-big-update-good-news-central-government-employees-nc-jcm-staff-side-seeks-rs-69000-minimum-pay-check-expected-hike-da-pension-finance-ministry-inflation-salary-8382468/"
+        }
       ]
     },
     {
       "date": "2025-11-03",
       "kind": "official",
-      "title": {"en": "8th Pay Commission constituted", "hi": "8वें वेतन आयोग का गठन"},
-      "summary": {"en": "The Ministry of Finance notified the constitution of the 8th Central Pay Commission, with Justice Ranjana Prakash Desai as Chairperson, Prof. Pulak Ghosh as part-time Member and Pankaj Jain as Member-Secretary. It is based in New Delhi and must report within 18 months.", "hi": "वित्त मंत्रालय ने 8वें केंद्रीय वेतन आयोग के गठन की अधिसूचना जारी की: जस्टिस रंजना प्रकाश देसाई अध्यक्ष, प्रो. पुलक घोष अंशकालिक सदस्य और पंकज जैन सदस्य-सचिव। इसका मुख्यालय नई दिल्ली में है और इसे 18 महीने में रिपोर्ट देनी है।"},
+      "title": {
+        "en": "8th Pay Commission constituted",
+        "hi": "8वें वेतन आयोग का गठन"
+      },
+      "summary": {
+        "en": "The Ministry of Finance notified the constitution of the 8th Central Pay Commission, with Justice Ranjana Prakash Desai as Chairperson, Prof. Pulak Ghosh as part-time Member and Pankaj Jain as Member-Secretary. It is based in New Delhi and must report within 18 months.",
+        "hi": "वित्त मंत्रालय ने 8वें केंद्रीय वेतन आयोग के गठन की अधिसूचना जारी की: जस्टिस रंजना प्रकाश देसाई अध्यक्ष, प्रो. पुलक घोष अंशकालिक सदस्य और पंकज जैन सदस्य-सचिव। इसका मुख्यालय नई दिल्ली में है और इसे 18 महीने में रिपोर्ट देनी है।"
+      },
       "sources": [
-        {"name": "8th Central Pay Commission", "url": "https://8cpc.gov.in/"},
-        {"name": "Outlook Money", "url": "https://www.outlookmoney.com/news/8th-pay-commission-constituted-key-areas-and-review-focus-explained"}
+        {
+          "name": "8th Central Pay Commission",
+          "url": "https://8cpc.gov.in/"
+        },
+        {
+          "name": "Outlook Money",
+          "url": "https://www.outlookmoney.com/news/8th-pay-commission-constituted-key-areas-and-review-focus-explained"
+        }
       ]
     },
     {
       "date": "2025-10-28",
       "kind": "official",
-      "title": {"en": "Cabinet approves the Terms of Reference", "hi": "कैबिनेट ने Terms of Reference मंज़ूर कीं"},
-      "summary": {"en": "The Union Cabinet approved the Terms of Reference of the 8th Central Pay Commission. The Commission is a temporary body with a Chairperson, one part-time Member and a Member-Secretary, and will make its recommendations within 18 months of its constitution.", "hi": "केंद्रीय कैबिनेट ने 8वें केंद्रीय वेतन आयोग की Terms of Reference मंज़ूर कीं। आयोग एक अस्थायी निकाय है जिसमें एक अध्यक्ष, एक अंशकालिक सदस्य और एक सदस्य-सचिव हैं, और यह गठन के 18 महीने के अंदर सिफ़ारिशें देगा।"},
+      "title": {
+        "en": "Cabinet approves the Terms of Reference",
+        "hi": "कैबिनेट ने Terms of Reference मंज़ूर कीं"
+      },
+      "summary": {
+        "en": "The Union Cabinet approved the Terms of Reference of the 8th Central Pay Commission. The Commission is a temporary body with a Chairperson, one part-time Member and a Member-Secretary, and will make its recommendations within 18 months of its constitution.",
+        "hi": "केंद्रीय कैबिनेट ने 8वें केंद्रीय वेतन आयोग की Terms of Reference मंज़ूर कीं। आयोग एक अस्थायी निकाय है जिसमें एक अध्यक्ष, एक अंशकालिक सदस्य और एक सदस्य-सचिव हैं, और यह गठन के 18 महीने के अंदर सिफ़ारिशें देगा।"
+      },
       "sources": [
-        {"name": "PIB", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2183289&reg=48&lang=2"},
-        {"name": "The Tribune", "url": "https://www.tribuneindia.com/news/business/cabinet-approves-terms-of-reference-for-8th-central-pay-commission"}
+        {
+          "name": "PIB",
+          "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2183289&reg=48&lang=2"
+        },
+        {
+          "name": "The Tribune",
+          "url": "https://www.tribuneindia.com/news/business/cabinet-approves-terms-of-reference-for-8th-central-pay-commission"
+        }
       ]
     },
     {
       "date": "2025-01-16",
       "kind": "reported",
-      "title": {"en": "Government announces the 8th Pay Commission", "hi": "सरकार ने 8वें वेतन आयोग की घोषणा की"},
-      "summary": {"en": "The Union Cabinet approved setting up the 8th Central Pay Commission to revise pay and pensions of central government employees, as the 7th Pay Commission's period ends in 2026.", "hi": "केंद्रीय कैबिनेट ने केंद्रीय सरकारी कर्मचारियों के वेतन और पेंशन में संशोधन के लिए 8वें केंद्रीय वेतन आयोग के गठन को मंज़ूरी दी, क्योंकि 7वें वेतन आयोग की अवधि 2026 में पूरी होती है।"},
+      "title": {
+        "en": "Government announces the 8th Pay Commission",
+        "hi": "सरकार ने 8वें वेतन आयोग की घोषणा की"
+      },
+      "summary": {
+        "en": "The Union Cabinet approved setting up the 8th Central Pay Commission to revise pay and pensions of central government employees, as the 7th Pay Commission's period ends in 2026.",
+        "hi": "केंद्रीय कैबिनेट ने केंद्रीय सरकारी कर्मचारियों के वेतन और पेंशन में संशोधन के लिए 8वें केंद्रीय वेतन आयोग के गठन को मंज़ूरी दी, क्योंकि 7वें वेतन आयोग की अवधि 2026 में पूरी होती है।"
+      },
       "sources": [
-        {"name": "Deccan Herald", "url": "https://www.deccanherald.com/india/government-announces-8th-pay-commission-for-central-govt-employees-3358235"},
-        {"name": "The Tribune", "url": "https://www.tribuneindia.com/news/india/on-delhi-poll-eve-cabinet-clears-8th-pay-commission"}
+        {
+          "name": "Deccan Herald",
+          "url": "https://www.deccanherald.com/india/government-announces-8th-pay-commission-for-central-govt-employees-3358235"
+        },
+        {
+          "name": "The Tribune",
+          "url": "https://www.tribuneindia.com/news/india/on-delhi-poll-eve-cabinet-clears-8th-pay-commission"
+        }
       ]
     }
   ]
