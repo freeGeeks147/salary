@@ -22,6 +22,8 @@ import json
 import re
 from pathlib import Path
 
+import sectors
+
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 SITE_URL = "https://8thcpcpay.com/"
@@ -852,7 +854,13 @@ def site_links(lang):
     cpc = [(t(lang, "8th Pay Commission news", "8वां वेतन आयोग ख़बर"), "8th-pay-commission/"),
            (t(lang, "8th CPC fitment factor", "8वें CPC का फिटमेंट फैक्टर"), "8th-pay-commission/fitment-factor/"),
            (t(lang, "8th CPC salary hike", "8वें CPC में सैलरी बढ़ोतरी"), "8th-pay-commission/salary-hike/"),
-           (t(lang, "7th Pay Commission", "7वां वेतन आयोग"), "7th-pay-commission/")]
+           (t(lang, "7th Pay Commission", "7वां वेतन आयोग"), "7th-pay-commission/"),
+           (t(lang, "CAPF salary by rank", "रैंक के अनुसार CAPF वेतन"), "tools/" + TOOL_SLUGS["capf_handbook_suite"] + "/"),
+           (t(lang, "Army & Agniveer pay", "सेना और अग्निवीर वेतन"), "tools/" + TOOL_SLUGS["agniveer_defence"] + "/"),
+           (t(lang, "Railway salary by post", "पद के अनुसार रेलवे वेतन"), "tools/" + TOOL_SLUGS["railway_hub_suite"] + "/"),
+           (t(lang, "PSU pay scales (E0–E9)", "PSU वेतनमान (E0–E9)"), "tools/" + TOOL_SLUGS["psu_cpse_3prc"] + "/"),
+           (t(lang, "Bank pay scales", "बैंक वेतनमान"), "tools/" + TOOL_SLUGS["bank_iba_12bps"] + "/"),
+           (t(lang, "State govt pay & 8th CPC", "राज्य सरकार वेतन और 8वां CPC"), "tools/" + TOOL_SLUGS["state_govt_compare"] + "/")]
     col = lambda head, items: (f'<div><div class="font-bold text-slate-200 mb-2">{head}</div><ul class="space-y-1">'
                                + "".join(f'<li><a class="hover:text-white" href="{{{{ROOT}}}}{p}">{html.escape(n)}</a></li>' for n, p in items) + "</ul></div>")
     popular = [(TOOL_BY_ID[i]["title"][lang], "tools/" + TOOL_SLUGS[i] + "/") for i in POPULAR_TOOLS if i in TOOL_BY_ID]
@@ -1087,6 +1095,12 @@ if __name__ == "__main__":
         for page in tool_pages():
             tool = TOOL_BY_ID[page["tool"]]
             page = {**page, "crumbs": [(tools_hub["name"], page_url("tools/", lang))]}
-            written.append(build_page(page, lang, [], section_tool(tool, lang), tool_content(tool, lang)))
+            guide_html, guide_faqs = sectors.guide(tool["id"], lang)
+            seo = sectors.SEO.get(tool["id"])
+            if seo:
+                page = {**page, "title": seo["title"][0], "description": seo["description"][0],
+                        "hi": {**page["hi"], "title": seo["title"][1], "description": seo["description"][1]}}
+            prose = (guide_html + "\n" if guide_html else "") + tool_content(tool, lang)
+            written.append(build_page(page, lang, guide_faqs, section_tool(tool, lang), prose))
     build_sitemap(written)
     print(f"built {len(written)} pages ({sum(c for _, c in written)} changed) and sitemap.xml")

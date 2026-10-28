@@ -2633,21 +2633,21 @@
         const r = rankMap[inp.capfRankCode] || rankMap[1];
         const basic = ctx.basis === "8TH" ? Math.round(r.b7 * ctx.fitment) : r.b7;
         const da = Math.round(basic * (ctx.daPct / 100));
-        const rma = 3965; // Ration Money Allowance
+        const rma = 4558; // Ration Money Allowance: ₹151.93/day (2025-26) × 30
         const riskAmt = inp.riskZoneCode === 1 ? 17300 : (inp.riskZoneCode === 2 ? 9700 : 0);
-        const hra = Math.round(basic * 0.16);
+        const hra = Math.round(basic * (ctx.hraClass === "X" ? 0.30 : (ctx.hraClass === "Y" ? 0.20 : 0.10)));
         const totalGross = basic + da + hra + rma + riskAmt + 1800;
         return {
           primaryLabel: `${r.name} — Total Monthly Gross (${ctx.basis})`,
           primaryVal: `${formatINR(totalGross)}/mo`,
-          secondaryVal: `Basic: ${formatINR(basic)} | Risk/Hardship: ${formatINR(riskAmt)} | Ration Money: ₹3,965/mo`,
+          secondaryVal: `Basic: ${formatINR(basic)} | Risk/Hardship: ${formatINR(riskAmt)} | Ration Money: ₹4,558/mo`,
           rows: [
             ["Rank & Entry Pay Level", r.name],
             [`Basic Pay (${ctx.basis}) + DA (${ctx.daPct}%)`, `${formatINR(basic)} + ${formatINR(da)}`],
-            ["Risk & Hardship Allowance + Ration Money (RMA)", `${formatINR(riskAmt)} + ₹3,965/mo`],
+            ["Risk & Hardship Allowance + Ration Money (RMA)", `${formatINR(riskAmt)} + ₹4,558/mo`],
             ["Annual Dress Allowance (Paid in July)", inp.capfRankCode === 5 ? "₹25,000/yr" : "₹12,500/yr (Enhanced +25%)"]
           ],
-          rule: "MHA CAPF Guidelines: Personnel up to Inspector receive tax-free Ration Money Allowance (₹132.18/day ≈ ₹3,965/mo), Risk & Hardship Allowance (₹6,000 to ₹25,000/mo), 60 days Earned Leave per year, and 1 month extra salary (compensatory pay)."
+          rule: "MHA CAPF Guidelines: Personnel up to Inspector receive tax-free Ration Money Allowance (₹151.93/day in 2025-26 ≈ ₹4,558/mo), Risk & Hardship Allowance (₹6,000 to ₹25,000/mo), 60 days Earned Leave per year, and 1 month extra salary (compensatory pay)."
         };
       }
     },
@@ -4014,9 +4014,9 @@
       ],
       compute: (inp) => {
         const profiles = {
-          1: { name: "PSB Clerk (12th BPS)", basic: 24050, spPct: 0.164, learn: 600, daPct: 0.212, hraPct: 0.105 },
-          2: { name: "PSB Probationary Officer (Scale-I)", basic: 48480, spPct: 0.265, learn: 850, daPct: 0.212, hraPct: 0.09 },
-          3: { name: "PSB Manager (Scale-II)", basic: 64820, spPct: 0.265, learn: 850, daPct: 0.212, hraPct: 0.09 },
+          1: { name: "PSB Clerk (12th BPS)", basic: 24050, spPct: 0.164, learn: 600, daPct: 0.2783, hraPct: 0.105 },
+          2: { name: "PSB Probationary Officer (Scale-I)", basic: 48480, spPct: 0.265, learn: 850, daPct: 0.2783, hraPct: 0.09 },
+          3: { name: "PSB Manager (Scale-II)", basic: 64820, spPct: 0.265, learn: 850, daPct: 0.2783, hraPct: 0.09 },
           4: { name: "RBI Assistant", basic: 29000, spPct: 0.164, learn: 2500, daPct: 0.46, hraPct: 0.15 },
           5: { name: "LIC Assistant Admin Officer (AAO)", basic: 88635, spPct: 0.0, learn: 2400, daPct: 0.22, hraPct: 0.09 }
         };
@@ -4058,12 +4058,12 @@
       },
       inputs: [
         { key: "psuBasic", label: "PSU Basic Pay (e.g. E1=40000, E2=50000, E3=60000)", type: "number", def: 50000, min: 30000, max: 280000, step: 10000 },
-        { key: "idaPct", label: "Current IDA Rate (%)", type: "number", def: 46, min: 0, max: 100 }
+        { key: "idaPct", label: "Current IDA Rate (%) — 55.7% from Jul 2026", type: "number", def: 55.7, min: 0, max: 100, step: 0.1 }
       ],
       compute: (inp, ctx) => {
         const ida = Math.round(inp.psuBasic * (inp.idaPct / 100));
         const perks = Math.round(inp.psuBasic * 0.35); // 35% Cafeteria allowance
-        const hraRate = ctx.hraClass === "X" ? 0.27 : (ctx.hraClass === "Y" ? 0.18 : 0.09);
+        const hraRate = inp.idaPct >= 50 ? (ctx.hraClass === "X" ? 0.30 : (ctx.hraClass === "Y" ? 0.20 : 0.10)) : (ctx.hraClass === "X" ? 0.27 : (ctx.hraClass === "Y" ? 0.18 : 0.09));
         const hra = Math.round(inp.psuBasic * hraRate);
         const gross = inp.psuBasic + ida + perks + hra;
         const epf = Math.round((inp.psuBasic + ida) * 0.12);
