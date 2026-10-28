@@ -3997,6 +3997,11 @@
     {
       id: "bank_iba_12bps",
       cat: "SECTORS_ELIGIBILITY",
+      payNote: {
+        en: "Bank pay is set by the 12th Bipartite Settlement between IBA and the unions, not by the Pay Commission, so the 8th CPC does not change these figures.",
+        hi: "बैंक वेतन IBA और यूनियनों के 12वें द्विपक्षीय समझौते से तय होता है, वेतन आयोग से नहीं, इसलिए 8वां CPC इन आंकड़ों को नहीं बदलता।",
+        bn: "ব্যাংকের বেতন IBA ও ইউনিয়নের ১২তম দ্বিপাক্ষিক চুক্তি অনুযায়ী ঠিক হয়, বেতন কমিশন নয়, তাই ৮ম CPC এই হিসাব বদলায় না।"
+      },
       icon: "🏦",
       badge: "12th BPS / RBI / LIC",
       title: {
@@ -4044,6 +4049,11 @@
     {
       id: "psu_cpse_3prc",
       cat: "SECTORS_ELIGIBILITY",
+      payNote: {
+        en: "PSU executives are paid on IDA scales set by the Pay Revision Committee (3rd PRC; the 4th is due from January 2027), not by the Pay Commission, so the 8th CPC does not change these figures.",
+        hi: "PSU अधिकारियों का वेतन पे रिवीज़न कमेटी के IDA वेतनमान से तय होता है (तीसरा PRC; चौथा जनवरी 2027 से देय), वेतन आयोग से नहीं, इसलिए 8वां CPC इन आंकड़ों को नहीं बदलता।",
+        bn: "PSU আধিকারিকদের বেতন পে রিভিশন কমিটির IDA স্কেলে ঠিক হয় (৩য় PRC; ৪র্থ জানুয়ারি ২০২৭ থেকে প্রাপ্য), বেতন কমিশন নয়, তাই ৮ম CPC এই হিসাব বদলায় না।"
+      },
       icon: "🏭",
       badge: "IDA E0 to E9",
       title: {
@@ -4368,6 +4378,22 @@
     byId("mt-wb-basis-pill").textContent = ctx.basis === "8TH"
       ? `8th CPC Basis (${formatINR(ctx.basic)})`
       : `7th CPC Basis (${formatINR(ctx.basic)})`;
+
+    // Calculators that do not use central government pay (banks, PSUs, savings schemes...)
+    // hide the 8th CPC context and the 7th/8th CPC switch, which would not change their result.
+    const usesCpcPay = !tool.payNote && tool.compute.length >= 2;
+    ["mt-context-row", "mt-basis-toggle", "mt-wb-basis-pill"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle("hidden", !usesCpcPay);
+    });
+    const ctxNote = document.getElementById("mt-context-note");
+    if (ctxNote) {
+      const note = tool.payNote
+        ? (tool.payNote[state.lang] || tool.payNote.en)
+        : ({ hi: "यह कैलकुलेटर आपके केंद्रीय सरकारी वेतन पर निर्भर नहीं है।", bn: "এই ক্যালকুলেটর আপনার কেন্দ্রীয় সরকারি বেতনের উপর নির্ভর করে না।" }[state.lang] || "This calculator does not depend on your central government pay.");
+      ctxNote.textContent = note;
+      ctxNote.classList.toggle("hidden", usesCpcPay);
+    }
 
     // Render inputs if tool switched
     const inputsContainer = document.getElementById("mt-wb-inputs");

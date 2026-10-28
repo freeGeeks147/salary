@@ -319,6 +319,9 @@ def parse_app_js():
             "desc": tri("desc"),
             "inputs": [js_string(v) for v in re.findall(r'label: ' + q, chunk)],
             "rule": js_string(rule[1]) if rule else "",
+            # Tools whose result does not depend on central government pay (no 8th CPC context).
+            "pay_note": tri("payNote") if "payNote:" in chunk else None,
+            "uses_cpc": "payNote:" not in chunk and "compute: (inp)" not in chunk,
         })
     return levels, cells, i18n_hi, tools
 
@@ -791,6 +794,12 @@ def section_tool(tool, lang):
                     lambda m: f'<h1 class="{m[1]}">{html.escape(tool["icon"] + " " + tool["title"][lang])}</h1>', markup, flags=re.S)
     markup = re.sub(r'<p class="([^"]*)" data-i18n="mt_hub_sub">.*?</p>',
                     lambda m: f'<p class="{m[1]}">{html.escape(tool["desc"][lang])}</p>', markup, flags=re.S)
+    if not tool["uses_cpc"]:
+        note = tool["pay_note"][lang] if tool["pay_note"] else t(lang, "This calculator does not depend on your central government pay.", "यह कैलकुलेटर आपके केंद्रीय सरकारी वेतन पर निर्भर नहीं है।")
+        markup = markup.replace('id="mt-context-row" class="', 'id="mt-context-row" class="hidden ')
+        markup = markup.replace('id="mt-basis-toggle" class="', 'id="mt-basis-toggle" class="hidden ')
+        markup = markup.replace('<p id="mt-context-note" class="hidden ', '<p id="mt-context-note" class="')
+        markup = markup.replace('<p id="mt-context-note" class="text-xs text-emerald-200 max-w-md"></p>', f'<p id="mt-context-note" class="text-xs text-emerald-200 max-w-md">{html.escape(note)}</p>')
     return markup
 
 
