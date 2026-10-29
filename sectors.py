@@ -43,10 +43,10 @@ def inr(n):
     return "₹" + s
 
 
-def table(head, rows, num_cols=()):
-    """head: list of labels; rows: list of lists of (already escaped) cell html."""
+def table(head, rows, num_cols=(), wrap=False):
+    """head: list of labels; rows: list of lists of (already escaped) cell html. wrap lets text cells wrap."""
     th = "".join(f'<th class="{TH}{NUM if i in num_cols else ""}">{h}</th>' for i, h in enumerate(head))
-    body = "".join("<tr>" + "".join(f'<td class="{TD if i else TDW}{NUM if i in num_cols else ""}">{c}</td>' for i, c in enumerate(r)) + "</tr>" for r in rows)
+    body = "".join("<tr>" + "".join(f'<td class="{TD if i and not wrap else TDW}{NUM if i in num_cols else ""}">{c}</td>' for i, c in enumerate(r)) + "</tr>" for r in rows)
     return f'<div class="{TABLE_WRAP}"><table class="{TABLE}"><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table></div>'
 
 
@@ -127,7 +127,7 @@ def capf(lang):
 <li><strong>{t(lang, "Others", "अन्य")}</strong> – {t(lang, "dress allowance once a year, transport allowance, special duty allowance in the North East, and children education allowance.", "साल में एक बार ड्रेस भत्ता, परिवहन भत्ता, पूर्वोत्तर में विशेष ड्यूटी भत्ता और बच्चों का शिक्षा भत्ता।")}</li>
 </ul>
 <h2>{t(lang, "Example: a CAPF Constable's monthly pay", "उदाहरण: CAPF कांस्टेबल का मासिक वेतन")}</h2>
-<p>{t(lang, f"A newly joined Constable (Level 3) gets basic pay of {inr(21700)}, DA of {inr(21700 * 0.6)} and HRA/transport allowance, about {c[3]} gross in a Y city. Posted in an R1H2 area (for example counter-insurgency in a field area), the Constable also gets {inr(9700)} risk & hardship allowance and about {inr(rma_month)} ration money, so the total is close to {inr(gross_y(21700, '3') + 9700 + rma_month)} before deductions.", f"नए कांस्टेबल (लेवल 3) को {inr(21700)} बेसिक, {inr(21700 * 0.6)} DA और HRA/परिवहन भत्ता मिलता है, Y शहर में लगभग {c[3]} ग्रॉस। R1H2 इलाके (जैसे फ़ील्ड एरिया में उग्रवाद-रोधी ड्यूटी) में तैनाती पर {inr(9700)} रिस्क-हार्डशिप भत्ता और लगभग {inr(rma_month)} राशन मनी भी मिलती है, यानी कटौती से पहले कुल लगभग {inr(gross_y(21700, '3') + 9700 + rma_month)}।")}</p>
+<p>{t(lang, f"A newly joined Constable (Level 3) gets basic pay of {inr(21700)}, DA of {inr(21700 * DA_NOW / 100)} and HRA/transport allowance, about {c[3]} gross in a Y city. Posted in an R1H2 area (for example counter-insurgency in a field area), the Constable also gets {inr(9700)} risk & hardship allowance and about {inr(rma_month)} ration money, so the total is close to {inr(gross_y(21700, '3') + 9700 + rma_month)} before deductions.", f"नए कांस्टेबल (लेवल 3) को {inr(21700)} बेसिक, {inr(21700 * DA_NOW / 100)} DA और HRA/परिवहन भत्ता मिलता है, Y शहर में लगभग {c[3]} ग्रॉस। R1H2 इलाके (जैसे फ़ील्ड एरिया में उग्रवाद-रोधी ड्यूटी) में तैनाती पर {inr(9700)} रिस्क-हार्डशिप भत्ता और लगभग {inr(rma_month)} राशन मनी भी मिलती है, यानी कटौती से पहले कुल लगभग {inr(gross_y(21700, '3') + 9700 + rma_month)}।")}</p>
 <h2>{t(lang, "CAPF salary in the 8th Pay Commission", "8वें वेतन आयोग में CAPF वेतन")}</h2>
 <p>{t(lang, f"CAPF personnel are central government employees, so the 8th CPC applies to them like everyone else. At a fitment factor of {FIT}, a Constable's starting basic would go from {inr(21700)} to about {inr(fit8(21700))}, and an Assistant Commandant's from {inr(56100)} to about {inr(fit8(56100))}. Allowances such as risk & hardship and ration money are reviewed separately by the Commission.", f"CAPF कर्मी केंद्रीय सरकारी कर्मचारी हैं, इसलिए 8वां CPC उन पर भी लागू होगा। {FIT} फिटमेंट फैक्टर पर कांस्टेबल की शुरुआती बेसिक {inr(21700)} से लगभग {inr(fit8(21700))} और असिस्टेंट कमांडेंट की {inr(56100)} से लगभग {inr(fit8(56100))} हो जाएगी। रिस्क-हार्डशिप और राशन मनी जैसे भत्तों की आयोग अलग से समीक्षा करता है।")}</p>
 {links(lang, COMMON_LINKS + [("Defence and Agniveer pay", "डिफेंस और अग्निवीर वेतन", "tools/agniveer-salary-calculator/")])}"""
@@ -393,3 +393,10 @@ def guide(tool_id, lang):
     body, faqs = fn(lang)
     stamp = f'<p class="{NOTE}">' + t(lang, f"Figures as of {AS_OF['en']}. Allowance and DA rates change; confirm with your office's latest order.", f"आंकड़े {AS_OF['hi']} तक के। भत्ते और DA की दरें बदलती रहती हैं; अपने कार्यालय के ताज़ा आदेश से पुष्टि करें।") + "</p>"
     return body + "\n" + stamp, faqs
+
+
+# Provident fund and leave guides live in benefits.py.
+import benefits  # noqa: E402 (benefits imports the helpers above)
+
+GUIDES.update(benefits.GUIDES)
+SEO.update(benefits.SEO)

@@ -3605,23 +3605,25 @@
       },
       inputs: [
         { key: "epsServiceYrs", label: "EPS-95 Pensionable Service (Years)", type: "number", def: 25, min: 10, max: 35 },
+        { key: "epsAvgWage", label: "Average Pensionable Salary, Last 60 Months (₹, max ₹25,000)", type: "number", def: 15000, min: 1000, max: 25000, step: 500 },
         { key: "apyEntryAge", label: "APY Entry Age (18–39 Years)", type: "number", def: 25, min: 18, max: 39 }
       ],
       compute: (inp) => {
         const bonusYrs = inp.epsServiceYrs >= 20 ? 2 : 0;
-        const epsPen = Math.max(1000, Math.round((15000 * (inp.epsServiceYrs + bonusYrs)) / 70));
+        const epsWage = Math.min(25000, inp.epsAvgWage);
+        const epsPen = Math.max(1000, Math.round((epsWage * (inp.epsServiceYrs + bonusYrs)) / 70));
         const apyPrem5k = Math.round(210 + (inp.apyEntryAge - 18) * 58);
         return {
-          primaryLabel: "EPS-95 Monthly Pension (₹15,000 Ceiling)",
+          primaryLabel: `EPS-95 Monthly Pension (on ${formatINR(epsWage)} Average Salary)`,
           primaryVal: `${formatINR(epsPen)}/mo`,
           secondaryVal: `APY Monthly Premium for ₹5,000 Pension (Age ${inp.apyEntryAge}): ${formatINR(apyPrem5k)}/mo`,
           rows: [
-            ["EPS-95 Wage Ceiling", "₹15,000/month"],
+            ["EPS-95 Wage Ceiling", "₹25,000/month from 17 Sep 2026 (₹15,000 before)"],
             ["Effective Service (with +2 Yr Weightage if ≥20 yrs)", `${inp.epsServiceYrs + bonusYrs} years`],
-            ["EPS-95 Monthly Pension ((15000 × Service) / 70)", `${formatINR(epsPen)}/mo`],
+            [`EPS-95 Monthly Pension ((${formatINR(epsWage)} × Service) / 70)`, `${formatINR(epsPen)}/mo`],
             ["APY Corpus Returned to Nominee (for ₹5k Plan)", "₹8,50,000"]
           ],
-          rule: "EPFO EPS-95 Formula: Monthly Pension = (Pensionable Salary × Pensionable Service) / 70. Completing 20+ years of service grants a 2-year bonus weightage."
+          rule: "EPFO EPS-95 Formula: Monthly Pension = (Average Pensionable Salary of the last 60 months × Pensionable Service) / 70, minimum ₹1,000. Completing 20+ years of service grants a 2-year bonus weightage. The wage ceiling rose from ₹15,000 to ₹25,000 on 17 September 2026, so only salary from then on counts above ₹15,000."
         };
       }
     },
