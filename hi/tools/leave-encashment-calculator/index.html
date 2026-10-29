@@ -584,12 +584,31 @@
         <p id="mt-context-note" class="hidden text-xs text-emerald-200 max-w-md"></p>
         <div id="mt-basis-toggle" class="flex flex-wrap items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/15">
           <span class="text-xs font-semibold px-2 text-slate-200" data-i18n="mt_pay_basis_lbl">गणना का आधार:</span>
-          <button type="button" id="btn-mt-basis-8th" data-mt-basis="8TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm">
+          <button type="button" id="btn-mt-basis-8th" data-mt-basis="8TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white">
             ⚡ 8th CPC Projected Pay
           </button>
-          <button type="button" id="btn-mt-basis-7th" data-mt-basis="7TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white">
+          <button type="button" id="btn-mt-basis-7th" data-mt-basis="7TH" class="mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm">
             7th CPC Current Pay
           </button>
+        </div>
+
+        <div id="mt-pay-panel" class="w-full grid grid-cols-2 lg:grid-cols-4 gap-2 pt-3 border-t border-white/10">
+          <div>
+            <label for="mt-sel-level" class="block text-[11px] font-semibold text-emerald-200 mb-1" data-i18n="mt_pay_level">पे लेवल</label>
+            <select id="mt-sel-level" class="w-full rounded-lg bg-slate-900/80 border border-white/20 px-2 py-1.5 text-xs sm:text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none"></select>
+          </div>
+          <div>
+            <label for="mt-sel-basic" class="block text-[11px] font-semibold text-emerald-200 mb-1" data-i18n="mt_basic_pay">बेसिक पे</label>
+            <select id="mt-sel-basic" class="w-full rounded-lg bg-slate-900/80 border border-white/20 px-2 py-1.5 text-xs sm:text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none"></select>
+          </div>
+          <div>
+            <label for="mt-sel-da" class="block text-[11px] font-semibold text-emerald-200 mb-1">DA rate</label>
+            <select id="mt-sel-da" class="w-full rounded-lg bg-slate-900/80 border border-white/20 px-2 py-1.5 text-xs sm:text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none"></select>
+          </div>
+          <div>
+            <label for="mt-sel-hra" class="block text-[11px] font-semibold text-emerald-200 mb-1" data-i18n="mt_city_class">शहर (HRA)</label>
+            <select id="mt-sel-hra" class="w-full rounded-lg bg-slate-900/80 border border-white/20 px-2 py-1.5 text-xs sm:text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none"></select>
+          </div>
         </div>
       </div>
 

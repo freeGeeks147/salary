@@ -273,8 +273,12 @@
       banner_94_sub: "Every micro-tool automatically syncs with your 8th CPC Projected Basic Pay & Fitment Factor (GPF, LTC, Tour TA/DA, HBA, Form 10E, Bank/PSU, 20 States, EWS/OBC & more).",
       btn_open_all_tools: "Open All 46 Calculators Hub →",
       mt_hub_title: "46 Government Salary, Allowance, Leave, Pension & Tax Micro-Tools",
-      mt_hub_sub: "Tap any calculator below to open it. Results use the pay level and basic pay from the main salary calculator.",
+      mt_hub_sub: "Tap any calculator below to open it. Set your pay level, basic pay, DA and city above; every result updates instantly.",
       mt_pay_basis_lbl: "Pay Basis for Tools:",
+      mt_pay_level: "Pay level",
+      mt_basic_pay: "Basic pay",
+      mt_da_rate: "DA rate",
+      mt_city_class: "City (HRA)",
       mob_salary: "Salary",
       mob_matrix: "Matrix",
       mob_arrears: "Arrears",
@@ -441,8 +445,12 @@
       banner_94_sub: "हर टूल आपकी 8वें वेतन आयोग की अनुमानित बेसिक पे और फिटमेंट फैक्टर के साथ अपने-आप जुड़ता है (GPF, LTC, Tour TA/DA, HBA, Form 10E, बैंक/PSU, 20 राज्य, EWS/OBC आदि)।",
       btn_open_all_tools: "सभी 46 माइक्रो-टूल्स खोलें →",
       mt_hub_title: "सभी 46 सरकारी वेतन, भत्ते, छुट्टी, पेंशन और टैक्स कैलकुलेटर",
-      mt_hub_sub: "किसी भी टूल कार्ड पर टैप करें और 7वें या 8वें वेतन आयोग के आधार पर तुरंत गणना करें।",
+      mt_hub_sub: "किसी भी कैलकुलेटर पर टैप करें। ऊपर अपना पे लेवल, बेसिक पे, DA और शहर चुनें; हर नतीजा तुरंत बदल जाता है।",
       mt_pay_basis_lbl: "गणना का आधार:",
+      mt_pay_level: "पे लेवल",
+      mt_basic_pay: "बेसिक पे",
+      mt_da_rate: "DA दर",
+      mt_city_class: "शहर (HRA)",
       mob_salary: "सैलरी",
       mob_matrix: "मैट्रिक्स",
       mob_arrears: "एरियर",
@@ -611,6 +619,10 @@
       mt_hub_title: "সব ৪৬ সরকারি বেতন, ভাতা, ছুটি, পেনশন ও ট্যাক্স ক্যালকুলেটর",
       mt_hub_sub: "যেকোনো টুল কার্ডে ট্যাপ করুন এবং ৭ম বা ৮ম বেতন কমিশনের ভিত্তিতে তাৎক্ষণিক হিসাব দেখুন।",
       mt_pay_basis_lbl: "গণনার ভিত্তি:",
+      mt_pay_level: "পে লেভেল",
+      mt_basic_pay: "বেসিক পে",
+      mt_da_rate: "DA হার",
+      mt_city_class: "শহর (HRA)",
       mob_salary: "বেতন",
       mob_matrix: "ম্যাট্রিক্স",
       mob_arrears: "বকেয়া",
@@ -2134,7 +2146,7 @@
       runAllCalculations();
     });
     byId("sel-7th-da").addEventListener("change", e => {
-      state.da7th = parseInt(e.target.value, 10) || 60;
+      state.da7th = parseInt(e.target.value, 10) || 63;
       runAllCalculations();
     });
     byId("sel-8th-da").addEventListener("change", e => {
@@ -2184,7 +2196,7 @@
       state.taType = "HIGHER";
       state.hra8thReset = true;
       state.divyangTa = false;
-      state.da7th = 60;
+      state.da7th = 63;
       state.da8th = 0;
       state.pensionScheme = "NPS_UPS";
       state.addons = { npa: false, pca: false, cea: false };
@@ -2372,8 +2384,10 @@
   //     Designed as a pure declarative registry + stateless compute engine
   //     for 1:1 portability to Android Jetpack Compose / Kotlin MVVM.
   // =========================================================================
+  const MT_BASIS_KEY = "gsc_mt_basis_v1";
   const mtState = {
-    basis: "8TH", // "8TH" or "7TH"
+    // "7TH" (current pay, the default) or "8TH" (projected); the choice is kept between pages.
+    basis: safeStorageGet(MT_BASIS_KEY, "7TH") === "8TH" ? "8TH" : "7TH",
     category: "ALL",
     searchQuery: "",
     activeToolId: "first_pay",
@@ -4296,6 +4310,103 @@
     }
   ];
 
+  // "City Type (1=Big Cities, 2=Other)" -> { label: "City Type", options: [{value: 1, text: "Big Cities"}, ...] },
+  // so coded inputs show as a dropdown instead of a number box.
+  function parseChoiceLabel(label) {
+    const m = /^(.*?)\s*\((\d+\s*=.*)\)(.*)$/.exec(label);
+    if (!m) return null;
+    const options = m[2].split(/,\s*(?=\d+\s*=)/).map(part => {
+      const eq = part.indexOf("=");
+      return { value: parseInt(part.slice(0, eq), 10), text: part.slice(eq + 1).trim() };
+    }).sort((a, b) => a.value - b.value);
+    return { label: (m[1] + m[3]).trim(), options };
+  }
+
+  const MT_DA_OPTIONS = [
+    [63, "Jul 2026", "current"], [60, "Jan 2026", ""], [58, "Jul 2025", ""], [55, "Jan 2025", ""],
+    [53, "Jul 2024", ""], [50, "Jan 2024", ""], [66, "Jan 2027", "estimate"]
+  ];
+
+  // Pay level, basic pay, DA and city on every calculator page, so people need not go back to the
+  // main calculator. They change the same saved state the main calculator uses.
+  function renderMtPayPanel() {
+    const selLv = document.getElementById("mt-sel-level");
+    if (!selLv) return;
+    const hi = state.lang === "hi", bn = state.lang === "bn";
+    const lvWord = hi ? "लेवल" : (bn ? "লেভেল" : "Level");
+    selLv.innerHTML = PAY_LEVEL_META.map(l => `<option value="${l.id}">${lvWord} ${l.id} (${formatINR(l.entry)})</option>`).join("");
+    selLv.value = state.levelId;
+    const cells = OFFICIAL_CELLS[state.levelId] || [state.basicPay];
+    document.getElementById("mt-sel-basic").innerHTML = cells.map((amt, i) =>
+      `<option value="${amt}">${formatINR(amt)} (${hi ? "सेल" : (bn ? "সেল" : "Cell")} ${i + 1})</option>`).join("");
+    document.getElementById("mt-sel-basic").value = String(state.basicPay);
+    const now = hi ? "अभी" : (bn ? "এখন" : "now");
+    const est = hi ? "अनुमान" : (bn ? "আনুমানিক" : "est.");
+    const selDa = document.getElementById("mt-sel-da");
+    const daLabel = document.querySelector('label[for="mt-sel-da"]');
+    if (mtState.basis === "8TH") {
+      // In the 8th CPC, DA restarts from 0% when the new pay starts.
+      if (daLabel) daLabel.textContent = hi ? "8वें CPC में DA" : (bn ? "৮ম CPC-তে DA" : "DA in 8th CPC");
+      const after = hi ? ["शुरुआत में", "6 महीने बाद", "1 साल बाद", "18 महीने बाद"] : (bn ? ["শুরুতে", "৬ মাস পরে", "১ বছর পরে", "১৮ মাস পরে"] : ["at the start", "after 6 months", "after 1 year", "after 18 months"]);
+      const opts8 = [0, 3, 6, 9];
+      if (!opts8.includes(state.da8th)) opts8.push(state.da8th);
+      selDa.innerHTML = opts8.map((v, i) => `<option value="${v}">${v}%${after[i] ? ` (${after[i]})` : ""}</option>`).join("");
+      selDa.value = String(state.da8th);
+    } else {
+      if (daLabel) daLabel.textContent = hi ? "DA दर" : (bn ? "DA হার" : "DA rate");
+      const daOpts = MT_DA_OPTIONS.some(o => o[0] === state.da7th) ? MT_DA_OPTIONS : MT_DA_OPTIONS.concat([[state.da7th, "", ""]]);
+      selDa.innerHTML = daOpts.map(([v, when, tag]) =>
+        `<option value="${v}">${v}%${when ? ` (${when}${tag === "current" ? ", " + now : (tag ? ", " + est : "")})` : ""}</option>`).join("");
+      selDa.value = String(state.da7th);
+    }
+    const hraOpts = hi
+      ? [["X", "X शहर (30%)"], ["Y", "Y शहर (20%)"], ["Z", "Z शहर (10%)"], ["NONE", "सरकारी आवास (HRA नहीं)"]]
+      : (bn ? [["X", "X শহর (30%)"], ["Y", "Y শহর (20%)"], ["Z", "Z শহর (10%)"], ["NONE", "সরকারি আবাস (HRA নেই)"]]
+        : [["X", "X city (30%)"], ["Y", "Y city (20%)"], ["Z", "Z town (10%)"], ["NONE", "Govt quarters (no HRA)"]]);
+    document.getElementById("mt-sel-hra").innerHTML = hraOpts.map(([v, txt]) => `<option value="${v}">${txt}</option>`).join("");
+    document.getElementById("mt-sel-hra").value = state.hraClass;
+  }
+
+  function styleMtBasisButtons() {
+    document.querySelectorAll(".mt-basis-btn").forEach(b => {
+      const act = b.getAttribute("data-mt-basis") === mtState.basis;
+      b.className = act
+        ? "mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm"
+        : "mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white";
+    });
+  }
+
+  function bindMtPayPanel() {
+    const panel = document.getElementById("mt-pay-panel");
+    if (!panel) return;
+    panel.addEventListener("change", (e) => {
+      const id = e.target.id;
+      if (id === "mt-sel-level") {
+        state.levelId = e.target.value;
+        state.basicPay = (OFFICIAL_CELLS[state.levelId] || [state.basicPay])[0];
+      } else if (id === "mt-sel-basic") {
+        state.basicPay = parseInt(e.target.value, 10) || state.basicPay;
+      } else if (id === "mt-sel-da" && mtState.basis === "8TH") {
+        state.da8th = parseInt(e.target.value, 10) || 0;
+      } else if (id === "mt-sel-da") {
+        state.da7th = parseInt(e.target.value, 10) || 63;
+      } else if (id === "mt-sel-hra") {
+        state.hraClass = e.target.value;
+      } else {
+        return;
+      }
+      // Keep the main calculator's controls (present on the home page) in step.
+      populateLevelAndBasicDropdowns(true);
+      const da = document.getElementById("sel-7th-da");
+      if (da) da.value = String(state.da7th);
+      const da8 = document.getElementById("sel-8th-da");
+      if (da8) da8.value = String(state.da8th);
+      const hra = document.getElementById("sel-hra-class");
+      if (hra) hra.value = state.hraClass;
+      runAllCalculations();
+    });
+  }
+
   function renderMicroToolsGrid() {
     const grid = document.getElementById("mt-cards-grid");
     const countBadge = byId("mt-count-badge");
@@ -4365,6 +4476,7 @@
     const tool = MICRO_TOOLS_REGISTRY.find(t => t.id === mtState.activeToolId) || MICRO_TOOLS_REGISTRY[0];
     if (!tool) return;
 
+    renderMtPayPanel();
     const ctx = getMtContext();
     if (!mtState.toolInputs[tool.id]) {
       mtState.toolInputs[tool.id] = {};
@@ -4384,7 +4496,7 @@
     // Calculators that do not use central government pay (banks, PSUs, savings schemes...)
     // hide the 8th CPC context and the 7th/8th CPC switch, which would not change their result.
     const usesCpcPay = !tool.payNote && tool.compute.length >= 2;
-    ["mt-context-row", "mt-basis-toggle", "mt-wb-basis-pill"].forEach((id) => {
+    ["mt-context-row", "mt-basis-toggle", "mt-wb-basis-pill", "mt-pay-panel"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.classList.toggle("hidden", !usesCpcPay);
     });
@@ -4401,12 +4513,23 @@
     const inputsContainer = document.getElementById("mt-wb-inputs");
     if (inputsContainer.getAttribute("data-rendered-tool") !== tool.id) {
       inputsContainer.setAttribute("data-rendered-tool", tool.id);
-      inputsContainer.innerHTML = tool.inputs.map(f => `
+      inputsContainer.innerHTML = tool.inputs.map(f => {
+        const choice = parseChoiceLabel(f.label);
+        if (choice) {
+          return `<div>
+          <label class="block text-[11px] font-semibold text-slate-700 mb-1">${choice.label}</label>
+          <select data-mt-input-key="${f.key}" class="mt-wb-input-el w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs sm:text-sm font-semibold text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none">
+            ${choice.options.map(o => `<option value="${o.value}" ${o.value === Number(activeInputs[f.key]) ? "selected" : ""}>${o.text}</option>`).join("")}
+          </select>
+        </div>`;
+        }
+        return `
         <div>
           <label class="block text-[11px] font-semibold text-slate-700 mb-1">${f.label}</label>
           <input type="${f.type}" data-mt-input-key="${f.key}" value="${activeInputs[f.key]}" min="${f.min || 0}" max="${f.max || 99999999}" step="${f.step || 1}" class="mt-wb-input-el w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs sm:text-sm font-semibold text-slate-900 focus:border-blue-600 focus:bg-white focus:outline-none" />
         </div>
-      `).join("");
+      `;
+      }).join("");
     }
 
     const out = tool.compute(activeInputs, ctx);
@@ -4435,15 +4558,12 @@
     }
 
     // Pay Basis Toggle (8th CPC vs 7th CPC)
+    styleMtBasisButtons();
     document.querySelectorAll(".mt-basis-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        mtState.basis = btn.getAttribute("data-mt-basis") || "8TH";
-        document.querySelectorAll(".mt-basis-btn").forEach(b => {
-          const act = b.getAttribute("data-mt-basis") === mtState.basis;
-          b.className = act
-            ? "mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow-sm"
-            : "mt-basis-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white";
-        });
+        mtState.basis = btn.getAttribute("data-mt-basis") === "8TH" ? "8TH" : "7TH";
+        safeStorageSet(MT_BASIS_KEY, mtState.basis);
+        styleMtBasisButtons();
         renderMicroToolsGrid();
         showToast(`Micro-Tools synced to ${mtState.basis === "8TH" ? "8th CPC Projected" : "7th CPC Current"} Basic Pay`);
       });
@@ -5955,6 +6075,7 @@
     restoreCalcState();
     applySharedLinkParams();
     bindSharedInputs();
+    bindMtPayPanel();
     populateLevelAndBasicDropdowns(true);
     renderPostPresets();
     bindEvents();

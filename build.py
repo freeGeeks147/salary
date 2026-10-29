@@ -798,6 +798,7 @@ def section_tool(tool, lang):
         note = tool["pay_note"][lang] if tool["pay_note"] else t(lang, "This calculator does not depend on your central government pay.", "यह कैलकुलेटर आपके केंद्रीय सरकारी वेतन पर निर्भर नहीं है।")
         markup = markup.replace('id="mt-context-row" class="', 'id="mt-context-row" class="hidden ')
         markup = markup.replace('id="mt-basis-toggle" class="', 'id="mt-basis-toggle" class="hidden ')
+        markup = markup.replace('id="mt-pay-panel" class="', 'id="mt-pay-panel" class="hidden ')
         markup = markup.replace('<p id="mt-context-note" class="hidden ', '<p id="mt-context-note" class="')
         markup = markup.replace('<p id="mt-context-note" class="text-xs text-emerald-200 max-w-md"></p>', f'<p id="mt-context-note" class="text-xs text-emerald-200 max-w-md">{html.escape(note)}</p>')
     return markup
