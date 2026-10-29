@@ -72,6 +72,9 @@ isn't used anywhere else on the site yet, rebuild the CSS (needs Node.js):
 npx tailwindcss@3.4.17 -i src/tailwind.css -o assets/css/site.css --minify
 ```
 
+Rebuild the CSS before running `python3 build.py`: pages load `site.css` and `app.js` with
+`?v=<hash of the file>`, so the build has to see the final files for browsers to pick up changes.
+
 ## Publishing on GitHub Pages with the custom domain
 
 1. In the repository on GitHub: **Settings → Pages → Build and deployment**,

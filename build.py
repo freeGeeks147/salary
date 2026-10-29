@@ -17,6 +17,7 @@ Besides the pages listed in PAGES, the build also writes:
     from the pay matrix data in assets/js/app.js.
 """
 import datetime
+import hashlib
 import html
 import json
 import re
@@ -212,11 +213,11 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{root}assets/css/site.css" />
+  <link rel="stylesheet" href="{root}assets/css/site.css?v={css_v}" />
   <script async src="https://analytics.ahrefs.com/analytics.js" data-key="mVizr0+CAUqYCIW32aAg9A"></script>
   <script>window.GSC_TOOL_SLUGS = {tool_slugs};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script defer src="{root}assets/js/app.js"></script>
+  <script defer src="{root}assets/js/app.js?v={js_v}"></script>
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -991,6 +992,12 @@ def localize(page, lang):
     return {**page, **page["hi"]}
 
 
+def asset_version(rel):
+    """Short hash of a file's contents. Pages load app.js and site.css with ?v=<hash>, so browsers
+    fetch the new file after every change instead of keeping a cached old one."""
+    return hashlib.sha1((ROOT / rel).read_bytes()).hexdigest()[:10]
+
+
 def build_page(page, lang, faqs, section, prose):
     page = localize(page, lang)
     out_path = ("hi/" if lang == "hi" else "") + page["path"]
@@ -1027,6 +1034,8 @@ def build_page(page, lang, faqs, section, prose):
         og_image=OG_IMAGE,
         root=asset_root,
         tool_slugs=json.dumps(TOOL_SLUGS),
+        css_v=asset_version("assets/css/site.css"),
+        js_v=asset_version("assets/js/app.js"),
         json_ld=json_ld(page, faqs, lang).replace("</", "<\\/"),
         page_name=html.escape(page["name"]),
         tool_attr=f' data-mt-tool="{page["tool"]}"' if page.get("tool") else "",
